@@ -16,7 +16,7 @@ class Body extends React.Component {
       myList: [],
       sumData: [1],
       nameData: [],
-      myShares: [],
+      myShares: null,
       stockIndustry: null,
       techData: [],
       techName: [],
@@ -40,62 +40,64 @@ class Body extends React.Component {
   };
 
   newOnes = async (x) => {
-    await fetch(
-      `https://finnhub.io/api/v1/stock/profile2?symbol=${this.state.myTicker}&token=bor57j7rh5rbk6e6j1qg`
-    )
-      .then((e) => e.json())
-      .then((e) => this.setState({ stockIndustry: e.finnhubIndustry }));
+    if (this.state.myTicker && this.state.myShares) {
+      await fetch(
+        `https://finnhub.io/api/v1/stock/profile2?symbol=${this.state.myTicker}&token=bor57j7rh5rbk6e6j1qg`
+      )
+        .then((e) => e.json())
+        .then((e) => this.setState({ stockIndustry: e.finnhubIndustry }));
 
-    await fetch(
-      `https://finnhub.io/api/v1/quote?symbol=${this.state.myTicker}&token=bor57j7rh5rbk6e6j1qg`
-    )
-      .then((e) => e.json())
-      .then((e) =>
-        this.setState({
-          stockList: this.newStock(
-            this.state.myTicker,
-            e.c,
-            this.state.myShares,
-            this.state.stockIndustry
-          ),
-        })
-      );
+      await fetch(
+        `https://finnhub.io/api/v1/quote?symbol=${this.state.myTicker}&token=bor57j7rh5rbk6e6j1qg`
+      )
+        .then((e) => e.json())
+        .then((e) =>
+          this.setState({
+            stockList: this.newStock(
+              this.state.myTicker,
+              e.c,
+              this.state.myShares,
+              this.state.stockIndustry
+            ),
+          })
+        );
 
-    this.setState((state) => {
-      const myList = [...state.myList, state.stockList];
-      return {
-        myList,
-        stockList: "",
-        stockIndustry: null,
-      };
-    });
+      this.setState((state) => {
+        const myList = [...state.myList, state.stockList];
+        return {
+          myList,
+          stockList: "",
+          stockIndustry: null,
+        };
+      });
 
-    this.setState((state) => {
-      const befData = state.myList.map(
-        (res) => res.price !== undefined && res.price * res.shares
-      );
-      const aftData = befData.filter((res) => res !== false);
-      const totBalanace = aftData.reduce(
-        (tot, cur) => !isNaN(cur) && tot + cur,
-        0
-      );
-      const sumData = aftData.map((res) =>
-        Math.round((res / totBalanace) * 100)
-      );
+      this.setState((state) => {
+        const befData = state.myList.map(
+          (res) => res.price !== undefined && res.price * res.shares
+        );
+        const aftData = befData.filter((res) => res !== false);
+        const totBalanace = aftData.reduce(
+          (tot, cur) => !isNaN(cur) && tot + cur,
+          0
+        );
+        const sumData = aftData.map((res) =>
+          Math.round((res / totBalanace) * 100)
+        );
 
-      return { sumData };
-    });
+        return { sumData };
+      });
 
-    this.setState((state) => {
-      const befData = state.myList.map(
-        (res) => res.name !== undefined && res.name
-      );
-      const aftData = befData.filter((res) => res !== false);
+      this.setState((state) => {
+        const befData = state.myList.map(
+          (res) => res.name !== undefined && res.name
+        );
+        const aftData = befData.filter((res) => res !== false);
 
-      const nameData = aftData;
-      return { nameData };
-    });
-    this.cancelCourse();
+        const nameData = aftData;
+        return { nameData };
+      });
+      this.cancelCourse();
+    }
   };
 
   handleTickerChange = async (e) => {
@@ -107,8 +109,9 @@ class Body extends React.Component {
     }
   };
 
-  newOneEnter = async (event) => {
-    if (event.keyCode || event.charCode === "Enter") {
+  newOneEnter = (e) => {
+    if (e.key === "Enter") {
+      // this.newOnes();
       this.newOnes();
     }
   };
@@ -136,6 +139,7 @@ class Body extends React.Component {
   };
   cancelCourse = () => {
     document.getElementById("stockForm").reset();
+    this.setState({ myTicker: null, myShares: null });
   };
 
   newStock(name, price, shares, industry) {
@@ -213,7 +217,7 @@ class Body extends React.Component {
             />
           </div>
           <div className="stockSearch">
-            <form id="stockForm">
+            <form id="stockForm" onKeyDown={this.newOneEnter}>
               <SearchBox
                 placeHolder={"Ticker Symbol"}
                 handleChange={this.handleTickerChange}
@@ -225,9 +229,7 @@ class Body extends React.Component {
             </form>
           </div>
           <div className="stockSearch">
-            <button onClick={this.newOnes} onKeyDown={this.newOneEnter}>
-              Add
-            </button>
+            <button onClick={this.newOnes}>Add</button>
           </div>
           <div className="stockSearch">
             <button onClick={this.resetPie}>Reset</button>
