@@ -108,7 +108,7 @@ class Body extends React.Component {
   };
 
   newOneEnter = async (x) => {
-    if (event.key === "Enter") {
+    if (x.key === "Enter") {
       await fetch(
         `https://finnhub.io/api/v1/stock/profile2?symbol=${this.state.myTicker}&token=bor57j7rh5rbk6e6j1qg`
       )
