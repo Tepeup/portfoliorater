@@ -16,7 +16,6 @@ const StyledRating = withStyles({
 })(Rating);
 
 export default function SimpleRating({ rating: rank, link: link }) {
-  console.log(rank);
   const [value, setValue] = React.useState(rank);
 
   return (

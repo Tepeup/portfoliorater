@@ -46,15 +46,11 @@ class New extends React.Component {
       stock: this.state.nameData,
       percent: this.state.sumData,
     };
-
-    console.log(SharedStocks);
   };
 
   getURL = () => {
     var parts = window.location.pathname.split("/");
     var lastSegment = parts.pop() || parts.pop(); // handle potential trailing slash
-
-    console.log(lastSegment);
   };
 
   render() {
