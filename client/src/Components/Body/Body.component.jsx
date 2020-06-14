@@ -107,6 +107,67 @@ class Body extends React.Component {
     }
   };
 
+  newOneEnter = async (x) => {
+    if (event.key === "Enter") {
+      await fetch(
+        `https://finnhub.io/api/v1/stock/profile2?symbol=${this.state.myTicker}&token=bor57j7rh5rbk6e6j1qg`
+      )
+        .then((e) => e.json())
+        .then((e) => this.setState({ stockIndustry: e.finnhubIndustry }));
+
+      await fetch(
+        `https://finnhub.io/api/v1/quote?symbol=${this.state.myTicker}&token=bor57j7rh5rbk6e6j1qg`
+      )
+        .then((e) => e.json())
+        .then((e) =>
+          this.setState({
+            stockList: this.newStock(
+              this.state.myTicker,
+              e.c,
+              this.state.myShares,
+              this.state.stockIndustry
+            ),
+          })
+        );
+
+      this.setState((state) => {
+        const myList = [...state.myList, state.stockList];
+        return {
+          myList,
+          stockList: "",
+          stockIndustry: null,
+        };
+      });
+
+      this.setState((state) => {
+        const befData = state.myList.map(
+          (res) => res.price !== undefined && res.price * res.shares
+        );
+        const aftData = befData.filter((res) => res !== false);
+        const totBalanace = aftData.reduce(
+          (tot, cur) => !isNaN(cur) && tot + cur,
+          0
+        );
+        const sumData = aftData.map((res) =>
+          Math.round((res / totBalanace) * 100)
+        );
+
+        return { sumData };
+      });
+
+      this.setState((state) => {
+        const befData = state.myList.map(
+          (res) => res.name !== undefined && res.name
+        );
+        const aftData = befData.filter((res) => res !== false);
+
+        const nameData = aftData;
+        return { nameData };
+      });
+      this.cancelCourse();
+    }
+  };
+
   handleShareChange = (e) => {
     this.setState({ TestSearch: e.target.value });
     if (e.target.value === "" || e.target.value === null) {
@@ -219,7 +280,9 @@ class Body extends React.Component {
             </form>
           </div>
           <div className="stockSearch">
-            <button onClick={this.newOnes}>Add</button>
+            <button onClick={this.newOnes} onKeyPress={this.newOneEnter}>
+              Add
+            </button>
           </div>
           <div className="stockSearch">
             <button onClick={this.resetPie}>Reset</button>
