@@ -17,6 +17,7 @@ const StyledRating = withStyles({
 
 export default function SimpleRating({ rating: rank, link: link }) {
   const [value, setValue] = React.useState(rank);
+  const [click, setClick] = React.useState(true);
 
   return (
     <div>
@@ -26,9 +27,12 @@ export default function SimpleRating({ rating: rank, link: link }) {
           precision={0.5}
           onChange={(event, newValue) => {
             setValue(newValue);
-            axios.post(`/stocks/update/${link}`, {
-              rating: [newValue],
-            });
+            setClick(false);
+            if (click) {
+              axios.post(`/stocks/update/${link}`, {
+                rating: [newValue],
+              });
+            }
           }}
         />
       </Box>

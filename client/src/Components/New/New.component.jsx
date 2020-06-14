@@ -12,7 +12,7 @@ class New extends React.Component {
     super();
     this.state = {
       link: null,
-      sumData: [1],
+      sumData: [100],
       rating: null,
       noVotes: null,
     };
