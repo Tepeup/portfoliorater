@@ -27,7 +27,7 @@ export default function SimpleRating({ rating: rank, link: link }) {
           precision={0.5}
           onChange={(event, newValue) => {
             setValue(newValue);
-            axios.post(`http://localhost:5000/stocks/update/${link}`, {
+            axios.post(`/stocks/update/${link}`, {
               rating: [newValue],
             });
           }}
