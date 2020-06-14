@@ -10,7 +10,6 @@ class Body extends React.Component {
   constructor() {
     super();
     this.state = {
-      Test: null,
       myTicker: null,
       reset: false,
       stockList: {},
@@ -34,7 +33,6 @@ class Body extends React.Component {
     };
 
     if (this.state.reset) {
-      console.log(SharedStocks);
       await axios
         .post("/stocks/add", SharedStocks)
         .then((res) => this.setState({ link: res.data, showShare: false }));
@@ -101,7 +99,6 @@ class Body extends React.Component {
   };
 
   handleTickerChange = async (e) => {
-    this.setState({ Test: e.target.value });
     if (e.target.value === "") {
       this.setState({ myTicker: null });
     } else {
@@ -116,22 +113,14 @@ class Body extends React.Component {
 
   newOneEnter = (e) => {
     if (e.key === "Enter") {
-      // this.newOnes();
       this.newOnes();
     }
   };
 
-  handleShareChange = (e) => {
-    if (e.target.value === "") {
-      this.setState({ myShares: null });
-    } else {
-      if (e.target.value === "" || e.target.value === null) {
-      } else {
-        if (e.target.value !== "") {
-          !isNaN(e.target.value) &&
-            this.setState({ myShares: parseInt(e.target.value) });
-        }
-      }
+  handleShareChange = async (e) => {
+    if (e.target.value !== null) {
+      !isNaN(e.target.value) &&
+        this.setState({ myShares: parseInt(e.target.value) });
     }
   };
   resetPie = (x) => {
@@ -149,7 +138,11 @@ class Body extends React.Component {
   };
   cancelCourse = () => {
     document.getElementById("stockForm").reset();
-    this.setState({ myTicker: null, myShares: null, reset: true });
+    this.setState({
+      myTicker: null,
+      myShares: null,
+      reset: true,
+    });
   };
 
   newStock(name, price, shares, industry) {
