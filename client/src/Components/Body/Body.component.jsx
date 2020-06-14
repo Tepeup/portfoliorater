@@ -11,11 +11,11 @@ class Body extends React.Component {
     super();
     this.state = {
       myTicker: null,
-      TestSearch: null,
+      reset: false,
       stockList: {},
       myList: [],
-      sumData: [1],
-      nameData: [],
+      sumData: [100],
+      nameData: ["STOCKS"],
       myShares: null,
       stockIndustry: null,
       techData: [],
@@ -32,7 +32,8 @@ class Body extends React.Component {
       rating: [0],
     };
 
-    if (this.state.nameData.length >= 1) {
+    if (this.state.reset) {
+      console.log(SharedStocks);
       await axios
         .post("/stocks/add", SharedStocks)
         .then((res) => this.setState({ link: res.data, showShare: false }));
@@ -96,16 +97,21 @@ class Body extends React.Component {
         const nameData = aftData;
         return { nameData };
       });
+
       this.cancelCourse();
     }
   };
 
   handleTickerChange = async (e) => {
-    e.target.value = e.target.value.toUpperCase();
-    this.setState({ TestSearch: e.target.value });
-    if (e.target.value === "" || e.target.value === null) {
+    if (e.target.value === "") {
+      this.setState({ myTicker: null });
     } else {
-      this.setState({ myTicker: e.target.value });
+      e.target.value = e.target.value.toUpperCase();
+
+      if (e.target.value === "" || e.target.value === null) {
+      } else {
+        this.setState({ myTicker: e.target.value });
+      }
     }
   };
 
@@ -117,29 +123,34 @@ class Body extends React.Component {
   };
 
   handleShareChange = (e) => {
-    this.setState({ TestSearch: e.target.value });
-    if (e.target.value === "" || e.target.value === null) {
+    if (e.target.value === "") {
+      this.setState({ myShares: null });
     } else {
-      !isNaN(e.target.value) &&
-        this.setState({ myShares: parseInt(e.target.value) });
+      if (e.target.value === "" || e.target.value === null) {
+      } else {
+        if (e.target.value !== "") {
+          !isNaN(e.target.value) &&
+            this.setState({ myShares: parseInt(e.target.value) });
+        }
+      }
     }
   };
   resetPie = (x) => {
     this.setState({
       myTicker: null,
-      TestSearch: null,
+      reset: false,
       stockList: {},
       myList: [],
-      sumData: [1],
-      nameData: [],
-      myShares: [],
+      sumData: [100],
+      nameData: ["STOCKS"],
+      myShares: null,
       showShare: true,
     });
-    this.cancelCourse();
+    document.getElementById("stockForm").reset();
   };
   cancelCourse = () => {
     document.getElementById("stockForm").reset();
-    this.setState({ myTicker: null, myShares: null });
+    this.setState({ myTicker: null, myShares: null, reset: true });
   };
 
   newStock(name, price, shares, industry) {
