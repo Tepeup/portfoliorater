@@ -10,13 +10,13 @@ class Body extends React.Component {
   constructor() {
     super();
     this.state = {
-      myTicker: null,
+      myTicker: "",
       reset: false,
       stockList: {},
       myList: [],
       sumData: [100],
       nameData: ["STOCKS"],
-      myShares: null,
+      myShares: "",
       stockIndustry: null,
       techData: [],
       techName: [],
@@ -118,29 +118,12 @@ class Body extends React.Component {
   };
 
   handleShareChange = async (e) => {
-    if (e.target.value !== null) {
-      !isNaN(e.target.value) &&
-        this.setState({ myShares: parseInt(e.target.value) });
-    }
-  };
-  resetPie = (x) => {
-    this.setState({
-      myTicker: null,
-      reset: false,
-      stockList: {},
-      myList: [],
-      sumData: [100],
-      nameData: ["STOCKS"],
-      myShares: null,
-      showShare: true,
-    });
-    document.getElementById("stockForm").reset();
+    this.setState({ myShares: parseInt(e.target.value) });
   };
   cancelCourse = () => {
-    document.getElementById("stockForm").reset();
     this.setState({
-      myTicker: null,
-      myShares: null,
+      myTicker: "",
+      myShares: "",
       reset: true,
     });
   };
@@ -154,6 +137,18 @@ class Body extends React.Component {
       // ...other properties
     };
   }
+  resetForm = () => {
+    this.setState({
+      myTicker: "",
+      reset: false,
+      stockList: {},
+      myList: [],
+      sumData: [100],
+      nameData: ["STOCKS"],
+      myShares: "",
+      showShare: true,
+    });
+  };
 
   render() {
     const state = {
@@ -224,9 +219,13 @@ class Body extends React.Component {
               <SearchBox
                 placeHolder={"Ticker Symbol"}
                 handleChange={this.handleTickerChange}
+                boxType={"text"}
+                value={this.state.myTicker}
               />
               <SearchBox
                 placeHolder={"No. Shares"}
+                value={this.state.myShares}
+                boxType={"number"}
                 handleChange={this.handleShareChange}
               />
             </form>
@@ -235,7 +234,7 @@ class Body extends React.Component {
             <button onClick={this.newOnes}>Add</button>
           </div>
           <div className="stockSearch">
-            <button onClick={this.resetPie}>Reset</button>
+            <button onClick={this.resetForm}>Reset</button>
           </div>
           {this.state.showShare ? (
             <div className="stockSearch">
