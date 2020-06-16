@@ -109,7 +109,15 @@ class New extends React.Component {
                 responsive: true,
                 maintainAspectRatio: false,
                 animateRotate: true,
-
+                tooltips: {
+                  callbacks: {
+                    label: function (tooltipItem, data) {
+                      let label = data.labels[tooltipItem.index];
+                      let value = data.datasets[0].data[tooltipItem.index];
+                      return `${label}: ${value}%`;
+                    },
+                  },
+                },
                 legend: {
                   display: true,
                   position: "bottom",
