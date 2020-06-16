@@ -155,6 +155,7 @@ class Body extends React.Component {
       labels: this.state.nameData,
       datasets: [
         {
+          data: this.state.sumData,
           borderWidth: 2,
           borderColor: "#FFF",
           hoverBorderWidth: 3,
@@ -184,8 +185,6 @@ class Body extends React.Component {
           options: {
             maintainAspectRatio: false,
           },
-
-          data: this.state.sumData,
         },
       ],
     };
@@ -206,6 +205,15 @@ class Body extends React.Component {
                 responsive: true,
                 maintainAspectRatio: false,
                 animateRotate: true,
+                tooltips: {
+                  callbacks: {
+                    label: function (tooltipItem, data) {
+                      let label = data.labels[tooltipItem.index];
+                      let value = data.datasets[0].data[tooltipItem.index];
+                      return `${label}: ${value}%`;
+                    },
+                  },
+                },
 
                 legend: {
                   display: true,

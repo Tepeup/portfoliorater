@@ -23,6 +23,7 @@ export default function SimpleRating({ rating: rank, link: link }) {
     <div>
       <Box component="fieldset" mb={0} p={0} borderColor="transparent">
         <StyledRating
+          size={"large"}
           value={value}
           precision={0.5}
           onChange={(event, newValue) => {
