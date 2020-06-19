@@ -3,7 +3,6 @@ $baseColor: #1171ba;
 
 .Logo {
     display: grid;
-
     justify-content: center;
     align-content: center;
     justify-self: center;
@@ -44,7 +43,7 @@ span {
 
     .centerChart {
         box-sizing: border-box;
-        padding: 1.5rem;
+        padding: 1.5rem 3rem;
         min-width: 50vw;
         width: auto;
         max-height: 80vh;
@@ -54,8 +53,39 @@ span {
         display: grid;
         background-color: white;
         border-radius: 0.8rem;
-        grid-template-rows: 7fr auto;
+        grid-template-columns: auto auto;
 
+        #item1 {
+            grid-area: 1/1 / span 3 / span 2;
+        }
+        #item1b {
+            grid-area: 1/3 / span 2 / span 1;
+            padding: 0 0 0 10px;
+        }
+        #item1a {
+            grid-area: 3/3 / span 1 / span 1;
+            padding: 10px 10px 0 10px;
+        }
+
+        #item2 {
+            grid-area: 4/1 / span 1 / span 3;
+            padding: 5px 0;
+        }
+        #item3 {
+            grid-area: 5/1 / span 1 / span 3;
+            margin-top: 3px;
+        }
+
+        #item4 {
+            grid-area: 6/1 / span 1 / span 3;
+        }
+        #item5 {
+            grid-area: 7/1 / span 1 / span 3;
+        }
+        #item6 {
+            grid-area: 8/1 / span 1 / span 3;
+            background-color: rgb(61, 179, 112);
+        }
         .search {
             max-width: 300px;
             min-width: 250px;
@@ -64,7 +94,7 @@ span {
             border-radius: 4px;
             background-color: lightgray;
             border: solid 1px lightgray;
-            color: rgb(96, 96, 96);
+            color: rgb(49, 49, 49);
             text-align: center;
         }
         input[type="number"]::-webkit-inner-spin-button,
