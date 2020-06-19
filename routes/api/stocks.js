@@ -27,6 +27,10 @@ router.route("/update/:id").post((req, res) => {
   Stock.findById(req.params.id).then((stocks) => {
     req.body.percent = req.body.percent;
     req.body.stock = req.body.stock;
+
+    req.body.marketPercent = req.body.marketPercent;
+    req.body.sector = req.body.sector;
+    req.body.sectorPercent = req.body.sectorPercent;
     stocks.rating = [...req.body.rating, ...stocks.rating];
 
     stocks
