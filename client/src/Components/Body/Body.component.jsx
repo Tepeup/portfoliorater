@@ -826,7 +826,7 @@ class Body extends React.Component {
               </div>
             </Link>
           )}
-
+          {/* 
           {this.state.link && !this.state.showShare && (
             <div className="stockSearch" id="item6">
               <input
@@ -834,7 +834,7 @@ class Body extends React.Component {
                 defaultValue={`${window.location.href}chart/${this.state.link}`}
               />
             </div>
-          )}
+          )} */}
         </div>
       </div>
     );

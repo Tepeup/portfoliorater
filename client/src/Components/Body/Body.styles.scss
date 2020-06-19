@@ -36,7 +36,7 @@ span {
 }
 .Body {
     font-family: "Comfortaa";
-    padding: 5px;
+    padding: 5px 5px 10px 5px;
     height: 100vh;
     max-height: 100vh;
     display: grid;
@@ -46,7 +46,7 @@ span {
 
     .centerChart {
         box-sizing: border-box;
-        padding: 0.5rem 3rem;
+        padding: 0rem 3rem 0.5rem 3rem;
         min-width: 50vw;
         width: auto;
         max-height: 85vh;
