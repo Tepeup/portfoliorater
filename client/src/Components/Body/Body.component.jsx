@@ -817,7 +817,7 @@ class Body extends React.Component {
             <Link className="stockSearch" to={`/chart/${this.state.link}`}>
               {" "}
               <div className="stockSearch" id="item5">
-                <button>Go To</button>
+                <button className="goto">Go To</button>
               </div>
             </Link>
           )}

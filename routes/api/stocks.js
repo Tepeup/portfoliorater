@@ -15,8 +15,16 @@ router.route("/").get((req, res) => {
 router.route("/add").post((req, res) => {
   const stock = req.body.stock;
   const percent = req.body.percent;
-  console.log(req.body);
-  const newStock = new Stock({ stock, percent });
+  const marketPercent = req.body.marketPercent;
+  const sector = req.body.sector;
+  const sectorPercent = req.body.sectorPercent;
+  const newStock = new Stock({
+    stock,
+    percent,
+    marketPercent,
+    sector,
+    sectorPercent,
+  });
 
   newStock
     .save()
@@ -27,7 +35,6 @@ router.route("/update/:id").post((req, res) => {
   Stock.findById(req.params.id).then((stocks) => {
     req.body.percent = req.body.percent;
     req.body.stock = req.body.stock;
-
     req.body.marketPercent = req.body.marketPercent;
     req.body.sector = req.body.sector;
     req.body.sectorPercent = req.body.sectorPercent;
