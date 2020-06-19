@@ -1,11 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./New.styles.scss";
-import { Pie } from "react-chartjs-2";
+
 import SearchBox from "../Searchbox/Searchbox.component";
 import { ReactComponent as Logo } from "../../Assets/Logo.svg";
 import axios from "axios";
 import SimpleRating from "../Rating/SimpleRating.component";
+import { Pie, Doughnut, Bar, HorizontalBar } from "react-chartjs-2";
 
 class New extends React.Component {
   constructor() {
@@ -111,6 +112,82 @@ class New extends React.Component {
         },
       ],
     };
+    const capState = {
+      labels: this.state.marketCapName,
+
+      datasets: [
+        {
+          data: this.state.marketCapData,
+          borderWidth: 2,
+          borderColor: "#FFF",
+          hoverBorderWidth: 3,
+          hoverBorderColor: "#FFF",
+          backgroundColor: [
+            "#1171ba",
+            "#e6194b",
+            "#3cb44b",
+            "#ffd8b1",
+            "#808080",
+            "#f58231",
+            "#911eb4",
+            "#ffe119",
+            "#e6beff",
+            "#9a6324",
+            "#fffac8",
+            "#800000",
+            "#aaffc3",
+            "#808000",
+            "#bcf60c",
+            "#fabebe",
+            "#008080",
+          ],
+          legend: {
+            display: true,
+          },
+          options: {
+            maintainAspectRatio: false,
+          },
+        },
+      ],
+    };
+    const sectorState = {
+      labels: this.state.sectorShow,
+
+      datasets: [
+        {
+          data: this.state.sectorData,
+          borderWidth: 2,
+          borderColor: "#FFF",
+          hoverBorderWidth: 3,
+          hoverBorderColor: "#FFF",
+          backgroundColor: [
+            "#1171ba",
+            "#e6194b",
+            "#3cb44b",
+            "#ffd8b1",
+            "#808080",
+            "#f58231",
+            "#911eb4",
+            "#ffe119",
+            "#e6beff",
+            "#9a6324",
+            "#fffac8",
+            "#800000",
+            "#aaffc3",
+            "#808000",
+            "#bcf60c",
+            "#fabebe",
+            "#008080",
+          ],
+          legend: {
+            display: true,
+          },
+          options: {
+            maintainAspectRatio: false,
+          },
+        },
+      ],
+    };
 
     return (
       <div className="Body">
@@ -121,7 +198,7 @@ class New extends React.Component {
           </div>
         </Link>
         <div className="centerChart">
-          <div>
+          <div id="item1">
             <Pie
               data={state}
               options={{
@@ -144,11 +221,90 @@ class New extends React.Component {
               }}
             />
           </div>
-          <div key={this.state.rating} className="stockSearch">
+          <div id="item1b">
+            <Doughnut
+              data={sectorState}
+              options={{
+                title: {
+                  display: true,
+                  text: "GICS Sector",
+                  fontSize: 14,
+                },
+                cutoutPercentage: 70,
+                responsive: true,
+                maintainAspectRatio: false,
+                animateRotate: true,
+                tooltips: {
+                  callbacks: {
+                    label: function (tooltipItem, data) {
+                      let label = data.labels[tooltipItem.index];
+                      let value = data.datasets[0].data[tooltipItem.index];
+                      return `${label}: ${value}%`;
+                    },
+                  },
+                },
+
+                legend: {
+                  display: false,
+                  position: "right",
+                },
+              }}
+            />
+          </div>
+          <div id="item1a">
+            <HorizontalBar
+              data={capState}
+              options={{
+                title: {
+                  display: true,
+                  text: "Market Capitalization",
+                  fontSize: 14,
+                },
+                scales: {
+                  xAxes: [
+                    {
+                      display: false,
+                      gridLines: { display: false },
+                      categoryPercentage: 0.9,
+                      barPercentage: 0.9,
+                    },
+                  ],
+                  yAxes: [
+                    {
+                      display: true,
+                      gridLines: { display: false },
+                      categoryPercentage: 1.0,
+                      barPercentage: 1.0,
+                    },
+                  ],
+                },
+                borderWidth: 0,
+                responsive: true,
+                maintainAspectRatio: false,
+                animateRotate: true,
+                tooltips: {
+                  callbacks: {
+                    label: function (tooltipItem, data) {
+                      let value = data.datasets[0].data[tooltipItem.index];
+                      return `${value}%`;
+                    },
+                  },
+                },
+
+                legend: {
+                  display: false,
+                  position: "bottom",
+                },
+              }}
+            />
+          </div>
+          <div key={this.state.rating} className="stockSearch" id="item2">
             <SimpleRating rating={this.state.rating} link={this.state.link} />
           </div>
-          <div className="textstyles">VOTES : {this.state.noVotes}</div>
-          <div className="stockSearch">
+          <div className="textstyles" id="item3">
+            VOTES : {this.state.noVotes}
+          </div>
+          <div className="stockSearch" id="item4">
             <button>
               <Link className="Link" to="/">
                 Make your own
