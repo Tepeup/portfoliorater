@@ -725,6 +725,7 @@ class Body extends React.Component {
                   text: "Market Capitalization",
                   fontSize: 14,
                 },
+
                 scales: {
                   xAxes: [
                     {
@@ -739,7 +740,7 @@ class Body extends React.Component {
                       display: true,
                       gridLines: { display: false },
                       categoryPercentage: 1.0,
-                      barPercentage: 1.0,
+                      barPercentage: 0.8,
                     },
                   ],
                 },
