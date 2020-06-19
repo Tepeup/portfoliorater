@@ -15,6 +15,22 @@ class New extends React.Component {
       sumData: [100],
       rating: null,
       noVotes: null,
+      marketCapName: ["Large", "Mid", "Small"],
+      marketCapData: [100, 95, 91],
+      sectorData: [33, 33, 33],
+      sectorShow: [
+        "Energy",
+        "Materials",
+        "Industrials",
+        "Consumer Discretionary",
+        "Consumer Staples",
+        "Health Care",
+        "Financials",
+        "Information Technology",
+        "Communication Services",
+        "Utilities",
+        "Real Estate",
+      ],
     };
   }
 
@@ -29,6 +45,9 @@ class New extends React.Component {
         this.setState({
           sumData: res.percent,
           nameData: res.stock,
+          marketCapData: res.marketPercent,
+          sectorShow: res.sector,
+          sectorData: res.sectorPercent,
           rating:
             res.rating.length > 0
               ? res.rating.reduce((tot, nex) => tot + nex, 0) /

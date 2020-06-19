@@ -814,9 +814,13 @@ class Body extends React.Component {
               <button onClick={this.onSubmit}>Share</button>
             </div>
           ) : (
-            <Link className="stockSearch" to={`/chart/${this.state.link}`}>
+            <Link
+              className="stockSearch"
+              to={`/chart/${this.state.link}`}
+              id="item5"
+            >
               {" "}
-              <div className="stockSearch" id="item5">
+              <div className="stockSearch">
                 <button className="goto">Go To</button>
               </div>
             </Link>
