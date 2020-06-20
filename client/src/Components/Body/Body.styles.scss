@@ -13,7 +13,7 @@ $boxshadow: 0 0 30px 5px rgba(194, 200, 228, 0.4);
     align-self: center;
     svg {
         align-self: center;
-        fill: white;
+        fill: $buttonColor;
     }
     margin: 0;
 }
@@ -44,7 +44,7 @@ span {
     height: 100vh;
     max-height: 100vh;
     display: grid;
-    background-color: #e1e8f8;
+    background-color: #f0f4ff;
     text-transform: uppercase;
     box-sizing: border-box;
     padding: 4em 7em;
