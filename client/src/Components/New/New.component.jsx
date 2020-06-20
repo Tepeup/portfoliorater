@@ -191,12 +191,12 @@ class New extends React.Component {
 
     return (
       <div className="Body">
-        {/* <Link className="Link" to="/">
+        <Link className="Link" to="/">
           {" "}
           <div className="Logo">
             <Logo height={60} width={80} />
           </div>
-        </Link> */}
+        </Link>
         <div className="dashboard">
           <div id="item1">
             <Pie

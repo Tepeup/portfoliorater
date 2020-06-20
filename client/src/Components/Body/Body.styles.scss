@@ -63,27 +63,27 @@ span {
         padding: 3em;
         box-shadow: $boxshadow;
         justify-content: center;
-        grid-template-columns: minmax(0, 1fr) 300px;
+        grid-template-columns: minmax(0, 1fr) 400px;
 
         #item1 {
             grid-area: 1/1 / span 2 / span 1;
             background-color: white;
             border-radius: 1em;
-            padding: 2em;
+            padding: 1.5em;
             box-shadow: $boxshadow;
         }
         #item1b {
             grid-area: 1/2 / span 1 / span 1;
             background-color: white;
             border-radius: 1em;
-            padding: 2em;
+            padding: 1.5em;
             box-shadow: $boxshadow;
         }
         #item1a {
             grid-area: 1/3 / span 1 / span 1;
             background-color: white;
             border-radius: 1em;
-            padding: 2em;
+            padding: 1.5em;
             box-shadow: $boxshadow;
         }
         .searchandsend {
