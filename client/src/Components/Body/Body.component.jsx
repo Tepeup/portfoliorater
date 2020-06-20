@@ -19,7 +19,7 @@ class Body extends React.Component {
       industryList: {},
       marketCapList: {},
       sumData: [100],
-      nameData: [],
+      nameData: [""],
       myShares: "",
       stockIndustry: null,
       techData: [],
@@ -545,11 +545,7 @@ class Body extends React.Component {
           hoverBorderWidth: 3,
           hoverBorderColor: "#FFF",
           backgroundColor: [
-            "#1171ba",
-            "#e6194b",
-            "#3cb44b",
-            "#ffd8b1",
-            "#808080",
+            "#0070da",
             "#f58231",
             "#911eb4",
             "#ffe119",
@@ -583,7 +579,7 @@ class Body extends React.Component {
           hoverBorderWidth: 3,
           hoverBorderColor: "#FFF",
           backgroundColor: [
-            "#1171ba",
+            "#0070da",
             "#e6194b",
             "#3cb44b",
             "#ffd8b1",
@@ -621,7 +617,7 @@ class Body extends React.Component {
           hoverBorderWidth: 3,
           hoverBorderColor: "#FFF",
           backgroundColor: [
-            "#1171ba",
+            "#0070da",
             "#e6194b",
             "#3cb44b",
             "#ffd8b1",
@@ -652,11 +648,11 @@ class Body extends React.Component {
       <div className="Body">
         <Link className="Link" to="/">
           <div className="Logo">
-            <Logo height={70} width={90} />
+            <Logo height={50} width={70} />
           </div>
         </Link>
 
-        <div className="centerChart">
+        <div className="dashboard">
           <div id="item1">
             <Pie
               data={state}
@@ -788,44 +784,47 @@ class Body extends React.Component {
             /> */}
           </div>
 
-          <div className="stockSearch" id="item2">
-            <form id="stockForm" onKeyDown={this.newOneEnter}>
-              <SearchBox
-                placeHolder={"Ticker Symbol"}
-                handleChange={this.handleTickerChange}
-                boxType={"text"}
-                value={this.state.myTicker}
-              />
-              <SearchBox
-                placeHolder={"No. Shares"}
-                value={this.state.myShares}
-                boxType={"number"}
-                handleChange={this.handleShareChange}
-              />
-            </form>
-          </div>
-          <div className="stockSearch" id="item3">
-            <button onClick={this.newOnes}>Add</button>
-          </div>
-          <div className="stockSearch" id="item4">
-            <button onClick={this.resetForm}>Reset</button>
-          </div>
-          {this.state.showShare ? (
-            <div className="stockSearch" id="item5">
-              <button onClick={this.onSubmit}>Share</button>
+          <div className="searchandsend">
+            <div id="item2">
+              <form id="stockForm" onKeyDown={this.newOneEnter}>
+                <SearchBox
+                  placeHolder={"Ticker Symbol"}
+                  handleChange={this.handleTickerChange}
+                  boxType={"text"}
+                  value={this.state.myTicker}
+                />
+                <SearchBox
+                  placeHolder={"No. Shares"}
+                  value={this.state.myShares}
+                  boxType={"number"}
+                  handleChange={this.handleShareChange}
+                />
+              </form>
             </div>
-          ) : (
-            <Link
-              className="stockSearch"
-              to={`/chart/${this.state.link}`}
-              id="item5"
-            >
-              {" "}
-              <div className="stockSearch">
-                <button className="goto">Go To</button>
+            <div className="stockSearch" id="item3">
+              <button onClick={this.newOnes}>Add</button>
+            </div>
+            <div className="stockSearch" id="item4">
+              <button onClick={this.resetForm}>Reset</button>
+            </div>
+            {this.state.showShare ? (
+              <div className="stockSearch" id="item5">
+                <button onClick={this.onSubmit}>Share</button>
               </div>
-            </Link>
-          )}
+            ) : (
+              <Link
+                className="stockSearch"
+                to={`/chart/${this.state.link}`}
+                id="item5"
+              >
+                {" "}
+                <div className="stockSearch">
+                  <button className="goto">Go To</button>
+                </div>
+              </Link>
+            )}
+          </div>
+
           {/* 
           {this.state.link && !this.state.showShare && (
             <div className="stockSearch" id="item6">
