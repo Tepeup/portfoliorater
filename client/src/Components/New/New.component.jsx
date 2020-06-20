@@ -197,7 +197,7 @@ class New extends React.Component {
             <Logo height={60} width={80} />
           </div>
         </Link>
-        <div className="centerChart">
+        <div className="dashboard">
           <div id="item1">
             <Pie
               data={state}
@@ -298,18 +298,21 @@ class New extends React.Component {
               }}
             />
           </div>
-          <div key={this.state.rating} className="stockSearch" id="item2">
-            <SimpleRating rating={this.state.rating} link={this.state.link} />
-          </div>
-          <div className="textstyles" id="item3">
-            VOTES : {this.state.noVotes}
-          </div>
-          <div className="stockSearch" id="item4">
-            <button>
-              <Link className="Link" to="/">
-                Make your own
-              </Link>
-            </button>
+          <div className="searchandsend">
+            {" "}
+            <div key={this.state.rating} className="stockSearch" id="item2">
+              <SimpleRating rating={this.state.rating} link={this.state.link} />
+            </div>
+            <div className="textstyles" id="item3">
+              VOTES : {this.state.noVotes}
+            </div>
+            <div className="stockSearch" id="item4">
+              <button>
+                <Link className="Linkto" to="/">
+                  Make your own
+                </Link>
+              </button>
+            </div>
           </div>
         </div>
       </div>

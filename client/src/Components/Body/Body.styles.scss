@@ -38,9 +38,10 @@ span {
     margin-left: 1em;
     margin-top: 1em;
 }
+
 .Body {
     font-family: "Comfortaa";
-
+    width: 100vw;
     height: 100vh;
     max-height: 100vh;
     display: grid;
@@ -54,6 +55,7 @@ span {
         grid-template-columns: 1fr 1fr 1fr;
         grid-template-rows: 2fr 1fr;
         max-height: 85vh;
+        max-width: 90vw;
         grid-gap: 1.5em;
         padding: 2em;
         background-color: $baseColor;
