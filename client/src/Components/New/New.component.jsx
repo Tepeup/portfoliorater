@@ -2,11 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./New.styles.scss";
 
-import SearchBox from "../Searchbox/Searchbox.component";
 import { ReactComponent as Logo } from "../../Assets/Logo.svg";
 import axios from "axios";
 import SimpleRating from "../Rating/SimpleRating.component";
-import { Pie, Doughnut, Bar, HorizontalBar } from "react-chartjs-2";
+import { Pie, Doughnut, HorizontalBar } from "react-chartjs-2";
 
 class New extends React.Component {
   constructor() {
@@ -60,13 +59,6 @@ class New extends React.Component {
 
     this.setState({ link: id });
   }
-
-  onSubmit = (e) => {
-    const SharedStocks = {
-      stock: this.state.nameData,
-      percent: this.state.sumData,
-    };
-  };
 
   getURL = () => {
     var parts = window.location.pathname.split("/");

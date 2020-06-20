@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Body.styles.scss";
-import { Pie, Doughnut, Bar, HorizontalBar } from "react-chartjs-2";
+import { Pie, Doughnut, HorizontalBar } from "react-chartjs-2";
 import SearchBox from "../Searchbox/Searchbox.component";
 import { ReactComponent as Logo } from "../../Assets/Logo.svg";
 import axios from "axios";
@@ -412,47 +412,38 @@ class Body extends React.Component {
           ];
           let summedData = notSummed.reduce((tot, cur) => tot + cur, 0);
           let preSector = notSummed.map(
-            (x) => summedData != 0 && Math.round((x / summedData) * 100)
+            (x) => summedData !== 0 && Math.round((x / summedData) * 100)
           );
           let sectorData = preSector.filter((x) => Boolean(x));
-          let indexData = preSector.map((x, index) => x != 0 && index + 1);
+          let indexData = preSector.map((x, index) => x !== 0 && index + 1);
           let filterSector = indexData.filter((x) => Boolean(x));
           let sectorShow = filterSector.map((x) => {
             if (x) {
               switch (x) {
                 case 1:
                   return "Energy";
-                  break;
                 case 2:
                   return "Materials";
-                  break;
                 case 3:
                   return "Industrials";
-                  break;
                 case 4:
                   return "Consumer Discretionary";
-                  break;
                 case 5:
                   return "Consumer Staples";
-                  break;
                 case 6:
                   return "Health Care";
-                  break;
                 case 7:
                   return "Financials";
-                  break;
                 case 8:
                   return "Information Technology";
-                  break;
                 case 9:
                   return "Communication Services";
-                  break;
                 case 10:
                   return "Utilities";
-                  break;
                 case 11:
                   return "Real Estate";
-                  break;
+                default:
+                  return "Information Technology";
               }
             }
           });
@@ -462,7 +453,6 @@ class Body extends React.Component {
             indexData,
             sectorShow,
             filterSector,
-            indexData,
             preSector,
             summedData,
             notSummed,

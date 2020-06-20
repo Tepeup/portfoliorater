@@ -52,7 +52,7 @@ span {
 
     .dashboard {
         display: grid;
-        grid-template-columns: auto;
+        grid-template-columns: 1.5fr 1fr 1fr;
         grid-template-rows: 2fr 1fr;
         max-height: 85vh;
         max-width: 90vw;
