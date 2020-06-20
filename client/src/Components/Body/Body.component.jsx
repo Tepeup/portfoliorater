@@ -536,6 +536,10 @@ class Body extends React.Component {
           hoverBorderColor: "#FFF",
           backgroundColor: [
             "#0070da",
+            "#e6194b",
+            "#3cb44b",
+            "#ffd8b1",
+            "#808080",
             "#f58231",
             "#911eb4",
             "#ffe119",
