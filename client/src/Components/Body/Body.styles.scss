@@ -63,7 +63,7 @@ span {
         padding: 3em;
         box-shadow: $boxshadow;
         justify-content: center;
-        grid-template-columns: minmax(0, 1fr) 400px;
+        grid-template-columns: minmax(0, 1fr) 200px;
 
         #item1 {
             grid-area: 1/1 / span 2 / span 1;
