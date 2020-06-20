@@ -299,11 +299,9 @@ class New extends React.Component {
               VOTES : {this.state.noVotes}
             </div>
             <div className="stockSearch" id="item4">
-              <button>
-                <Link className="Linkto" to="/">
-                  Make your own
-                </Link>
-              </button>
+              <Link className="Linkto" to="/">
+                <button>Make your own</button>
+              </Link>
             </div>
           </div>
         </div>
