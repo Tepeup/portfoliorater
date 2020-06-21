@@ -640,11 +640,11 @@ class Body extends React.Component {
     };
     return (
       <div className="Body">
-        <Link className="Link" to="/">
+        {/* <Link className="Link" to="/">
           <div className="Logo">
             <Logo height={50} width={70} />
           </div>
-        </Link>
+        </Link> */}
 
         <div className="dashboard">
           <div id="item1">
