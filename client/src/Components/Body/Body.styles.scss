@@ -133,7 +133,6 @@ span {
             max-height: 30vh;
             @media only screen and (max-width: 768px) {
                 /* For mobile phones: */
-
                 width: fit-content;
                 border-radius: 1em;
                 grid-area: 1/1 / span 1 / span 1;
@@ -142,11 +141,10 @@ span {
 
         #item2 {
             grid-area: 4/1 / span 1 / span 3;
-            padding: 5px 0;
+            margin-bottom: 5px;
         }
         #item3 {
             grid-area: 5/1 / span 1 / span 3;
-            margin-top: 3px;
         }
 
         #item4 {
