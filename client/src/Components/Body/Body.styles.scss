@@ -46,9 +46,9 @@ span {
     max-height: 100vh;
     display: grid;
     background-color: #f0f4ff;
-
+    padding: 3em;
     box-sizing: border-box;
-    padding: 4em 7em;
+
     @media only screen and (max-width: 768px) {
         /* For mobile phones: */
         padding: 0em;
@@ -64,7 +64,6 @@ span {
         grid-template-columns: 1.5fr 1fr 1fr;
         grid-template-rows: 2fr 1fr;
         max-height: 85vh;
-        max-width: 90vw;
         grid-gap: 1.5em;
         padding: 2em;
         background-color: $baseColor;
