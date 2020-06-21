@@ -535,7 +535,7 @@ class Body extends React.Component {
           hoverBorderWidth: 3,
           hoverBorderColor: "#FFF",
           backgroundColor: [
-            "#0070da",
+            "#1652F0",
             "#e6194b",
             "#3cb44b",
             "#ffd8b1",
@@ -573,7 +573,7 @@ class Body extends React.Component {
           hoverBorderWidth: 3,
           hoverBorderColor: "#FFF",
           backgroundColor: [
-            "#0070da",
+            "#1652F0",
             "#e6194b",
             "#3cb44b",
             "#ffd8b1",
@@ -611,7 +611,7 @@ class Body extends React.Component {
           hoverBorderWidth: 3,
           hoverBorderColor: "#FFF",
           backgroundColor: [
-            "#0070da",
+            "#1652F0",
             "#e6194b",
             "#3cb44b",
             "#ffd8b1",
