@@ -20,10 +20,16 @@ export default function SimpleRating({ rating: rank, link: link }) {
   const [click, setClick] = React.useState(true);
 
   return (
-    <div>
-      <Box component="fieldset" mb={0} p={0} borderColor="transparent">
+    <div className="starRating">
+      <Box
+        component="fieldset"
+        mb={0}
+        p={0}
+        borderColor="transparent"
+        size="large"
+      >
         <StyledRating
-          size={"large"}
+          size="large"
           value={value}
           precision={0.5}
           onChange={(event, newValue) => {

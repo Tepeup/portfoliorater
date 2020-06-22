@@ -300,7 +300,11 @@ class New extends React.Component {
           <div className="searchandsend">
             {" "}
             <div key={this.state.rating} className="stockSearch" id="item2">
-              <SimpleRating rating={this.state.rating} link={this.state.link} />
+              <SimpleRating
+                size="large"
+                rating={this.state.rating}
+                link={this.state.link}
+              />
             </div>
             <div className="textstyles" id="item3">
               VOTES : {this.state.noVotes}
