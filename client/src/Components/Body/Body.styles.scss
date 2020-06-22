@@ -8,14 +8,13 @@ $boxshadow: 0 0 30px 5px rgba(194, 200, 228, 0.4);
 
 .Logo {
     width: fit-content;
-    height: auto;
     cursor: pointer;
     align-self: center;
     svg {
         align-self: center;
         fill: white;
     }
-    margin: 0;
+    margin: auto;
 }
 
 span {
@@ -27,7 +26,6 @@ span {
     margin: auto;
 }
 .Link {
-    align-self: center;
     text-decoration: none;
     color: white;
     width: fit-content;
@@ -91,7 +89,7 @@ span {
                 grid-area: 1/1 / span 1 / span 1;
                 border-radius: 0;
                 padding: 5px 1em;
-                width: 100vw;
+                width: 100%;
             }
         }
         #item1 {
