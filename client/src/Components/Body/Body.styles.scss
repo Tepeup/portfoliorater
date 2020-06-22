@@ -44,7 +44,7 @@ span {
     padding: 3em;
     box-sizing: border-box;
 
-    @media only screen and (max-width: 768px) {
+    @media only screen and (max-width: 825px) {
         /* For mobile phones: */
         padding: 0em;
 
@@ -64,7 +64,7 @@ span {
         border-radius: 2em;
         box-shadow: $boxshadow;
         justify-content: center;
-        @media only screen and (max-width: 768px) {
+        @media only screen and (max-width: 825px) {
             /* For mobile phones: */
             display: grid;
             grid-template-columns: 1fr;
@@ -84,7 +84,7 @@ span {
             height: 50px;
             padding: 7px 1em;
 
-            @media only screen and (max-width: 768px) {
+            @media only screen and (max-width: 825px) {
                 /* For mobile phones: */
                 grid-area: 1/1 / span 1 / span 1;
                 border-radius: 0;
@@ -99,7 +99,7 @@ span {
             border-radius: 1em;
             padding: 1.5em;
             box-shadow: $boxshadow;
-            @media only screen and (max-width: 768px) {
+            @media only screen and (max-width: 825px) {
                 /* For mobile phones: */
                 margin: 0 1em;
                 height: 450px;
@@ -112,7 +112,7 @@ span {
             border-radius: 1em;
             padding: 1.5em;
             box-shadow: $boxshadow;
-            @media only screen and (max-width: 768px) {
+            @media only screen and (max-width: 825px) {
                 /* For mobile phones: */
                 box-sizing: border-box;
                 margin: 0 1em;
@@ -126,7 +126,7 @@ span {
             padding: 1.5em;
             box-shadow: $boxshadow;
             margin-right: 1em;
-            @media only screen and (max-width: 768px) {
+            @media only screen and (max-width: 825px) {
                 /* For mobile phones: */
                 margin: 0 1em 1em 1em;
 
@@ -144,7 +144,7 @@ span {
             justify-content: center;
             max-height: 30vh;
             margin-right: 1em;
-            @media only screen and (max-width: 768px) {
+            @media only screen and (max-width: 825px) {
                 /* For mobile phones: */
                 margin: 0 1em;
                 grid-area: 2/1 / span 1 / span 1;
@@ -168,7 +168,7 @@ span {
             color: rgb(49, 49, 49);
             text-align: center;
             box-shadow: $boxshadow;
-            @media only screen and (max-width: 768px) {
+            @media only screen and (max-width: 825px) {
                 /* For mobile phones: */
 
                 min-width: 250px;
