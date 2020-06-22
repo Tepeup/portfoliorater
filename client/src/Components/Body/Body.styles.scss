@@ -40,7 +40,10 @@ span {
     height: 100vh;
     max-height: 100vh;
     display: grid;
-    background-color: #f0f4ff;
+
+    background-image: linear-gradient(#d7e0fa, white);
+
+    // background-color: #dbe2f5;
     padding: 3em;
     box-sizing: border-box;
 
@@ -142,7 +145,7 @@ span {
             box-sizing: border-box;
             box-shadow: $boxshadow;
             justify-content: center;
-            max-height: 30vh;
+
             margin-right: 1em;
             @media only screen and (max-width: 825px) {
                 /* For mobile phones: */
