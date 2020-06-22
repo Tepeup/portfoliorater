@@ -640,13 +640,14 @@ class Body extends React.Component {
     };
     return (
       <div className="Body">
-        {/* <Link className="Link" to="/">
-          <div className="Logo">
-            <Logo height={50} width={70} />
-          </div>
-        </Link> */}
-
         <div className="dashboard">
+          <div className="navbar">
+            <Link className="Link" to="/">
+              <div className="Logo">
+                <Logo height={36} />
+              </div>
+            </Link>
+          </div>
           <div id="item1">
             <Pie
               data={state}
