@@ -5,7 +5,7 @@ import "./New.styles.scss";
 import { ReactComponent as Logo } from "../../Assets/Logo.svg";
 import axios from "axios";
 import SimpleRating from "../Rating/SimpleRating.component";
-import { Pie, Doughnut, HorizontalBar } from "react-chartjs-2";
+import { Pie, Doughnut, HorizontalBar, Bar } from "react-chartjs-2";
 
 class New extends React.Component {
   constructor() {
@@ -197,105 +197,113 @@ class New extends React.Component {
               </div>
             </Link>
           </div>
-          <div id="item1">
-            <Pie
-              data={state}
-              options={{
-                responsive: true,
-                maintainAspectRatio: false,
-                animateRotate: true,
-                tooltips: {
-                  callbacks: {
-                    label: function (tooltipItem, data) {
-                      let label = data.labels[tooltipItem.index];
-                      let value = data.datasets[0].data[tooltipItem.index];
-                      return `${label}: ${value}%`;
+          <div className="scrollbar">
+            <div id="item">
+              <Pie
+                data={state}
+                options={{
+                  title: {
+                    display: true,
+                    text: "Stocks",
+                    fontSize: 20,
+                  },
+                  responsive: true,
+                  maintainAspectRatio: false,
+                  animateRotate: true,
+                  tooltips: {
+                    callbacks: {
+                      label: function (tooltipItem, data) {
+                        let label = data.labels[tooltipItem.index];
+                        let value = data.datasets[0].data[tooltipItem.index];
+                        return `${label}: ${value}%`;
+                      },
                     },
                   },
-                },
-                legend: {
-                  display: true,
-                  position: "bottom",
-                },
-              }}
-            />
-          </div>
-          <div id="item1b">
-            <Doughnut
-              data={sectorState}
-              options={{
-                title: {
-                  display: true,
-                  text: "GICS Sector",
-                  fontSize: 14,
-                },
-                cutoutPercentage: 70,
-                responsive: true,
-                maintainAspectRatio: false,
-                animateRotate: true,
-                tooltips: {
-                  callbacks: {
-                    label: function (tooltipItem, data) {
-                      let label = data.labels[tooltipItem.index];
-                      let value = data.datasets[0].data[tooltipItem.index];
-                      return `${label}: ${value}%`;
+                  legend: {
+                    display: true,
+                    position: "bottom",
+                  },
+                }}
+              />
+            </div>
+            <div id="item">
+              <Doughnut
+                data={sectorState}
+                options={{
+                  title: {
+                    display: true,
+                    text: "GICS Sector",
+                    fontSize: 20,
+                  },
+                  cutoutPercentage: 70,
+                  responsive: true,
+                  maintainAspectRatio: false,
+                  animateRotate: true,
+                  tooltips: {
+                    callbacks: {
+                      label: function (tooltipItem, data) {
+                        let label = data.labels[tooltipItem.index];
+                        let value = data.datasets[0].data[tooltipItem.index];
+                        return `${label}: ${value}%`;
+                      },
                     },
                   },
-                },
 
-                legend: {
-                  display: false,
-                  position: "right",
-                },
-              }}
-            />
-          </div>
-          <div id="item1a">
-            <HorizontalBar
-              data={capState}
-              options={{
-                title: {
-                  display: true,
-                  text: "Market Capitalization",
-                  fontSize: 14,
-                },
-                scales: {
-                  xAxes: [
-                    {
-                      display: false,
-                      gridLines: { display: false },
-                      categoryPercentage: 0.9,
-                      barPercentage: 0.9,
-                    },
-                  ],
-                  yAxes: [
-                    {
-                      display: true,
-                      gridLines: { display: false },
-                      categoryPercentage: 1.0,
-                      barPercentage: 1.0,
-                    },
-                  ],
-                },
-                borderWidth: 0,
-                responsive: true,
-                maintainAspectRatio: false,
-                animateRotate: true,
-                tooltips: {
-                  callbacks: {
-                    label: function (tooltipItem, data) {
-                      let value = data.datasets[0].data[tooltipItem.index];
-                      return `${value}%`;
+                  legend: {
+                    display: false,
+                    position: "right",
+                  },
+                }}
+              />
+            </div>
+            <div id="item">
+              <Bar
+                data={capState}
+                options={{
+                  title: {
+                    display: true,
+                    text: "Market Capitalization",
+                    fontSize: 20,
+                  },
+                  scales: {
+                    xAxes: [
+                      {
+                        display: true,
+                        gridLines: { display: false },
+                        categoryPercentage: 0.9,
+                        barPercentage: 0.9,
+                      },
+                    ],
+                    yAxes: [
+                      {
+                        display: false,
+                        gridLines: { display: false },
+                        categoryPercentage: 1.0,
+                        barPercentage: 1.0,
+                      },
+                    ],
+                  },
+                  borderWidth: 0,
+                  responsive: true,
+                  maintainAspectRatio: false,
+                  animateRotate: true,
+                  tooltips: {
+                    callbacks: {
+                      label: function (tooltipItem, data) {
+                        let value = data.datasets[0].data[tooltipItem.index];
+                        return `${value}%`;
+                      },
                     },
                   },
-                },
 
-                legend: {
-                  display: false,
-                  position: "bottom",
-                },
-              }}
-            />
+                  legend: {
+                    display: false,
+                    position: "bottom",
+                  },
+                }}
+              />
+            </div>
+            .
           </div>
           <div className="searchandsend">
             {" "}
