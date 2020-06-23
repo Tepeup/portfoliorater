@@ -206,7 +206,6 @@ span {
 
             @media only screen and (max-width: 825px) {
                 /* For mobile phones: */
-
                 font-size: 1.3rem;
                 min-width: 250px;
             }
@@ -225,8 +224,12 @@ span {
             cursor: pointer;
             color: white;
             background-color: $buttonColor;
-            padding: 0.3em 3em;
+            padding: 0.1em 3em;
             box-shadow: $boxshadow;
+            @media only screen and (max-width: 825px) {
+                /* For mobile phones: */
+                padding: 0.3em 3em;
+            }
         }
         #buttonstyles {
             min-width: 100px;

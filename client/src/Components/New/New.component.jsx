@@ -278,7 +278,8 @@ class New extends React.Component {
                   title: {
                     display: true,
                     text: "Market Capitalization",
-                    fontSize: 20,
+                    fontSize: 24,
+                    fontColor: "black",
                   },
                   scales: {
                     xAxes: [
@@ -334,7 +335,7 @@ class New extends React.Component {
             </div>
             <div className="stockSearch" id="item4">
               <Link className="Linkto" to="/">
-                <button>Make your own</button>
+                <button className="makeOwn">Make your own</button>
               </Link>
             </div>
           </div>
