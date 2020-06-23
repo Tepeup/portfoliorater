@@ -225,8 +225,8 @@ class New extends React.Component {
                   },
                 }}
               />
-              <span class="tildeleft">{" ◀"}</span>
-              <span class="tilde">{" ▶"}</span>
+              <span class="tildeleft">{"<"}</span>
+              <span class="tilde">{">"}</span>
             </div>
             <div id="item">
               <Doughnut
