@@ -19,7 +19,7 @@ class Body extends React.Component {
       industryList: {},
       marketCapList: {},
       sumData: [100],
-      nameData: [],
+      nameData: [""],
       myShares: "",
       stockIndustry: null,
       techData: [],
@@ -27,7 +27,7 @@ class Body extends React.Component {
       link: null,
       showShare: true,
       marketCapName: ["Large", "Mid", "Small"],
-      marketCapData: [100, 95, 91],
+      marketCapData: [100, 50, 10],
       sectorName: [
         "Energy",
         "Materials",
@@ -41,17 +41,17 @@ class Body extends React.Component {
         "Utilities",
         "Real Estate",
       ],
-      sectorData: [33, 33, 33],
+      sectorData: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
       sectorShow: [
         "Energy",
         "Materials",
         "Industrials",
-        "Consumer Discretionary",
-        "Consumer Staples",
+        "Cons. Discretionary",
+        "Cons. Staples",
         "Health Care",
         "Financials",
-        "Information Technology",
-        "Communication Services",
+        "Technology",
+        "Comm. Services",
         "Utilities",
         "Real Estate",
       ],
@@ -427,23 +427,23 @@ class Body extends React.Component {
                 case 3:
                   return "Industrials";
                 case 4:
-                  return "Consumer Discretionary";
+                  return "Cons. Discretionary";
                 case 5:
-                  return "Consumer Staples";
+                  return "Cons. Staples";
                 case 6:
                   return "Health Care";
                 case 7:
                   return "Financials";
                 case 8:
-                  return "Information Technology";
+                  return "Technology";
                 case 9:
-                  return "Communication Services";
+                  return "Comm. Services";
                 case 10:
                   return "Utilities";
                 case 11:
                   return "Real Estate";
                 default:
-                  return "Information Technology";
+                  return "Technology";
               }
             }
           });
@@ -512,14 +512,27 @@ class Body extends React.Component {
       myIndustryList: [],
       myMarketList: [],
       sumData: [100],
-      nameData: [],
+      nameData: [""],
       myShares: "",
       showShare: true,
       sectorName: ["GICS Sector"],
-      sectorData: [33, 33, 33],
-      sectorShow: ["GICS Sector"],
+
+      sectorData: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+      sectorShow: [
+        "Energy",
+        "Materials",
+        "Industrials",
+        "Cons. Discretionary",
+        "Cons. Staples",
+        "Health Care",
+        "Financials",
+        "Technology",
+        "Comm. Services",
+        "Utilities",
+        "Real Estate",
+      ],
       marketCapName: ["Large", "Mid", "Small"],
-      marketCapData: [100, 95, 91],
+      marketCapData: [100, 50, 10],
     });
   };
 
@@ -655,8 +668,9 @@ class Body extends React.Component {
                 options={{
                   title: {
                     display: true,
-                    text: "Stocks",
-                    fontSize: 20,
+                    text: "My Portfolio",
+                    fontSize: 24,
+                    fontColor: "black",
                   },
                   responsive: true,
                   maintainAspectRatio: false,
@@ -674,11 +688,15 @@ class Body extends React.Component {
                   legend: {
                     display: true,
                     position: "bottom",
+                    labels: {
+                      boxWidth: 20,
+                      padding: 5,
+                    },
                   },
                 }}
               />
-              <span class="tildeleft">{"<"}</span>
-              <span class="tilde">{">"}</span>
+              <span className="tildeleft">{"<"}</span>
+              <span className="tilde">{">"}</span>
             </div>
             <div id="item">
               <Doughnut
@@ -687,7 +705,8 @@ class Body extends React.Component {
                   title: {
                     display: true,
                     text: "GICS Sector",
-                    fontSize: 20,
+                    fontSize: 24,
+                    fontColor: "black",
                   },
                   cutoutPercentage: 70,
                   responsive: true,
@@ -704,8 +723,15 @@ class Body extends React.Component {
                   },
 
                   legend: {
-                    display: false,
-                    position: "right",
+                    display: true,
+                    position: "bottom",
+                    labels: {
+                      boxWidth: 20,
+                      padding: 5,
+                      filter: function (legendItem, data) {
+                        return legendItem.index < 12;
+                      },
+                    },
                   },
                 }}
               />
@@ -718,7 +744,8 @@ class Body extends React.Component {
                   title: {
                     display: true,
                     text: "Market Capitalization",
-                    fontSize: 20,
+                    fontSize: 24,
+                    fontColor: "black",
                   },
 
                   scales: {
@@ -794,8 +821,9 @@ class Body extends React.Component {
                   boxType={"text"}
                   value={this.state.myTicker}
                 />
+
                 <SearchBox
-                  placeHolder={"No. Shares"}
+                  placeHolder={"Shares"}
                   value={this.state.myShares}
                   boxType={"number"}
                   handleChange={this.handleShareChange}
@@ -805,9 +833,7 @@ class Body extends React.Component {
             <div className="stockSearch" id="item3">
               <button onClick={this.newOnes}>Add</button>
             </div>
-            <div className="stockSearch" id="item4">
-              <button onClick={this.resetForm}>Reset</button>
-            </div>
+
             {this.state.showShare ? (
               <div className="stockSearch" id="item5">
                 <button onClick={this.onSubmit}>Share</button>
@@ -824,6 +850,11 @@ class Body extends React.Component {
                 </div>
               </Link>
             )}
+            <div className="stockSearch" id="item4">
+              <button className="resetButton" onClick={this.resetForm}>
+                Reset
+              </button>
+            </div>
           </div>
 
           {/* 

@@ -17,17 +17,17 @@ class New extends React.Component {
       noVotes: null,
       marketCapName: ["Large", "Mid", "Small"],
       marketCapData: [100, 95, 91],
-      sectorData: [33, 33, 33],
+      sectorData: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
       sectorShow: [
         "Energy",
         "Materials",
         "Industrials",
-        "Consumer Discretionary",
-        "Consumer Staples",
+        "Cons. Discretionary",
+        "Cons. Staples",
         "Health Care",
         "Financials",
-        "Information Technology",
-        "Communication Services",
+        "Technology",
+        "Comm. Services",
         "Utilities",
         "Real Estate",
       ],
@@ -204,8 +204,9 @@ class New extends React.Component {
                 options={{
                   title: {
                     display: true,
-                    text: "Stocks",
-                    fontSize: 20,
+                    text: "My Portfolio",
+                    fontSize: 24,
+                    fontColor: "black",
                   },
                   responsive: true,
                   maintainAspectRatio: false,
@@ -222,6 +223,10 @@ class New extends React.Component {
                   legend: {
                     display: true,
                     position: "bottom",
+                    labels: {
+                      boxWidth: 20,
+                      padding: 5,
+                    },
                   },
                 }}
               />
@@ -235,7 +240,8 @@ class New extends React.Component {
                   title: {
                     display: true,
                     text: "GICS Sector",
-                    fontSize: 20,
+                    fontSize: 24,
+                    fontColor: "black",
                   },
                   cutoutPercentage: 70,
                   responsive: true,
@@ -252,8 +258,15 @@ class New extends React.Component {
                   },
 
                   legend: {
-                    display: false,
-                    position: "right",
+                    display: true,
+                    position: "bottom",
+                    labels: {
+                      boxWidth: 20,
+                      padding: 5,
+                      filter: function (legendItem, data) {
+                        return legendItem.index < 12;
+                      },
+                    },
                   },
                 }}
               />
