@@ -241,6 +241,7 @@ span {
         .blockStyle {
             display: flex;
             align-items: center;
+            margin-top: 0.6em;
         }
         button:not(.MuiFab-root) {
             justify-self: center;
@@ -300,7 +301,7 @@ span {
             display: grid;
             justify-self: center;
             padding: 0;
-            margin-top: 0.8em;
+            margin-top: 0.2em;
         }
         #stockFormTwo {
             display: grid;
