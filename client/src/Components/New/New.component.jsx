@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./New.styles.scss";
-
+import Carousel from "react-bootstrap/Carousel";
 import { ReactComponent as Logo } from "../../Assets/Logo.svg";
 import axios from "axios";
 import SimpleRating from "../Rating/SimpleRating.component";
@@ -17,20 +17,8 @@ class New extends React.Component {
       noVotes: null,
       marketCapName: ["Large", "Mid", "Small"],
       marketCapData: [100, 95, 91],
-      sectorData: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-      sectorShow: [
-        "Energy",
-        "Materials",
-        "Industrials",
-        "Cons. Discretionary",
-        "Cons. Staples",
-        "Health Care",
-        "Financials",
-        "Technology",
-        "Comm. Services",
-        "Utilities",
-        "Real Estate",
-      ],
+      sectorData: [100],
+      sectorShow: [""],
     };
   }
 
@@ -197,6 +185,138 @@ class New extends React.Component {
               </div>
             </Link>
           </div>
+
+          <Carousel>
+            <Carousel.Item>
+              <div id="item" className="fixthis">
+                <Pie
+                  data={state}
+                  options={{
+                    title: {
+                      display: true,
+                      text: "MY PORTFOLIO",
+                      fontSize: 24,
+                      fontColor: "black",
+                    },
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    animateRotate: true,
+                    tooltips: {
+                      callbacks: {
+                        label: function (tooltipItem, data) {
+                          let label = data.labels[tooltipItem.index];
+                          let value = data.datasets[0].data[tooltipItem.index];
+                          return `${label}: ${value}%`;
+                        },
+                      },
+                    },
+
+                    legend: {
+                      display: true,
+                      position: "bottom",
+                      labels: {
+                        boxWidth: 20,
+                        padding: 5,
+                      },
+                    },
+                  }}
+                />
+              </div>{" "}
+            </Carousel.Item>
+            <Carousel.Item>
+              <div id="item" className="fixthis">
+                <Doughnut
+                  data={sectorState}
+                  options={{
+                    title: {
+                      display: true,
+                      text: "GICS Sector",
+                      fontSize: 24,
+                      fontColor: "black",
+                    },
+                    cutoutPercentage: 70,
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    animateRotate: true,
+                    tooltips: {
+                      callbacks: {
+                        label: function (tooltipItem, data) {
+                          let label = data.labels[tooltipItem.index];
+                          let value = data.datasets[0].data[tooltipItem.index];
+                          return `${label}: ${value}%`;
+                        },
+                      },
+                    },
+
+                    legend: {
+                      display: true,
+                      position: "bottom",
+                      labels: {
+                        boxWidth: 20,
+                        padding: 5,
+                        filter: function (legendItem, data) {
+                          return legendItem.index < 12;
+                        },
+                      },
+                    },
+                  }}
+                />
+              </div>
+            </Carousel.Item>
+            <Carousel.Item>
+              <div id="item" className="fixthis">
+                {" "}
+                <Bar
+                  data={capState}
+                  options={{
+                    title: {
+                      display: true,
+                      text: "Market Capitalization",
+                      fontSize: 24,
+                      fontColor: "black",
+                    },
+
+                    scales: {
+                      xAxes: [
+                        {
+                          display: true,
+                          gridLines: { display: false },
+                          categoryPercentage: 0.9,
+                          barPercentage: 0.9,
+                        },
+                      ],
+                      yAxes: [
+                        {
+                          display: false,
+                          gridLines: { display: false },
+                          categoryPercentage: 1.0,
+                          barPercentage: 0.8,
+                        },
+                      ],
+                    },
+                    borderWidth: 0,
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    animateRotate: true,
+                    tooltips: {
+                      callbacks: {
+                        label: function (tooltipItem, data) {
+                          let value = data.datasets[0].data[tooltipItem.index];
+                          return `${value}%`;
+                        },
+                      },
+                    },
+
+                    legend: {
+                      display: false,
+                      position: "bottom",
+                    },
+                  }}
+                />
+              </div>
+            </Carousel.Item>
+          </Carousel>
+          {/* 
           <div className="scrollbar">
             <div id="item">
               <Pie
@@ -320,7 +440,7 @@ class New extends React.Component {
               />
             </div>
             .
-          </div>
+          </div> */}
           <div className="searchandsend">
             {" "}
             <div key={this.state.rating} className="stockSearch" id="item2">

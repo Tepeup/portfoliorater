@@ -1,11 +1,30 @@
 $baseColor: #eff1fa;
 $buttonColor: #1652f0;
-$boxshadow: 0 0 30px 5px rgba(194, 200, 228, 0.4);
+$boxshadow: 0 0 20px 5px rgba(194, 200, 228, 0.4);
 @import url("https://fonts.googleapis.com/css?family=Comfortaa");
 * {
     box-sizing: border-box;
 }
 
+.fixthis {
+    min-height: 65vh;
+    background-color: white;
+    margin: 1em;
+    border-radius: 0.5em;
+    padding: 1.5em;
+    box-shadow: $boxshadow;
+}
+.carousel-indicators {
+    margin: 0;
+}
+
+.carousel-control-next-icon:after {
+    content: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='gray' width='20' height='20' viewBox='0 0 8 8'%3e%3cpath d='M2.75 0l-1.5 1.5L3.75 4l-2.5 2.5L2.75 8l4-4-4-4z'/%3e%3c/svg%3e");
+}
+
+.carousel-control-prev-icon:after {
+    content: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='gray' width='20' height='20' viewBox='0 0 8 8'%3e%3cpath d='M5.25 0l-4 4 4 4 1.5-1.5L4.25 4l2.5-2.5L5.25 0z'/%3e%3c/svg%3e");
+}
 .Logo {
     width: fit-content;
     cursor: pointer;
@@ -88,6 +107,7 @@ span {
             border-radius: 1em 1em 0 0;
             height: 50px;
             padding: 7px 1em;
+            justify-content: center;
 
             @media only screen and (max-width: 825px) {
                 /* For mobile phones: */
