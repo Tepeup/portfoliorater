@@ -1,10 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Body.styles.scss";
-import { Pie, Doughnut, HorizontalBar, Bar } from "react-chartjs-2";
+import { Pie, Doughnut, defaults, Bar } from "react-chartjs-2";
 import SearchBox from "../Searchbox/Searchbox.component";
 import { ReactComponent as Logo } from "../../Assets/Logo.svg";
 import axios from "axios";
+import Fab from "@material-ui/core/Fab";
+import AddIcon from "@material-ui/icons/Add";
 
 class Body extends React.Component {
   constructor() {
@@ -41,19 +43,20 @@ class Body extends React.Component {
         "Utilities",
         "Real Estate",
       ],
-      sectorData: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+      sectorData: [100],
       sectorShow: [
-        "Energy",
-        "Materials",
-        "Industrials",
-        "Cons. Discretionary",
-        "Cons. Staples",
-        "Health Care",
-        "Financials",
-        "Technology",
-        "Comm. Services",
-        "Utilities",
-        "Real Estate",
+        "",
+        // "Energy",
+        // "Materials",
+        // "Industrials",
+        // "Cons. Discretionary",
+        // "Cons. Staples",
+        // "Health Care",
+        // "Financials",
+        // "Technology",
+        // "Comm. Services",
+        // "Utilities",
+        // "Real Estate",
       ],
     };
   }
@@ -517,19 +520,20 @@ class Body extends React.Component {
       showShare: true,
       sectorName: ["GICS Sector"],
 
-      sectorData: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+      sectorData: [100],
       sectorShow: [
-        "Energy",
-        "Materials",
-        "Industrials",
-        "Cons. Discretionary",
-        "Cons. Staples",
-        "Health Care",
-        "Financials",
-        "Technology",
-        "Comm. Services",
-        "Utilities",
-        "Real Estate",
+        "",
+        // "Energy",
+        // "Materials",
+        // "Industrials",
+        // "Cons. Discretionary",
+        // "Cons. Staples",
+        // "Health Care",
+        // "Financials",
+        // "Technology",
+        // "Comm. Services",
+        // "Utilities",
+        // "Real Estate",
       ],
       marketCapName: ["Large", "Mid", "Small"],
       marketCapData: [100, 50, 10],
@@ -651,6 +655,9 @@ class Body extends React.Component {
         },
       ],
     };
+
+    // defaults.global.defaultFontFamily = "Comfortaa";
+
     return (
       <div className="Body">
         <div className="dashboard">
@@ -668,7 +675,7 @@ class Body extends React.Component {
                 options={{
                   title: {
                     display: true,
-                    text: "My Portfolio",
+                    text: "MY PORTFOLIO",
                     fontSize: 24,
                     fontColor: "black",
                   },
@@ -813,47 +820,48 @@ class Body extends React.Component {
           </div>
 
           <div className="searchandsend">
-            <div id="item2">
-              <form id="stockForm" onKeyDown={this.newOneEnter}>
-                <SearchBox
-                  placeHolder={"Ticker Symbol"}
-                  handleChange={this.handleTickerChange}
-                  boxType={"text"}
-                  value={this.state.myTicker}
-                />
+            <form id="stockForm" onKeyDown={this.newOneEnter}>
+              <SearchBox
+                placeHolder={"Ticker Symbol"}
+                handleChange={this.handleTickerChange}
+                boxType={"text"}
+                value={this.state.myTicker}
+              />
 
-                <SearchBox
-                  placeHolder={"Shares"}
-                  value={this.state.myShares}
-                  boxType={"number"}
-                  handleChange={this.handleShareChange}
-                />
-              </form>
-            </div>
-            <div className="stockSearch" id="item3">
-              <button onClick={this.newOnes}>Add</button>
-            </div>
+              <SearchBox
+                placeHolder={"Shares"}
+                value={this.state.myShares}
+                boxType={"number"}
+                handleChange={this.handleShareChange}
+              />
+            </form>
 
-            {this.state.showShare ? (
-              <div className="stockSearch" id="item5">
-                <button onClick={this.onSubmit}>Share</button>
+            <div className="blockStyle">
+              <div className="stockSearch">
+                <button className="resetButton" onClick={this.resetForm}>
+                  Reset
+                </button>
               </div>
-            ) : (
-              <Link
-                className="stockSearch"
-                to={`/chart/${this.state.link}`}
-                id="item5"
-              >
-                {" "}
-                <div className="stockSearch">
-                  <button className="goto">Go To</button>
+              <Fab color="primary" aria-label="add">
+                <AddIcon onClick={this.newOnes} />
+              </Fab>
+
+              {this.state.showShare ? (
+                <div className="stockSearch" id="item5">
+                  <button onClick={this.onSubmit}>Share</button>
                 </div>
-              </Link>
-            )}
-            <div className="stockSearch" id="item4">
-              <button className="resetButton" onClick={this.resetForm}>
-                Reset
-              </button>
+              ) : (
+                <Link
+                  className="stockSearch"
+                  to={`/chart/${this.state.link}`}
+                  id="item5"
+                >
+                  {" "}
+                  <div className="stockSearch">
+                    <button className="goto">Go To</button>
+                  </div>
+                </Link>
+              )}
             </div>
           </div>
 
