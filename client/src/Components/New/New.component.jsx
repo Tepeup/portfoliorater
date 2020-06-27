@@ -19,7 +19,7 @@ class New extends React.Component {
       marketCapData: [100, 95, 91],
       sectorData: [100],
       sectorShow: [""],
-      commentList: [],
+      commentList: [{ comment: "test" }, { comment: "test2" }],
     };
   }
 
@@ -46,14 +46,14 @@ class New extends React.Component {
         })
       );
 
-    await axios
-      .get("/comments/" + id)
-      .then((res) => res.data)
-      .then((res) =>
-        this.setState({
-          commentList: res.comment,
-        })
-      );
+    // await axios
+    //   .get("/comments/" + id)
+    //   .then((res) => res.data)
+    //   .then((res) =>
+    //     this.setState({
+    //       commentList: res.comment,
+    //     })
+    //   );
 
     this.setState({ link: id });
   }
