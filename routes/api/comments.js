@@ -23,7 +23,7 @@ router.route("/addcomment").post((req, res) => {
 });
 
 router.route("/find").get((req, res) => {
-  Comment.findById(req.parent)
+  Comment.find(req.parent)
     .then((comment) => res.json(comment))
     .catch((err) => res.status(400).json("Error: " + err));
 });
