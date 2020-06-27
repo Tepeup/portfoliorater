@@ -16,7 +16,7 @@ const stockRouter = require("./routes/api/stocks");
 const commentRouter = require("./routes/api/comments");
 
 app.use("/stocks", stockRouter);
-app.ise("/comments", commentRouter);
+app.use("/comments", commentRouter);
 
 app.use(express.json());
 
