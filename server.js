@@ -13,8 +13,8 @@ app.use(express.json({ extended: false }));
 // Define Routes
 
 const stockRouter = require("./routes/api/stocks");
-
 app.use("/stocks", stockRouter);
+app.use("/comments", require("./routes/api/comments"));
 
 app.use(express.json());
 

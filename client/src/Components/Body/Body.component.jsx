@@ -974,16 +974,6 @@ class Body extends React.Component {
               )}
             </div>
           </div>
-
-          {/* 
-          {this.state.link && !this.state.showShare && (
-            <div className="stockSearch" id="item6">
-              <input
-                className="buttonlike"
-                defaultValue={`${window.location.href}chart/${this.state.link}`}
-              />
-            </div>
-          )} */}
         </div>
       </div>
     );
