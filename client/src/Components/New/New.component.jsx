@@ -5,7 +5,9 @@ import Carousel from "react-bootstrap/Carousel";
 import { ReactComponent as Logo } from "../../Assets/Logo.svg";
 import axios from "axios";
 import SimpleRating from "../Rating/SimpleRating.component";
-import { Pie, Doughnut, HorizontalBar, Bar } from "react-chartjs-2";
+import { Pie, Doughnut, Bar } from "react-chartjs-2";
+
+import SimpleModal from "../SimpleModal/SimpleModal.component";
 
 class New extends React.Component {
   constructor() {
@@ -19,6 +21,7 @@ class New extends React.Component {
       marketCapData: [100, 95, 91],
       sectorData: [100],
       sectorShow: [""],
+      commentList: [],
     };
   }
 
@@ -52,6 +55,8 @@ class New extends React.Component {
 
     this.setState({ link: id });
   }
+
+  commentPopUp = () => {};
 
   getURL = () => {
     var parts = window.location.pathname.split("/");
@@ -328,13 +333,22 @@ class New extends React.Component {
             <div className="textstyles" id="item3">
               VOTES : {this.state.noVotes}
             </div>
-            {this.state.commentList &&
-              this.state.commentList.map((list) => <div>{list.comment}</div>)}
             <div className="stockSearch" id="item4">
               <Link className="Linkto" to="/">
                 <button className="makeOwn">Make your own</button>
               </Link>
             </div>
+          </div>
+
+          <div className="commentCotainer">
+            {this.state.commentList &&
+              this.state.commentList.map((list) => (
+                <div className="commentBox" key={Math.random()}>
+                  {list.comment}
+                </div>
+              ))}
+
+            <SimpleModal link={this.state.link} />
           </div>
         </div>
       </div>
