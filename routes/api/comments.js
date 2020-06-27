@@ -2,13 +2,13 @@ const express = require("express");
 let Comment = require("../../models/Comments");
 const router = express.Router();
 
-router.route("/").get((req, res) => {
+router.route("/comments").get((req, res) => {
   Comment.find()
     .then((comments) => res.json(comments))
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
-router.route("/add").post((req, res) => {
+router.route("/addcomment").post((req, res) => {
   const comment = req.body.comment;
   const parent = req.body.parent;
   const newComment = new Comment({
