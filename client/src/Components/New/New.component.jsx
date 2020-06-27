@@ -19,7 +19,6 @@ class New extends React.Component {
       marketCapData: [100, 95, 91],
       sectorData: [100],
       sectorShow: [""],
-      commentList: [{ comment: "test" }, { comment: "test2" }],
     };
   }
 
@@ -49,7 +48,7 @@ class New extends React.Component {
     await axios
       .get("/comments/" + id)
       .then((res) => res.data)
-      .then((res) => this.setState({ commentList2: JSON.stringify(res) }));
+      .then((res) => this.setState({ commentList: res }));
 
     this.setState({ link: id });
   }
@@ -329,10 +328,8 @@ class New extends React.Component {
             <div className="textstyles" id="item3">
               VOTES : {this.state.noVotes}
             </div>
-            {this.state.commentList.map((list) => (
-              <div>{list.comment}</div>
-            ))}
-            {this.state.commentList2 && this.state.commentList2}
+            {this.state.commentList &&
+              this.state.commentList.map((list) => <div>{list.comment}</div>)}
             <div className="stockSearch" id="item4">
               <Link className="Linkto" to="/">
                 <button className="makeOwn">Make your own</button>
