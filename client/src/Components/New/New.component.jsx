@@ -19,7 +19,7 @@ class New extends React.Component {
       marketCapData: [100, 95, 91],
       sectorData: [100],
       sectorShow: [""],
-      commentList: {},
+      commentList: [],
     };
   }
 
@@ -339,9 +339,9 @@ class New extends React.Component {
             <div className="textstyles" id="item3">
               VOTES : {this.state.noVotes}
             </div>
-            {this.state.commentList.map((list) => {
-              <div>{list.comment}</div>;
-            })}
+            {this.state.commentList.map((list) => (
+              <li>{list.comment}</li>
+            ))}
             <div className="stockSearch" id="item4">
               <Link className="Linkto" to="/">
                 <button className="makeOwn">Make your own</button>
