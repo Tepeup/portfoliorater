@@ -48,6 +48,7 @@ class New extends React.Component {
 
     await axios
       .get("/comments/" + id)
+      .then((res) => res.data)
       .then((res) => this.setState({ commentList2: res }));
 
     this.setState({ link: id });
