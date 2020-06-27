@@ -678,7 +678,7 @@ class Body extends React.Component {
                   options={{
                     title: {
                       display: true,
-                      text: "MY PORTFOLIO",
+                      text: "My Portfolio",
                       fontSize: 24,
                       fontColor: "black",
                     },

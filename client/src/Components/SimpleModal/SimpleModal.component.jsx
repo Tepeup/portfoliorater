@@ -75,7 +75,6 @@ export default function SimpleModal({ link: link }) {
             />
             <input className="submitInput" type="submit" />
           </form>
-          {link}
         </div>
       </Modal>
     </div>
