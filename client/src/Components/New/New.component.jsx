@@ -46,14 +46,9 @@ class New extends React.Component {
         })
       );
 
-    // await axios
-    //   .get("/comments/" + id)
-    //   .then((res) => res.data)
-    //   .then((res) =>
-    //     this.setState({
-    //       commentList: res.comment,
-    //     })
-    //   );
+    await axios
+      .get("/comments/" + id)
+      .then((res) => this.setState({ commentList2: res }));
 
     this.setState({ link: id });
   }
@@ -181,12 +176,6 @@ class New extends React.Component {
 
     return (
       <div className="Body">
-        {/* <Link className="Link" to="/">
-          {" "}
-          <div className="Logo">
-            <Logo height={60} width={80} />
-          </div>
-        </Link> */}
         <div className="dashboard">
           <div className="navbar">
             <Link className="Link" to="/">
@@ -340,8 +329,9 @@ class New extends React.Component {
               VOTES : {this.state.noVotes}
             </div>
             {this.state.commentList.map((list) => (
-              <li>{list.comment}</li>
+              <div>{list.comment}</div>
             ))}
+            {this.state.commentList2 && typeof this.state.commentList2}
             <div className="stockSearch" id="item4">
               <Link className="Linkto" to="/">
                 <button className="makeOwn">Make your own</button>
