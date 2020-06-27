@@ -19,6 +19,8 @@ router.route("/addcomment").post((req, res) => {
   newComment.save().catch((err) => res.status(400).json("Error: 400 " + err));
 });
 
+module.exports = router;
+
 // router.route("/comment").get((req, res) => {
 //   Comment.findById(req.params.id)
 //     .then((comments) => res.json(comments))

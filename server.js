@@ -15,8 +15,6 @@ app.use(express.json({ extended: false }));
 const stockRouter = require("./routes/api/stocks");
 app.use("/stocks", stockRouter);
 app.use(express.json());
-app.use("/comments", require("./routes/api/comments"));
-app.use(express.json());
 
 //Serve static assets in production
 if (process.env.NODE_ENV === "production") {
