@@ -49,7 +49,7 @@ class New extends React.Component {
     await axios
       .get("/comments/" + id)
       .then((res) => res.data)
-      .then((res) => this.setState({ commentList2: res }));
+      .then((res) => this.setState({ commentList2: JSON.stringify(res) }));
 
     this.setState({ link: id });
   }
@@ -332,7 +332,7 @@ class New extends React.Component {
             {this.state.commentList.map((list) => (
               <div>{list.comment}</div>
             ))}
-            {this.state.commentList2 && typeof this.state.commentList2}
+            {this.state.commentList2 && this.state.commentList2}
             <div className="stockSearch" id="item4">
               <Link className="Linkto" to="/">
                 <button className="makeOwn">Make your own</button>
