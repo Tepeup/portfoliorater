@@ -19,6 +19,7 @@ class New extends React.Component {
       marketCapData: [100, 95, 91],
       sectorData: [100],
       sectorShow: [""],
+      commentList: [],
     };
   }
 
@@ -44,6 +45,16 @@ class New extends React.Component {
           noVotes: res.rating.length,
         })
       );
+
+    await axios
+      .get("/comments/" + id)
+      .then((res) => res.data)
+      .then((res) =>
+        this.setState({
+          commentList: res,
+        })
+      )
+      .catch((err) => res.status(400).json("Error: " + err));
 
     this.setState({ link: id });
   }
@@ -316,131 +327,7 @@ class New extends React.Component {
               </div>
             </Carousel.Item>
           </Carousel>
-          {/* 
-          <div className="scrollbar">
-            <div id="item">
-              <Pie
-                data={state}
-                options={{
-                  title: {
-                    display: true,
-                    text: "My Portfolio",
-                    fontSize: 24,
-                    fontColor: "black",
-                  },
-                  responsive: true,
-                  maintainAspectRatio: false,
-                  animateRotate: true,
-                  tooltips: {
-                    callbacks: {
-                      label: function (tooltipItem, data) {
-                        let label = data.labels[tooltipItem.index];
-                        let value = data.datasets[0].data[tooltipItem.index];
-                        return `${label}: ${value}%`;
-                      },
-                    },
-                  },
-                  legend: {
-                    display: true,
-                    position: "bottom",
-                    labels: {
-                      boxWidth: 20,
-                      padding: 5,
-                    },
-                  },
-                }}
-              />
-              <span class="tildeleft">{"<"}</span>
-              <span class="tilde">{">"}</span>
-            </div>
-            <div id="item">
-              <Doughnut
-                data={sectorState}
-                options={{
-                  title: {
-                    display: true,
-                    text: "GICS Sector",
-                    fontSize: 24,
-                    fontColor: "black",
-                  },
-                  cutoutPercentage: 70,
-                  responsive: true,
-                  maintainAspectRatio: false,
-                  animateRotate: true,
-                  tooltips: {
-                    callbacks: {
-                      label: function (tooltipItem, data) {
-                        let label = data.labels[tooltipItem.index];
-                        let value = data.datasets[0].data[tooltipItem.index];
-                        return `${label}: ${value}%`;
-                      },
-                    },
-                  },
 
-                  legend: {
-                    display: true,
-                    position: "bottom",
-                    labels: {
-                      boxWidth: 20,
-                      padding: 5,
-                      filter: function (legendItem, data) {
-                        return legendItem.index < 12;
-                      },
-                    },
-                  },
-                }}
-              />
-            </div>
-            <div id="item">
-              <Bar
-                data={capState}
-                options={{
-                  title: {
-                    display: true,
-                    text: "Market Capitalization",
-                    fontSize: 24,
-                    fontColor: "black",
-                  },
-                  scales: {
-                    xAxes: [
-                      {
-                        display: true,
-                        gridLines: { display: false },
-                        categoryPercentage: 0.9,
-                        barPercentage: 0.9,
-                      },
-                    ],
-                    yAxes: [
-                      {
-                        display: false,
-                        gridLines: { display: false },
-                        categoryPercentage: 1.0,
-                        barPercentage: 1.0,
-                      },
-                    ],
-                  },
-                  borderWidth: 0,
-                  responsive: true,
-                  maintainAspectRatio: false,
-                  animateRotate: true,
-                  tooltips: {
-                    callbacks: {
-                      label: function (tooltipItem, data) {
-                        let value = data.datasets[0].data[tooltipItem.index];
-                        return `${value}%`;
-                      },
-                    },
-                  },
-
-                  legend: {
-                    display: false,
-                    position: "bottom",
-                  },
-                }}
-              />
-            </div>
-            .
-          </div> */}
           <div className="searchandsend">
             {" "}
             <div key={this.state.rating} className="stockSearch" id="item2">
@@ -452,6 +339,7 @@ class New extends React.Component {
             </div>
             <div className="textstyles" id="item3">
               VOTES : {this.state.noVotes}
+              {this.state.commentList}
             </div>
             <div className="stockSearch" id="item4">
               <Link className="Linkto" to="/">

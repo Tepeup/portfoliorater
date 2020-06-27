@@ -22,8 +22,8 @@ router.route("/addcomment").post((req, res) => {
     .catch((err) => res.status(400).json("Error: 400 " + err));
 });
 
-router.route("/find").get((req, res) => {
-  Comment.find({ parent: req.body.parent })
+router.route("/:id").get((req, res) => {
+  Comment.find({ parent: req.params.id })
     .then((comment) => res.json(comment))
     .catch((err) => res.status(400).json("Error: " + err));
 });
