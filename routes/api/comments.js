@@ -23,8 +23,8 @@ router.route("/addcomment").post((req, res) => {
 });
 
 router.route("/find").get((req, res) => {
-  Stock.findById(req.parent)
-    .then((stock) => res.json(stock))
+  Comment.findById(req.parent)
+    .then((comment) => res.json(comment))
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
