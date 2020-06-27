@@ -19,7 +19,7 @@ class New extends React.Component {
       marketCapData: [100, 95, 91],
       sectorData: [100],
       sectorShow: [""],
-      commentList: [],
+      commentList: {},
     };
   }
 
@@ -51,7 +51,7 @@ class New extends React.Component {
       .then((res) => res.data)
       .then((res) =>
         this.setState({
-          commentList: res,
+          commentList: res.comment,
         })
       );
 
@@ -338,8 +338,10 @@ class New extends React.Component {
             </div>
             <div className="textstyles" id="item3">
               VOTES : {this.state.noVotes}
-              {this.state.commentList}
             </div>
+            {this.state.commentList.map((list) => {
+              <div>{list.comment}</div>;
+            })}
             <div className="stockSearch" id="item4">
               <Link className="Linkto" to="/">
                 <button className="makeOwn">Make your own</button>
