@@ -53,8 +53,7 @@ class New extends React.Component {
         this.setState({
           commentList: res,
         })
-      )
-      .catch((err) => res.status(400).json("Error: " + err));
+      );
 
     this.setState({ link: id });
   }
