@@ -47,7 +47,7 @@ export default function SimpleModal({ link: link }) {
   const [commentValue, setName] = useState("");
   const [hiddenKey, setKey] = useState(Math.random());
 
-  const handleSubmit = (evt) => {
+  const handleSubmit = async (evt) => {
     evt.preventDefault();
     if (commentValue !== "") {
       const commentInfo = {
@@ -55,9 +55,8 @@ export default function SimpleModal({ link: link }) {
         parent: link,
       };
 
-      axios.post("/comments/addcomment", commentInfo);
-      setKey(Math.random());
-      setOpen(false);
+      await axios.post("/comments/addcomment", commentInfo).then();
+
       window.location.reload(false);
     }
   };
