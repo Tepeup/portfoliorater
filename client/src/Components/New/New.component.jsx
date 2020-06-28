@@ -337,7 +337,9 @@ class New extends React.Component {
           </div>
 
           <div className="commentCotainer">
-            <strong>Comments</strong>
+            <div>
+              <strong>Comments</strong>
+            </div>
             {this.state.commentList &&
               this.state.commentList.map((list) => (
                 <div className="commentBox" key={Math.random()}>
