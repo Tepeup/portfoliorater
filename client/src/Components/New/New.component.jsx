@@ -9,6 +9,7 @@ import { Pie, Doughnut, Bar } from "react-chartjs-2";
 import Fab from "@material-ui/core/Fab";
 import ChatBubbleIcon from "@material-ui/icons/ChatBubble";
 import SimpleModal from "../SimpleModal/SimpleModal.component";
+import HomeIcon from "@material-ui/icons/Home";
 
 class New extends React.Component {
   constructor() {
