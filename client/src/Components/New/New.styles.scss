@@ -1,5 +1,4 @@
 .textstyles {
-    margin: 0 0 0.5rem 0;
     padding: none;
     text-align: center;
     font-size: 0.5rem;
@@ -12,6 +11,7 @@
     color: white;
     width: fit-content;
     min-width: 100px;
+    margin-bottom: 1em;
 }
 .makeOwn {
     font-size: 1.2em;
@@ -81,4 +81,10 @@ div[class*="makeStyles-paper-"] {
     border: none;
     background-color: #eff1fa;
     height: 10em;
+}
+strong {
+    margin: auto;
+}
+.chatBorder {
+    margin-bottom: 0.5em;
 }

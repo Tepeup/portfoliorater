@@ -6,7 +6,8 @@ import { ReactComponent as Logo } from "../../Assets/Logo.svg";
 import axios from "axios";
 import SimpleRating from "../Rating/SimpleRating.component";
 import { Pie, Doughnut, Bar } from "react-chartjs-2";
-
+import Fab from "@material-ui/core/Fab";
+import ChatBubbleIcon from "@material-ui/icons/ChatBubble";
 import SimpleModal from "../SimpleModal/SimpleModal.component";
 
 class New extends React.Component {
@@ -22,6 +23,8 @@ class New extends React.Component {
       sectorData: [100],
       sectorShow: [""],
       commentList: [],
+      commentValue: "",
+      test: "",
     };
   }
 
@@ -55,8 +58,6 @@ class New extends React.Component {
 
     this.setState({ link: id });
   }
-
-  commentPopUp = () => {};
 
   getURL = () => {
     var parts = window.location.pathname.split("/");
@@ -322,7 +323,6 @@ class New extends React.Component {
           </Carousel>
 
           <div className="searchandsend">
-            {" "}
             <div key={this.state.rating} className="stockSearch" id="item2">
               <SimpleRating
                 size="large"
@@ -333,10 +333,8 @@ class New extends React.Component {
             <div className="textstyles" id="item3">
               VOTES : {this.state.noVotes}
             </div>
-            <div className="stockSearch" id="item4">
-              <Link className="Linkto" to="/">
-                <button className="makeOwn">Make your own</button>
-              </Link>
+            <div className="blockStyle chatBorder">
+              <SimpleModal link={this.state.link} />
             </div>
           </div>
 
@@ -348,7 +346,6 @@ class New extends React.Component {
                   {list.comment}
                 </div>
               ))}
-            <SimpleModal link={this.state.link} />
           </div>
         </div>
       </div>

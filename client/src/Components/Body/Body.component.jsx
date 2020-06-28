@@ -498,7 +498,7 @@ class Body extends React.Component {
     });
   };
 
-  newStock(name, price, shares, industry) {
+  newStock(name, price, shares) {
     return {
       name: name,
       price: price,

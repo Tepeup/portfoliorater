@@ -45,6 +45,7 @@ export default function SimpleModal({ link: link }) {
   };
 
   const [commentValue, setName] = useState("");
+  const [hiddenKey, setKey] = useState(Math.random());
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -54,15 +55,16 @@ export default function SimpleModal({ link: link }) {
       parent: link,
     };
     axios.post("/comments/addcomment", commentInfo);
+    setKey(Math.random());
     setOpen(false);
+    window.location.reload(false);
   };
 
   return (
-    <div className="centeredDiv">
+    <div className="centeredDiv" key={hiddenKey}>
       <Fab onClick={handleOpen}>
         <ChatBubbleIcon />
       </Fab>
-
       <Modal open={open} onClose={handleClose}>
         <div style={modalStyle} className={classes.paper}>
           <form onSubmit={handleSubmit} className="commentForm">
