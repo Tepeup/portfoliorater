@@ -337,7 +337,7 @@ class New extends React.Component {
           </div>
 
           <div className="commentCotainer">
-            <div>
+            <div className="centerDiv">
               <strong>Comments</strong>
             </div>
             {this.state.commentList &&

@@ -55,7 +55,7 @@ export default function SimpleModal({ link: link }) {
         parent: link,
       };
 
-      await axios.post("/comments/addcomment", commentInfo).then();
+      await axios.post("/comments/addcomment", commentInfo);
 
       window.location.reload(false);
     }
