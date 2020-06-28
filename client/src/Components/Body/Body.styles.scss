@@ -73,13 +73,12 @@ span {
     .dashboard {
         display: grid;
         grid-template-columns: auto;
-        max-height: 95vh;
         grid-gap: 0.5em;
         padding-bottom: 1em;
         background-color: $baseColor;
         border-radius: 2em;
         box-shadow: $boxshadow;
-
+        min-width: 100vw;
         @media only screen and (min-width: 826px) {
             /* For mobile phones: */
             justify-self: center;
@@ -103,8 +102,6 @@ span {
         .navbar {
             background-color: $buttonColor;
             grid-area: 1/1 / span 1 / span 3;
-
-            height: 50px;
             padding: 7px 1em;
             justify-content: center;
 
@@ -219,8 +216,8 @@ span {
                 grid-area: 3/1 / span 1 / span 1;
                 width: 100%;
                 max-width: 91.5vw;
-                min-height: 20vh;
-                max-height: 20vh;
+                min-height: 22vh;
+                max-height: 30vh;
             }
         }
 
@@ -254,7 +251,6 @@ span {
         .blockStyle {
             display: flex;
             align-items: center;
-            margin-top: 0.6em;
         }
         button:not(.MuiFab-root) {
             justify-self: center;
@@ -268,7 +264,7 @@ span {
             box-shadow: $boxshadow;
             @media only screen and (max-width: 825px) {
                 /* For mobile phones: */
-                padding: 0.3em 3em;
+                padding: 0.3em 2em;
                 font-size: 0.8em;
             }
         }

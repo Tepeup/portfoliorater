@@ -24,6 +24,7 @@ class New extends React.Component {
       sectorData: [100],
       sectorShow: [""],
       commentList: [],
+      nameData: [""],
     };
   }
 
