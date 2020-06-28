@@ -830,7 +830,7 @@ class Body extends React.Component {
 
               {this.state.showShare ? (
                 <div className="stockSearch" id="item5">
-                  <button onClick={this.onSubmit}>Share</button>
+                  <button onClick={this.onSubmit}>Submit</button>
                 </div>
               ) : (
                 <Link
