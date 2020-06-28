@@ -15,7 +15,7 @@ const StyledRating = withStyles({
   },
 })(Rating);
 
-export default function SimpleRating({ rating: rank, link: link }) {
+export default function SimpleRating({ rating: rank, link }) {
   const [value, setValue] = React.useState(rank);
   const [click, setClick] = React.useState(true);
 
@@ -29,6 +29,7 @@ export default function SimpleRating({ rating: rank, link: link }) {
         size="large"
       >
         <StyledRating
+          name="rating"
           size="large"
           value={value}
           precision={0.5}

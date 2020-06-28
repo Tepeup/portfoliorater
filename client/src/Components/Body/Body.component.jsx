@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Body.styles.scss";
-import { Pie, Doughnut, defaults, Bar } from "react-chartjs-2";
+import { Pie, Doughnut, Bar } from "react-chartjs-2";
 import SearchBox from "../Searchbox/Searchbox.component";
 import { ReactComponent as Logo } from "../../Assets/Logo.svg";
 import axios from "axios";

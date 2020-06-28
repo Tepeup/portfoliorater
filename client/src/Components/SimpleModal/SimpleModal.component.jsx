@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SimpleModal({ link: link }) {
+export default function SimpleModal({ link }) {
   const classes = useStyles();
   const [modalStyle] = React.useState(getModalStyle);
   const [open, setOpen] = React.useState(false);
@@ -45,7 +45,6 @@ export default function SimpleModal({ link: link }) {
   };
 
   const [commentValue, setName] = useState("");
-  const [hiddenKey, setKey] = useState(Math.random());
 
   const handleSubmit = async (evt) => {
     evt.preventDefault();
@@ -62,7 +61,7 @@ export default function SimpleModal({ link: link }) {
   };
 
   return (
-    <div className="centeredDiv" key={hiddenKey}>
+    <div className="centeredDiv">
       <Fab onClick={handleOpen}>
         <ChatBubbleIcon />
       </Fab>
