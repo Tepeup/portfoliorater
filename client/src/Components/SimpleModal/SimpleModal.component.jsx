@@ -49,15 +49,17 @@ export default function SimpleModal({ link: link }) {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
+    if (commentValue !== "") {
+      const commentInfo = {
+        comment: commentValue,
+        parent: link,
+      };
 
-    const commentInfo = {
-      comment: commentValue,
-      parent: link,
-    };
-    axios.post("/comments/addcomment", commentInfo);
-    setKey(Math.random());
-    setOpen(false);
-    window.location.reload(false);
+      axios.post("/comments/addcomment", commentInfo);
+      setKey(Math.random());
+      setOpen(false);
+      window.location.reload(false);
+    }
   };
 
   return (
