@@ -1,7 +1,7 @@
 import React from "react";
 
 const SearchBox = ({ placeHolder, handleChange, boxType, value }) => (
-  <div class="form__group field">
+  <div className="form__group field">
     <input
       className="form__field"
       type={boxType}

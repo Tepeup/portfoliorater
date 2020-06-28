@@ -272,6 +272,7 @@ span {
             background-color: $buttonColor;
             padding: 0.1em 2em;
             box-shadow: $boxshadow;
+            min-width: 100px;
             @media only screen and (max-width: 825px) {
                 /* For mobile phones: */
                 padding: 0.3em 2em;
@@ -390,5 +391,41 @@ span {
                 box-shadow: none;
             }
         }
+    }
+
+    .infoBox {
+        display: grid;
+        grid-area: 3/1 / span 1 / span 3;
+        width: 100vw;
+        padding: 0 1em;
+        @media only screen and (max-width: 825px) {
+            /* For mobile phones: */
+            grid-area: 3/1 / span 1 / span 1;
+        }
+        @media only screen and (max-width: 412px) {
+            /* For mobile phones: */
+            grid-area: 3/1 / span 1 / span 1;
+        }
+
+        .infoContainer {
+            background-color: white;
+            border-radius: 0.5em;
+            padding: 0.5em 1em;
+            display: grid;
+            box-shadow: $boxshadow;
+            justify-content: center;
+            @media only screen and (max-width: 825px) {
+                justify-content: center;
+                /* For mobile phones: */
+            }
+            @media only screen and (max-width: 412px) {
+                /* For mobile phones: */
+            }
+        }
+    }
+    .buttonBox {
+        margin: 0.5em;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
     }
 }

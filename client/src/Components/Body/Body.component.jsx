@@ -800,50 +800,51 @@ class Body extends React.Component {
               </div>
             </Carousel.Item>
           </Carousel>
+          <div className="infoBox">
+            <div className="infoContainer">
+              <form id="stockForm" onKeyDown={this.newOneEnter}>
+                <SearchBox
+                  placeHolder={"Ticker Symbol"}
+                  handleChange={this.handleTickerChange}
+                  boxType={"text"}
+                  value={this.state.myTicker}
+                />
 
-          <div className="searchandsend">
-            <form id="stockForm" onKeyDown={this.newOneEnter}>
-              <SearchBox
-                placeHolder={"Ticker Symbol"}
-                handleChange={this.handleTickerChange}
-                boxType={"text"}
-                value={this.state.myTicker}
-              />
+                <SearchBox
+                  placeHolder={"Shares"}
+                  value={this.state.myShares}
+                  boxType={"number"}
+                  handleChange={this.handleShareChange}
+                />
+              </form>
 
-              <SearchBox
-                placeHolder={"Shares"}
-                value={this.state.myShares}
-                boxType={"number"}
-                handleChange={this.handleShareChange}
-              />
-            </form>
-
-            <div className="blockStyle">
-              <div className="stockSearch">
-                <button className="resetButton" onClick={this.resetForm}>
-                  Reset
-                </button>
-              </div>
-              <Fab color="primary" aria-label="add">
-                <AddIcon onClick={this.newOnes} />
-              </Fab>
-
-              {this.state.showShare ? (
-                <div className="stockSearch" id="item5">
-                  <button onClick={this.onSubmit}>Submit</button>
+              <div className="buttonBox">
+                <div className="stockSearch">
+                  <button className="resetButton" onClick={this.resetForm}>
+                    Reset
+                  </button>
                 </div>
-              ) : (
-                <Link
-                  className="stockSearch"
-                  to={`/chart/${this.state.link}`}
-                  id="item5"
-                >
-                  {" "}
-                  <div className="stockSearch">
-                    <button className="goto">Go To</button>
+                <Fab color="primary" aria-label="add">
+                  <AddIcon onClick={this.newOnes} />
+                </Fab>
+
+                {this.state.showShare ? (
+                  <div className="stockSearch" id="item5">
+                    <button onClick={this.onSubmit}>Submit</button>
                   </div>
-                </Link>
-              )}
+                ) : (
+                  <Link
+                    className="stockSearch"
+                    to={`/chart/${this.state.link}`}
+                    id="item5"
+                  >
+                    {" "}
+                    <div className="stockSearch">
+                      <button className="goto">Go To</button>
+                    </div>
+                  </Link>
+                )}
+              </div>
             </div>
           </div>
         </div>

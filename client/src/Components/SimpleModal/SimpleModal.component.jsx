@@ -48,7 +48,8 @@ export default function SimpleModal({ link }) {
 
   const handleSubmit = async (evt) => {
     evt.preventDefault();
-    if (commentValue !== "") {
+    const trimmedComment = commentValue.trim();
+    if (trimmedComment !== "") {
       const commentInfo = {
         comment: commentValue,
         parent: link,

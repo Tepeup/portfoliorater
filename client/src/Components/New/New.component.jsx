@@ -51,7 +51,7 @@ class New extends React.Component {
     await axios
       .get("/comments/" + id)
       .then((res) => res.data)
-      .then((res) => this.setState({ commentList: res }));
+      .then((res) => this.setState({ commentList: res.slice(-15) }));
 
     this.setState({ link: id });
   }
@@ -318,26 +318,26 @@ class New extends React.Component {
               </div>
             </Carousel.Item>
           </Carousel>
-
-          <div className="searchandsend">
-            <div key={this.state.rating} className="stockSearch" id="item2">
-              <SimpleRating
-                size="large"
-                rating={this.state.rating}
-                link={this.state.link}
-              />
-            </div>
-            <div className="textstyles" id="item3">
-              VOTES : {this.state.noVotes}
-            </div>
-            <div className="blockStyle chatBorder">
-              <SimpleModal link={this.state.link} />
+          <div className="infoBox">
+            <div className="infoContainer">
+              <div key={this.state.rating} className="stockSearch" id="item2">
+                <SimpleRating
+                  size="large"
+                  rating={this.state.rating}
+                  link={this.state.link}
+                />
+              </div>
+              <div className="textstyles" id="item3">
+                VOTES : {this.state.noVotes}
+              </div>
+              <div className="blockStyle chatBorder">
+                <SimpleModal link={this.state.link} />
+              </div>
             </div>
           </div>
-
           <div className="commentCotainer">
             <div className="centerDiv">
-              <strong>Comments</strong>
+              <strong>{`Comments ( ${this.state.commentList.length} )`}</strong>
             </div>
             {this.state.commentList &&
               this.state.commentList.map((list) => (
