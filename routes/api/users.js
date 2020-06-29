@@ -18,7 +18,7 @@ router.route("/").get((req, res) => {
 // Register user
 
 router.post(
-  "/",
+  "/add",
   [
     check("name", "Name is required").not().isEmpty(),
     check("email", "Please include a valid email").isEmail(),
