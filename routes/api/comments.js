@@ -29,9 +29,3 @@ router.route("/:id").get((req, res) => {
 });
 
 module.exports = router;
-
-// router.route("/comment").get((req, res) => {
-//   Comment.findById(req.params.id)
-//     .then((comments) => res.json(comments))
-//     .catch((err) => res.status(400).json("Error: " + err));
-// });
