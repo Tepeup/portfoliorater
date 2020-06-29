@@ -12,9 +12,12 @@ app.use(express.json({ extended: false }));
 
 // Define Routes
 
-const stockRouter = require("./routes/api/stocks");
-app.use("/stocks", stockRouter);
+app.use("/stocks", require("./routes/api/stocks"));
 app.use("/comments", require("./routes/api/comments"));
+
+app.use("/api/users", require("./routes/api/users"));
+// app.use("/api/profile", require("./routes/api/profile"));
+
 app.use(express.json());
 
 //Serve static assets in production
