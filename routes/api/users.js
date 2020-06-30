@@ -35,7 +35,7 @@ router
     const password = req.body.password;
 
     try {
-      let user = await user.findOne({ email });
+      let user = await User.findOne({ email });
 
       if (user) {
         return res
