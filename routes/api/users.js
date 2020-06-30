@@ -43,7 +43,7 @@ router
           .json({ error: [{ msg: "User already exists" }] });
       }
       user = new User({
-        name,
+        username,
         email,
         password,
       });
