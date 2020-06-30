@@ -31,3 +31,4 @@ router.route("/add").post((req, res) => {
     .then((e) => res.send(e))
     .catch((err) => res.status(400).json("Error: 400 " + err));
 });
+module.exports = router;
