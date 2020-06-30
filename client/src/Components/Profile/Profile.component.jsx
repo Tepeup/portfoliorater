@@ -11,15 +11,6 @@ class Profile extends React.Component {
     };
   }
 
-  async componentDidMount() {
-    await axios
-      .get("/stocks/")
-      .then((res) => res.data)
-      .then((res) => this.setState({ commentList: res.slice(-15) }));
-
-    this.setState({ link: id });
-  }
-
   render() {
     return (
       <div className="Body">
