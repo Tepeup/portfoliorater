@@ -51,7 +51,11 @@ router
       setUser.password = await bcrypt.hash(password, salt);
       setUser.save().then((e) => {
         jwt.sign(
-          e._id,
+          {
+            user: {
+              id: e._id,
+            },
+          },
           config.get("jwtSecret"),
           { expiresIn: 360000 },
           (err, token) => {
