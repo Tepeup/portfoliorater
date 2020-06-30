@@ -51,4 +51,11 @@ router.route("/:id").get((req, res) => {
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
+router.route("/sort").get((req, res) => {
+  Stock.find()
+    .sort({ createdAt: -1 })
+    .then((stock) => res.json(stock))
+    .catch((err) => res.status(400).json("Error: " + err));
+});
+
 module.exports = router;

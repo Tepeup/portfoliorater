@@ -196,6 +196,7 @@ class Body extends React.Component {
         `Communications Equipment`,
         `Technology Hardware, Storage & Peripherals`,
         `Electronic Equipment, Instruments & Components`,
+        "Semiconductors",
         `Semiconductors & Semiconductor Equipment`,
         "Information Technology",
       ].indexOf(ind) !== -1
@@ -233,7 +234,7 @@ class Body extends React.Component {
     ) {
       return "Real Estate";
     } else {
-      return "Unkown";
+      return "Information Technology";
     }
   };
 
