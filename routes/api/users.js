@@ -42,29 +42,29 @@ router
           .status(400)
           .json({ error: [{ msg: "User already exists" }] });
       }
-      user = new User({
+      let setUser = new User({
         username,
         email,
         password,
       });
       const salt = await bcrypt.genSalt(10);
-      user.password = await bcrypt.hash(password, salt);
-      await user.save();
+      setUser.password = await bcrypt.hash(password, salt);
+      setUser.save().then((e) => res.send(e));
 
-      const payload = {
-        user: {
-          id: user.id,
-        },
-      };
-      jwt.sign(
-        payload,
-        config.get("jwtSecret"),
-        { expiresIn: 360000 },
-        (err, token) => {
-          if (err) throw err;
-          res.json({ token });
-        }
-      );
+      //   const payload = {
+      //     user: {
+      //       id: user.id,
+      //     },
+      //   };
+      //   jwt.sign(
+      //     payload,
+      //     config.get("jwtSecret"),
+      //     { expiresIn: 360000 },
+      //     (err, token) => {
+      //       if (err) throw err;
+      //       res.json({ token });
+      //     }
+      //   );
     } catch (err) {
       res.status(500).send("Server error");
     }
