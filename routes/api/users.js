@@ -49,8 +49,17 @@ router
       });
       const salt = await bcrypt.genSalt(10);
       setUser.password = await bcrypt.hash(password, salt);
-      setUser.save().then((e) => res.send(e));
-
+      setUser.save().then((e) => {
+        jwt.sign(
+          e._id,
+          config.get("jwtSecret"),
+          { expiresIn: 360000 },
+          (err, token) => {
+            if (err) throw err;
+            res.json({ token });
+          }
+        );
+      });
       //   const payload = {
       //     user: {
       //       id: user.id,
