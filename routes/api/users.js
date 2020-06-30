@@ -60,37 +60,12 @@ router
           { expiresIn: 360000 },
           (err, token) => {
             if (err) throw err;
-            res.json(token);
+            res.send(token);
           }
         );
       });
-      //   const payload = {
-      //     user: {
-      //       id: user.id,
-      //     },
-      //   };
-      //   jwt.sign(
-      //     payload,
-      //     config.get("jwtSecret"),
-      //     { expiresIn: 360000 },
-      //     (err, token) => {
-      //       if (err) throw err;
-      //       res.json({ token });
-      //     }
-      //   );
     } catch (err) {
       res.status(500).send("Server error");
     }
-
-    // const newUser = new User({
-    //   username,
-    //   email,
-    //   password,
-    // });
-
-    // newUser
-    //   .save()
-    //   .then((e) => res.send(e))
-    //   .catch((err) => res.status(400).json("Error: 400 " + err));
   });
 module.exports = router;
