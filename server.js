@@ -15,6 +15,7 @@ app.use(express.json({ extended: false }));
 app.use("/stocks", require("./routes/api/stocks"));
 app.use("/comments", require("./routes/api/comments"));
 app.use("/users", require("./routes/api/users"));
+app.use("/auth", require("./routes/api/auth"));
 // app.use("/api/profile", require("./routes/api/profile"));
 
 app.use(express.json());

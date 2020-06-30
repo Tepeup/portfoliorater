@@ -40,8 +40,9 @@ router
       if (user) {
         return res
           .status(400)
-          .json({ error: [{ msg: "User already exists" }] });
+          .json({ error: [{ msg: "Email is already in use" }] });
       }
+
       let setUser = new User({
         username,
         email,
@@ -60,7 +61,7 @@ router
           { expiresIn: 360000 },
           (err, token) => {
             if (err) throw err;
-            res.send(token);
+            res.json(token);
           }
         );
       });

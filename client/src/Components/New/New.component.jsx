@@ -293,6 +293,9 @@ class New extends React.Component {
                           gridLines: { display: false },
                           categoryPercentage: 1.0,
                           barPercentage: 0.8,
+                          ticks: {
+                            beginAtZero: true,
+                          },
                         },
                       ],
                     },
