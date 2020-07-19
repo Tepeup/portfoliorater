@@ -37,6 +37,7 @@ $boxshadow: 0 0 20px 5px rgba(194, 200, 228, 0.4);
     width: fit-content;
     cursor: pointer;
     align-self: center;
+
     svg {
         align-self: center;
         fill: white;
@@ -53,6 +54,7 @@ span {
     margin: auto;
 }
 .Link {
+    justify-self: center;
     text-decoration: none;
     color: white;
     width: fit-content;
@@ -112,7 +114,9 @@ span {
             background-color: $buttonColor;
             grid-area: 1/1 / span 1 / span 3;
             padding: 7px 1em;
-            justify-content: center;
+            display: grid;
+            grid-template-rows: 1fr;
+            grid-template-columns: 1fr 1fr 1fr;
 
             @media only screen and (max-width: 825px) {
                 /* For mobile phones: */
@@ -427,5 +431,12 @@ span {
         margin: 0.5em;
         display: grid;
         grid-template-columns: repeat(3, 1fr);
+    }
+    .direct {
+        justify-self: right;
+        color: white;
+    }
+    .toHome {
+        color: white;
     }
 }

@@ -1,0 +1,27 @@
+$boxshadow: 0 0 20px 5px rgba(194, 200, 228, 0.4);
+
+.dashboardInfo {
+    display: grid;
+    grid-area: 2/1 / span 1 / span 3;
+    width: 100vw;
+
+    .test {
+        display: grid;
+    }
+    span {
+        color: black;
+        font-size: 1.5em;
+        justify-self: center;
+        margin: auto;
+    }
+
+    .infoContainer {
+        background-color: white;
+        border-radius: 0.5em;
+        justify-content: center;
+        margin: 1em;
+        box-shadow: $boxshadow;
+        padding: 1em;
+        display: grid;
+    }
+}

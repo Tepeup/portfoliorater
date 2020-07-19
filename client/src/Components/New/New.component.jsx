@@ -7,6 +7,11 @@ import axios from "axios";
 import SimpleRating from "../Rating/SimpleRating.component";
 import { Pie, Doughnut, Bar } from "react-chartjs-2";
 import SimpleModal from "../SimpleModal/SimpleModal.component";
+import FavoriteIcon from "@material-ui/icons/Favorite";
+import Fab from "@material-ui/core/Fab";
+import firebase from "../firebase/firebase.utils";
+import HomeIcon from "@material-ui/icons/Home";
+import DashboardIcon from "@material-ui/icons/Dashboard";
 
 class New extends React.Component {
   constructor() {
@@ -22,6 +27,7 @@ class New extends React.Component {
       sectorShow: [""],
       commentList: [],
       nameData: [""],
+      liked: false,
     };
   }
 
@@ -54,11 +60,83 @@ class New extends React.Component {
       .then((res) => this.setState({ commentList: res.slice(-15) }));
 
     this.setState({ link: id });
+    if (this.props.currentUser) {
+      if (this.props.currentUser) {
+        firebase
+          .firestore()
+          .collection("users")
+          .doc(`${this.props.currentUser.id}`)
+          .collection("favorites")
+          .get()
+          .then((snapshot) => {
+            snapshot.forEach((doc) => {
+              if (doc.data().id === this.state.link) {
+                this.setState({ liked: true });
+              }
+            });
+          });
+      }
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    // Typical usage (don't forget to compare props):
+    if (this.props.currentUser !== prevProps.currentUser) {
+      if (this.props.currentUser) {
+        firebase
+          .firestore()
+          .collection("users")
+          .doc(`${this.props.currentUser.id}`)
+          .collection("favorites")
+          .get()
+          .then((snapshot) => {
+            snapshot.forEach((doc) => {
+              if (doc.data().id === this.state.link) {
+                this.setState({ liked: true });
+              }
+            });
+          });
+      }
+    }
   }
 
   getURL = () => {
     var parts = window.location.pathname.split("/");
     var lastSegment = parts.pop() || parts.pop(); // handle potential trailing slash
+  };
+
+  likeChart = () => {
+    this.props.currentUser
+      ? firebase
+          .firestore()
+          .collection("users")
+          .doc(`${this.props.currentUser.id}`)
+          .collection("favorites")
+          .doc(`${this.state.link}`)
+          .set({ id: `${this.state.link}` })
+          .then(() => {
+            this.setState((prevState) => ({ liked: !prevState.liked }));
+          })
+          .catch((error) => {
+            alert(`Error liking chart`);
+          })
+      : alert("Login to save to favorites");
+  };
+
+  unLikeChart = () => {
+    firebase
+      .firestore()
+      .collection("users")
+      .doc(`${this.props.currentUser.id}`)
+      .collection("favorites")
+      .doc(`${this.state.link}`)
+      .delete()
+      .then(() => {
+        this.setState((prevState) => ({ liked: !prevState.liked }));
+      })
+      .catch(function (error) {
+        console.error("Error unliking chart: ");
+      });
   };
 
   render() {
@@ -181,11 +259,23 @@ class New extends React.Component {
       <div className="Body">
         <div className="dashboard">
           <div className="navbar">
+            <Link to="/dashboard">
+              <DashboardIcon className="toHome" />
+            </Link>
             <Link className="Link" to="/">
               <div className="Logo">
                 <Logo height={36} />
               </div>
             </Link>
+            {this.props.currentUser ? (
+              <div onClick={this.props.logOut} className="direct">
+                Sign Out
+              </div>
+            ) : (
+              <Link to="/login" className="direct">
+                <div>Sign In</div>
+              </Link>
+            )}
           </div>
 
           <Carousel>
@@ -335,6 +425,21 @@ class New extends React.Component {
               </div>
               <div className="blockStyle chatBorder">
                 <SimpleModal link={this.state.link} />
+                {this.props.currentUser ? (
+                  this.state.liked ? (
+                    <Fab className="liked" onClick={this.unLikeChart}>
+                      <FavoriteIcon />
+                    </Fab>
+                  ) : (
+                    <Fab className="unliked" onClick={this.likeChart}>
+                      <FavoriteIcon />
+                    </Fab>
+                  )
+                ) : (
+                  <Fab className="unliked" onClick={this.likeChart}>
+                    <FavoriteIcon />
+                  </Fab>
+                )}
               </div>
             </div>
           </div>

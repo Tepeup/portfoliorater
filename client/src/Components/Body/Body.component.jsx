@@ -8,10 +8,12 @@ import axios from "axios";
 import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
 import Carousel from "react-bootstrap/Carousel";
+import HomeIcon from "@material-ui/icons/Home";
+import DashboardIcon from "@material-ui/icons/Dashboard";
 
 class Body extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       myTicker: "",
       reset: false,
@@ -664,11 +666,23 @@ class Body extends React.Component {
       <div className="Body">
         <div className="dashboard">
           <div className="navbar">
+            <Link to="/dashboard">
+              <DashboardIcon className="toHome" />
+            </Link>
             <Link className="Link" to="/">
               <div className="Logo">
                 <Logo height={36} />
               </div>
             </Link>
+            {this.props.currentUser ? (
+              <div onClick={this.props.logOut} className="direct">
+                Sign Out
+              </div>
+            ) : (
+              <Link to="/login" className="direct">
+                <div className="direct">Sign In</div>
+              </Link>
+            )}
           </div>
 
           <Carousel interval={null}>
