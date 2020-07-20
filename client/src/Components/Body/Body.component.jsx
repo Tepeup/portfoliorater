@@ -10,6 +10,7 @@ import AddIcon from "@material-ui/icons/Add";
 import Carousel from "react-bootstrap/Carousel";
 import HomeIcon from "@material-ui/icons/Home";
 import DashboardIcon from "@material-ui/icons/Dashboard";
+import firebase from "../firebase/firebase.utils";
 
 class Body extends React.Component {
   constructor(props) {
@@ -79,6 +80,18 @@ class Body extends React.Component {
         .post("/stocks/add", SharedStocks)
         .then((res) => this.setState({ link: res.data, showShare: false }));
     }
+
+    this.props.currentUser &&
+      firebase
+        .firestore()
+        .collection("users")
+        .doc(`${this.props.currentUser.id}`)
+        .collection("myPortfolios")
+        .doc(`${this.state.link}`)
+        .set({ id: `${this.state.link}` })
+        .catch((error) => {
+          alert(`Error`);
+        });
   };
 
   sortMarketCap = (x) => {

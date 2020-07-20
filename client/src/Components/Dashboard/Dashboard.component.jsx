@@ -14,6 +14,7 @@ class Dashboard extends React.Component {
     this.state = {
       favoriteList: [],
       newList: [],
+      myList: [],
     };
   }
 
@@ -37,6 +38,19 @@ class Dashboard extends React.Component {
           this.setState({ favoriteList: newList });
         });
       });
+
+    firebase
+      .firestore()
+      .collection("users")
+      .doc(`${this.props.id}`)
+      .collection("myPortfolios")
+      .get()
+      .then((snapshot) => {
+        snapshot.forEach((doc) => {
+          const newList = [doc.data(), ...this.state.myList];
+          this.setState({ myList: newList });
+        });
+      });
   }
 
   render() {
@@ -58,6 +72,16 @@ class Dashboard extends React.Component {
           </div>
           <div className="dashboardInfo">
             <div className="infoContainer">
+              <div className="favoriteContainer">
+                <div className="header">My Portfolios</div>
+                {this.state.myList.map((doc, index) => (
+                  <div className="centerThis" key={doc.id}>
+                    <Link to={`/chart/${doc.id}`}>
+                      <button>{`Portfolio ${index + 1}`}</button>
+                    </Link>
+                  </div>
+                ))}
+              </div>
               <div className="favoriteContainer">
                 <div className="header">Favorites</div>
                 {this.state.favoriteList.map((doc, index) => (
