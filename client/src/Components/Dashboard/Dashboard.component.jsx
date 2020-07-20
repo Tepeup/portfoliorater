@@ -71,8 +71,8 @@ class Dashboard extends React.Component {
               <div className="favoriteContainer">
                 <div className="header">Recent Portfolios</div>
                 {this.state.newList.map((doc, index) => (
-                  <div className="centerThis" key={doc.id}>
-                    <Link to={`/chart/${doc.id}`}>
+                  <div className="centerThis" key={doc._id}>
+                    <Link to={`/chart/${doc._id}`}>
                       <button>{`Portfolio ${index + 1}`}</button>
                     </Link>
                   </div>
