@@ -444,15 +444,17 @@ class New extends React.Component {
             </div>
           </div>
           <div className="commentCotainer">
-            <div className="centerDiv">
-              <strong>{`Comments ( ${this.state.commentList.length} )`}</strong>
+            <div className="infoContainer">
+              <div className="centerDiv">
+                <strong>{`Comments ( ${this.state.commentList.length} )`}</strong>
+              </div>
+              {this.state.commentList &&
+                this.state.commentList.map((list) => (
+                  <div className="commentBox" key={Math.random()}>
+                    {list.comment}
+                  </div>
+                ))}
             </div>
-            {this.state.commentList &&
-              this.state.commentList.map((list) => (
-                <div className="commentBox" key={Math.random()}>
-                  {list.comment}
-                </div>
-              ))}
           </div>
         </div>
       </div>
