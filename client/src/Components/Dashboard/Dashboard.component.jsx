@@ -6,16 +6,25 @@ import HomeIcon from "@material-ui/icons/Home";
 import DashboardIcon from "@material-ui/icons/Dashboard";
 import "./Dashboard.styles.scss";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
+import axios from "axios";
 
 class Dashboard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       favoriteList: [],
+      newList: [],
     };
   }
 
-  componentDidMount() {
+  async componentDidMount() {
+    await axios
+      .get("/stocks/sort/new")
+      .then((res) => res.data)
+      .then((res) => {
+        this.setState({ newList: res.slice(-10) });
+      });
+
     firebase
       .firestore()
       .collection("users")
@@ -52,9 +61,19 @@ class Dashboard extends React.Component {
               <div className="favoriteContainer">
                 <div className="header">Favorites</div>
                 {this.state.favoriteList.map((doc, index) => (
-                  <div key={doc.id}>
+                  <div className="centerThis" key={doc.id}>
                     <Link to={`/chart/${doc.id}`}>
                       <button>{`Favorite ${index + 1}`}</button>
+                    </Link>
+                  </div>
+                ))}
+              </div>
+              <div className="favoriteContainer">
+                <div className="header">Recent Portfolios</div>
+                {this.state.newList.map((doc, index) => (
+                  <div className="centerThis" key={doc.id}>
+                    <Link to={`/chart/${doc.id}`}>
+                      <button>{`Portfolio ${index + 1}`}</button>
                     </Link>
                   </div>
                 ))}
