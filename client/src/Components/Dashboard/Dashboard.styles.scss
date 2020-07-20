@@ -5,14 +5,20 @@ $boxshadow: 0 0 20px 5px rgba(194, 200, 228, 0.4);
     grid-area: 2/1 / span 1 / span 3;
     width: 100vw;
 
-    .test {
+    .favoriteContainer {
         display: grid;
-    }
-    span {
-        color: black;
-        font-size: 1.5em;
-        justify-self: center;
-        margin: auto;
+        height: fit-content;
+        width: 100%;
+        button {
+            width: 65vw;
+        }
+        .header {
+            width: 100%;
+            color: black;
+            font-size: 1.5em;
+
+            text-align: center;
+        }
     }
 
     .infoContainer {
@@ -23,5 +29,9 @@ $boxshadow: 0 0 20px 5px rgba(194, 200, 228, 0.4);
         box-shadow: $boxshadow;
         padding: 1em;
         display: grid;
+
+        .deleteIcon {
+            margin: 0 0 0 0;
+        }
     }
 }

@@ -84,6 +84,7 @@ span {
     .dashboard {
         display: grid;
         grid-template-columns: auto;
+        grid-template-rows: max-content;
         grid-gap: 0.5em;
         padding-bottom: 1em;
         background-color: $baseColor;
@@ -111,6 +112,8 @@ span {
             border: solid 1px;
         }
         .navbar {
+            height: fit-content;
+
             background-color: $buttonColor;
             grid-area: 1/1 / span 1 / span 3;
             padding: 7px 1em;

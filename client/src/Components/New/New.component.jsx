@@ -135,7 +135,7 @@ class New extends React.Component {
         this.setState((prevState) => ({ liked: !prevState.liked }));
       })
       .catch(function (error) {
-        console.error("Error unliking chart: ");
+        alert(error);
       });
   };
 

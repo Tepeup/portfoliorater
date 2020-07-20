@@ -5,6 +5,7 @@ import firebase from "../firebase/firebase.utils";
 import HomeIcon from "@material-ui/icons/Home";
 import DashboardIcon from "@material-ui/icons/Dashboard";
 import "./Dashboard.styles.scss";
+import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 
 class Dashboard extends React.Component {
   constructor(props) {
@@ -48,18 +49,15 @@ class Dashboard extends React.Component {
           </div>
           <div className="dashboardInfo">
             <div className="infoContainer">
-              <div className="test">
-                <span>{`Hello ${this.props.userName}`}</span>
-                <div>
-                  Favorites
-                  <div>
-                    {this.state.favoriteList.map((doc) => (
-                      <Link to={`/chart/${doc.id}`}>
-                        <button>{doc.id}</button>
-                      </Link>
-                    ))}
+              <div className="favoriteContainer">
+                <div className="header">Favorites</div>
+                {this.state.favoriteList.map((doc, index) => (
+                  <div key={doc.id}>
+                    <Link to={`/chart/${doc.id}`}>
+                      <button>{`Favorite ${index + 1}`}</button>
+                    </Link>
                   </div>
-                </div>
+                ))}
               </div>
             </div>
           </div>

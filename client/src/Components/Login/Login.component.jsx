@@ -62,7 +62,6 @@ class Login extends React.Component {
       this.setState({ loginUser: "", loginPassword: "" });
     } catch (error) {
       alert("Invalid credentials");
-      console.log(error);
     }
   };
 
