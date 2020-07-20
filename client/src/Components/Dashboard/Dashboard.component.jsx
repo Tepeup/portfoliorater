@@ -23,7 +23,7 @@ class Dashboard extends React.Component {
       .get("/stocks/sort/new")
       .then((res) => res.data)
       .then((res) => {
-        this.setState({ newList: res.slice(-10) });
+        this.setState({ newList: res.slice(0, 9) });
       });
 
     firebase
@@ -77,10 +77,13 @@ class Dashboard extends React.Component {
                 {this.state.myList.map((doc, index) => (
                   <div className="centerThis" key={doc.id}>
                     <Link to={`/chart/${doc.id}`}>
-                      <button>{`Portfolio ${index + 1}`}</button>
+                      <button>{`My Portfolio ${index + 1}`}</button>
                     </Link>
                   </div>
                 ))}
+                <Link className="Link" to="/">
+                  <button className="createButton">Create</button>
+                </Link>
               </div>
               <div className="favoriteContainer">
                 <div className="header">Favorites</div>

@@ -8,6 +8,7 @@ import {
   auth,
   signInWithGoogle,
   createUserProfileDocument,
+  signinAnonymously,
 } from "../firebase/firebase.utils";
 
 class Login extends React.Component {
@@ -102,6 +103,13 @@ class Login extends React.Component {
                 <button onClick={this.submitRegister} className="loginButtons">
                   Submit
                 </button>
+                <div className="title">or</div>
+                <button onClick={signInWithGoogle} className="loginButton">
+                  Sign In with Google
+                </button>
+                <button onClick={signinAnonymously} className="loginButton">
+                  Sign In Anonymously
+                </button>
               </div>
             </div>
           </div>
@@ -148,7 +156,11 @@ class Login extends React.Component {
           <div className="googleInfoBox">
             <div className="infoContainer">
               <div className="centerContet">
-                <button onClick={signInWithGoogle}>Google SigIn</button>
+                <h6>
+                  {" "}
+                  Create an account to keep track of your portfolios, save your
+                  favorites, and browse the most recent!
+                </h6>
               </div>
             </div>
           </div>
