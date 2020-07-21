@@ -51,6 +51,7 @@ span {
     color: white;
     font-weight: 600;
     text-decoration: none;
+
     margin: auto;
 }
 .Link {
@@ -113,10 +114,12 @@ span {
         }
         .navbar {
             height: fit-content;
-
+            position: sticky;
+            top: 0;
+            z-index: 10001;
             background-color: $buttonColor;
             grid-area: 1/1 / span 1 / span 3;
-            padding: 7px 1em;
+            padding: 0.5em 1em;
             display: grid;
             grid-template-rows: 1fr;
             grid-template-columns: 1fr 1fr 1fr;
@@ -125,7 +128,7 @@ span {
                 /* For mobile phones: */
                 grid-area: 1/1 / span 1 / span 1;
                 border-radius: 0;
-                padding: 5px 1em;
+                padding: 0.5em 1em;
                 width: 100vw;
             }
         }
@@ -224,7 +227,7 @@ span {
             padding: 0.5em;
             box-sizing: border-box;
             justify-content: center;
-            min-height: 40vh;
+            min-height: 30vh;
             margin: 0 1em;
             box-shadow: $boxshadow;
             width: 98vw;
@@ -417,6 +420,7 @@ span {
         grid-area: 3/1 / span 1 / span 3;
         width: 100vw;
         padding: 0 1em;
+        min-height: 35vh;
         @media only screen and (max-width: 825px) {
             /* For mobile phones: */
             grid-area: 3/1 / span 1 / span 1;
@@ -424,7 +428,7 @@ span {
         @media only screen and (max-width: 437px) {
             /* For mobile phones: */
             grid-area: 3/1 / span 1 / span 1;
-            height: 25vh;
+            min-height: 20vh !important;
         }
 
         .infoContainer {
@@ -435,7 +439,6 @@ span {
             box-shadow: $boxshadow;
             justify-content: center;
             @media only screen and (max-width: 825px) {
-                justify-content: center;
                 /* For mobile phones: */
             }
             @media only screen and (max-width: 437px) {

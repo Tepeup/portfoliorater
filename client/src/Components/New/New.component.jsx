@@ -411,7 +411,7 @@ class New extends React.Component {
               </div>
             </Carousel.Item>
           </Carousel>
-          <div className="infoBox">
+          <div className="infoBox" id="ratingBox">
             <div className="infoContainer">
               <div key={this.state.rating} className="stockSearch" id="item2">
                 <SimpleRating
