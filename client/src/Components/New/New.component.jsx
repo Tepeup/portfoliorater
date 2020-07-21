@@ -443,7 +443,7 @@ class New extends React.Component {
               </div>
             </div>
           </div>
-          <div className="commentCotainer">
+          <div className="commentContainer">
             <div className="infoContainer">
               <div className="centerDiv">
                 <strong>{`Comments ( ${this.state.commentList.length} )`}</strong>
