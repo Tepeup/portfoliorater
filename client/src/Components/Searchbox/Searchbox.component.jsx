@@ -10,9 +10,7 @@ const SearchBox = ({ placeHolder, handleChange, boxType, value, name }) => (
       onChange={handleChange}
       value={value}
     />
-    <label for="name" class="form__label">
-      {placeHolder}
-    </label>
+    <label class="form__label">{placeHolder}</label>
   </div>
 );
 

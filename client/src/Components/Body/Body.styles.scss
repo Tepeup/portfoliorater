@@ -65,7 +65,6 @@ span {
     font-family: "Comfortaa";
     width: 100vw;
     height: 100vh;
-    max-height: 100vh;
     display: grid;
     background-image: linear-gradient(#d7e0fa, white);
     background-color: #dbe2f5;
@@ -87,7 +86,6 @@ span {
         grid-template-columns: auto;
         grid-template-rows: max-content;
         grid-gap: 0.5em;
-
         background-color: $baseColor;
         border-radius: 2em;
         box-shadow: $boxshadow;
@@ -421,14 +419,17 @@ span {
         width: 100vw;
         padding: 0 1em;
         min-height: 35vh;
+        margin-bottom: 1em;
         @media only screen and (max-width: 825px) {
             /* For mobile phones: */
             grid-area: 3/1 / span 1 / span 1;
+            margin-bottom: 1em;
         }
         @media only screen and (max-width: 437px) {
             /* For mobile phones: */
             grid-area: 3/1 / span 1 / span 1;
-            min-height: 20vh !important;
+            min-height: 25vh !important;
+            margin-bottom: 1em;
         }
 
         .infoContainer {
@@ -438,7 +439,7 @@ span {
             display: grid;
             box-shadow: $boxshadow;
             justify-content: center;
-            margin-bottom: 0.5em;
+
             @media only screen and (max-width: 825px) {
                 /* For mobile phones: */
             }
