@@ -3,14 +3,14 @@ import { Link } from "react-router-dom";
 import "./Body.styles.scss";
 import { Pie, Doughnut, Bar } from "react-chartjs-2";
 import SearchBox from "../Searchbox/Searchbox.component";
-import { ReactComponent as Logo } from "../../Assets/Logo.svg";
+
 import axios from "axios";
 import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
 import Carousel from "react-bootstrap/Carousel";
-import HomeIcon from "@material-ui/icons/Home";
-import DashboardIcon from "@material-ui/icons/Dashboard";
+
 import firebase from "../firebase/firebase.utils";
+import CarouselChart from "../Carousel/Charts.component";
 
 class Body extends React.Component {
   constructor(props) {
@@ -33,7 +33,7 @@ class Body extends React.Component {
       link: null,
       showShare: true,
       marketCapName: ["Large", "Mid", "Small"],
-      marketCapData: [100, 50, 10],
+      marketCapData: [100, 90, 80],
       sectorName: [
         "Energy",
         "Materials",
@@ -62,6 +62,7 @@ class Body extends React.Component {
         // "Utilities",
         // "Real Estate",
       ],
+      sideBar: true,
     };
   }
 
@@ -503,6 +504,10 @@ class Body extends React.Component {
     }
   };
 
+  changeSides = () => {
+    this.setState({ sideBar: !this.state.sideBar });
+  };
+
   handleShareChange = async (e) => {
     this.setState({ myShares: parseInt(e.target.value) });
   };
@@ -558,324 +563,61 @@ class Body extends React.Component {
   };
 
   render() {
-    const state = {
-      labels: this.state.nameData,
-
-      datasets: [
-        {
-          data: this.state.sumData,
-          borderWidth: 2,
-          borderColor: "#FFF",
-          hoverBorderWidth: 3,
-          hoverBorderColor: "#FFF",
-          backgroundColor: [
-            "#1652f0",
-            "#e6194b",
-            "#3cb44b",
-            "#ffd8b1",
-            "#808080",
-            "#f58231",
-            "#911eb4",
-            "#ffe119",
-            "#e6beff",
-            "#9a6324",
-            "#fffac8",
-            "#800000",
-            "#aaffc3",
-            "#808000",
-            "#bcf60c",
-            "#fabebe",
-            "#008080",
-          ],
-          legend: {
-            display: true,
-          },
-          options: {
-            maintainAspectRatio: false,
-          },
-        },
-      ],
-    };
-    const capState = {
-      labels: this.state.marketCapName,
-
-      datasets: [
-        {
-          data: this.state.marketCapData,
-          borderWidth: 2,
-          borderColor: "#FFF",
-          hoverBorderWidth: 3,
-          hoverBorderColor: "#FFF",
-          backgroundColor: [
-            "#1652f0",
-            "#e6194b",
-            "#3cb44b",
-            "#ffd8b1",
-            "#808080",
-            "#f58231",
-            "#911eb4",
-            "#ffe119",
-            "#e6beff",
-            "#9a6324",
-            "#fffac8",
-            "#800000",
-            "#aaffc3",
-            "#808000",
-            "#bcf60c",
-            "#fabebe",
-            "#008080",
-          ],
-          legend: {
-            display: true,
-          },
-          options: {
-            maintainAspectRatio: false,
-          },
-        },
-      ],
-    };
-    const sectorState = {
-      labels: this.state.sectorShow,
-
-      datasets: [
-        {
-          data: this.state.sectorData,
-          borderWidth: 2,
-          borderColor: "#FFF",
-          hoverBorderWidth: 3,
-          hoverBorderColor: "#FFF",
-          backgroundColor: [
-            "#1652f0",
-            "#e6194b",
-            "#3cb44b",
-            "#ffd8b1",
-            "#808080",
-            "#f58231",
-            "#911eb4",
-            "#ffe119",
-            "#e6beff",
-            "#9a6324",
-            "#fffac8",
-            "#800000",
-            "#aaffc3",
-            "#808000",
-            "#bcf60c",
-            "#fabebe",
-            "#008080",
-          ],
-          legend: {
-            display: true,
-          },
-          options: {
-            maintainAspectRatio: false,
-          },
-        },
-      ],
-    };
-
-    // defaults.global.defaultFontFamily = "Comfortaa";
-
     return (
-      <div className="Body">
-        <div className="dashboard">
-          <div className="navbar">
-            <Link to="/dashboard">
-              <DashboardIcon className="toHome" />
-            </Link>
-            <Link className="Link" to="/">
-              <div className="Logo">
-                <Logo height={36} />
+      <div className="home-page">
+        <CarouselChart
+          stockLabels={this.state.nameData}
+          stockData={this.state.sumData}
+          capLabels={this.state.marketCapName}
+          capData={this.state.marketCapData}
+          sectorLabels={this.state.sectorShow}
+          sectorData={this.state.sectorData}
+        />
+
+        <div className="infoBox">
+          <div className="infoContainer">
+            <form id="stockForm" onKeyDown={this.newOneEnter}>
+              <SearchBox
+                placeHolder={"Ticker Symbol"}
+                handleChange={this.handleTickerChange}
+                boxType={"text"}
+                value={this.state.myTicker}
+              />
+
+              <SearchBox
+                placeHolder={"Shares"}
+                value={this.state.myShares}
+                boxType={"number"}
+                handleChange={this.handleShareChange}
+              />
+            </form>
+
+            <div className="buttonBox">
+              <div className="stockSearch">
+                <button className="resetButton" onClick={this.resetForm}>
+                  Reset
+                </button>
               </div>
-            </Link>
-            {this.props.currentUser ? (
-              <div onClick={this.props.logOut} className="direct">
-                Sign Out
-              </div>
-            ) : (
-              <Link to="/login" className="direct">
-                <div className="direct">Sign In</div>
-              </Link>
-            )}
-          </div>
+              <Fab color="primary" aria-label="add">
+                <AddIcon onClick={this.newOnes} />
+              </Fab>
 
-          <Carousel interval={null}>
-            <Carousel.Item>
-              <div id="item" className="fixthis">
-                <Pie
-                  data={state}
-                  options={{
-                    title: {
-                      display: true,
-                      text: "My Portfolio",
-                      fontSize: 24,
-                      fontColor: "black",
-                    },
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    animateRotate: true,
-                    tooltips: {
-                      callbacks: {
-                        label: function (tooltipItem, data) {
-                          let label = data.labels[tooltipItem.index];
-                          let value = data.datasets[0].data[tooltipItem.index];
-                          return `${label}: ${value}%`;
-                        },
-                      },
-                    },
-
-                    legend: {
-                      display: true,
-                      position: "bottom",
-                      labels: {
-                        boxWidth: 20,
-                        padding: 5,
-                      },
-                    },
-                  }}
-                />
-              </div>{" "}
-            </Carousel.Item>
-            <Carousel.Item>
-              <div id="item" className="fixthis">
-                <Doughnut
-                  data={sectorState}
-                  options={{
-                    title: {
-                      display: true,
-                      text: "GICS Sector",
-                      fontSize: 24,
-                      fontColor: "black",
-                    },
-                    cutoutPercentage: 70,
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    animateRotate: true,
-                    tooltips: {
-                      callbacks: {
-                        label: function (tooltipItem, data) {
-                          let label = data.labels[tooltipItem.index];
-                          let value = data.datasets[0].data[tooltipItem.index];
-                          return `${label}: ${value}%`;
-                        },
-                      },
-                    },
-
-                    legend: {
-                      display: true,
-                      position: "bottom",
-                      labels: {
-                        boxWidth: 20,
-                        padding: 5,
-                        filter: function (legendItem, data) {
-                          return legendItem.index < 12;
-                        },
-                      },
-                    },
-                  }}
-                />
-              </div>
-            </Carousel.Item>
-            <Carousel.Item>
-              <div id="item" className="fixthis">
-                {" "}
-                <Bar
-                  data={capState}
-                  options={{
-                    title: {
-                      display: true,
-                      text: "Market Capitalization",
-                      fontSize: 24,
-                      fontColor: "black",
-                    },
-
-                    scales: {
-                      xAxes: [
-                        {
-                          display: true,
-                          gridLines: { display: false },
-                          categoryPercentage: 0.9,
-                          barPercentage: 0.9,
-                        },
-                      ],
-                      yAxes: [
-                        {
-                          display: false,
-                          gridLines: { display: false },
-                          categoryPercentage: 1.0,
-                          barPercentage: 0.8,
-                          ticks: {
-                            beginAtZero: true,
-                          },
-                        },
-                      ],
-                    },
-                    borderWidth: 0,
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    animateRotate: true,
-                    tooltips: {
-                      callbacks: {
-                        label: function (tooltipItem, data) {
-                          let value = data.datasets[0].data[tooltipItem.index];
-                          return `${value}%`;
-                        },
-                      },
-                    },
-
-                    legend: {
-                      display: false,
-                      position: "bottom",
-                    },
-                  }}
-                />
-              </div>
-            </Carousel.Item>
-          </Carousel>
-          <div className="infoBox">
-            <div className="infoContainer">
-              <form id="stockForm" onKeyDown={this.newOneEnter}>
-                <SearchBox
-                  placeHolder={"Ticker Symbol"}
-                  handleChange={this.handleTickerChange}
-                  boxType={"text"}
-                  value={this.state.myTicker}
-                />
-
-                <SearchBox
-                  placeHolder={"Shares"}
-                  value={this.state.myShares}
-                  boxType={"number"}
-                  handleChange={this.handleShareChange}
-                />
-              </form>
-
-              <div className="buttonBox">
-                <div className="stockSearch">
-                  <button className="resetButton" onClick={this.resetForm}>
-                    Reset
-                  </button>
+              {this.state.showShare ? (
+                <div className="stockSearch" id="item5">
+                  <button onClick={this.onSubmit}>Submit</button>
                 </div>
-                <Fab color="primary" aria-label="add">
-                  <AddIcon onClick={this.newOnes} />
-                </Fab>
-
-                {this.state.showShare ? (
-                  <div className="stockSearch" id="item5">
-                    <button onClick={this.onSubmit}>Submit</button>
+              ) : (
+                <Link
+                  className="stockSearch"
+                  to={`/chart/${this.state.link}`}
+                  id="item5"
+                >
+                  {" "}
+                  <div className="stockSearch">
+                    <button className="goto">Go To</button>
                   </div>
-                ) : (
-                  <Link
-                    className="stockSearch"
-                    to={`/chart/${this.state.link}`}
-                    id="item5"
-                  >
-                    {" "}
-                    <div className="stockSearch">
-                      <button className="goto">Go To</button>
-                    </div>
-                  </Link>
-                )}
-              </div>
+                </Link>
+              )}
             </div>
           </div>
         </div>

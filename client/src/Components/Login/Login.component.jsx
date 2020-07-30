@@ -68,100 +68,91 @@ class Login extends React.Component {
 
   render() {
     return (
-      <div className="Body">
-        <div className="dashboard">
-          <div className="navbar">
-            <div></div>
-            <Link className="Link" to="/">
-              <div className="Logo">
-                <Logo height={36} />
-              </div>
-            </Link>
-            <div></div>
-          </div>
-          <div className="loginInfoBox">
-            <div className="infoContainer">
-              <div className="centerContent">
-                <div className="title">Login</div>
-                <form id="stockForm" onKeyDown={this.newOneEnter}>
-                  <SearchBox
-                    placeHolder={"Username"}
-                    boxType={"text"}
-                    name="loginUser"
-                    value={this.loginUser}
-                    handleChange={this.handleChange}
-                  />
-                  <SearchBox
-                    placeHolder={"Password"}
-                    boxType={"password"}
-                    value={this.loginPassword}
-                    name="loginPassword"
-                    handleChange={this.handleChange}
-                  />
-                </form>
+      <div className="logincontainer">
+        <div className="loginInfoBox">
+          <div className="infoContainer">
+            <div className="centerContent">
+              <div className="title">Login</div>
+              <form id="stockForm" onKeyDown={this.newOneEnter}>
+                <SearchBox
+                  placeHolder={"Username"}
+                  boxType={"text"}
+                  name="loginUser"
+                  value={this.loginUser}
+                  handleChange={this.handleChange}
+                />
+                <SearchBox
+                  placeHolder={"Password"}
+                  boxType={"password"}
+                  value={this.loginPassword}
+                  name="loginPassword"
+                  handleChange={this.handleChange}
+                />
+              </form>
 
-                <button onClick={this.submitRegister} className="loginButtons">
-                  Submit
-                </button>
-                <div className="title">or</div>
-                <button onClick={signInWithGoogle} className="loginButton">
-                  Sign In with Google
-                </button>
-                <button onClick={signinAnonymously} className="loginButton">
-                  Sign In Anonymously
-                </button>
-              </div>
+              <button onClick={this.submitRegister} className="loginButtons">
+                Submit
+              </button>
+              <div className="title">or</div>
+              <button onClick={signInWithGoogle} className="loginButton">
+                Sign In with Google
+              </button>
+              <button
+                onClick={signinAnonymously}
+                className="loginButton anonymous"
+              >
+                Sign In Anonymously
+              </button>
             </div>
           </div>
-          <div className="registerInfoBox">
-            <div className="infoContainer">
-              <div className="centerContent">
-                <div className="title">Register</div>
-                <form id="stockForm" onKeyDown={this.newOneEnter}>
-                  <SearchBox
-                    name="userName"
-                    placeHolder={"Username"}
-                    boxType={"text"}
-                    value={this.userName}
-                    handleChange={this.handleChange}
-                  />
-                  <SearchBox
-                    name="email"
-                    placeHolder={"Email"}
-                    boxType={"email"}
-                    value={this.email}
-                    handleChange={this.handleChange}
-                  />
-                  <SearchBox
-                    name="password"
-                    placeHolder={"Password"}
-                    boxType={"password"}
-                    value={this.password}
-                    handleChange={this.handleChange}
-                  />
-                  <SearchBox
-                    name="confirmPassword"
-                    placeHolder={"Confirm Password"}
-                    boxType={"password"}
-                    value={this.confirmPassword}
-                    handleChange={this.handleChange}
-                  />
-                </form>
-                <button onClick={this.handleRegister} className="loginButtons">
-                  Submit
-                </button>
-              </div>
+        </div>
+        <div className="registerInfoBox">
+          <div className="infoContainer">
+            <div className="centerContent">
+              <div className="title">Register</div>
+              <form id="stockForm" onKeyDown={this.newOneEnter}>
+                <SearchBox
+                  name="userName"
+                  placeHolder={"Username"}
+                  boxType={"text"}
+                  value={this.userName}
+                  handleChange={this.handleChange}
+                />
+                <SearchBox
+                  name="email"
+                  placeHolder={"Email"}
+                  boxType={"email"}
+                  value={this.email}
+                  handleChange={this.handleChange}
+                />
+                <SearchBox
+                  name="password"
+                  placeHolder={"Password"}
+                  boxType={"password"}
+                  value={this.password}
+                  handleChange={this.handleChange}
+                />
+                <SearchBox
+                  name="confirmPassword"
+                  placeHolder={"Confirm Password"}
+                  boxType={"password"}
+                  value={this.confirmPassword}
+                  handleChange={this.handleChange}
+                />
+              </form>
+              <button onClick={this.handleRegister} className="loginButtons">
+                Submit
+              </button>
             </div>
           </div>
-          <div className="googleInfoBox">
-            <div className="infoContainer">
-              <div className="centerContet">
-                <h6>
-                  {" "}
-                  Create an account to keep track of your portfolios, save your
-                  favorites, and browse the most recent!
-                </h6>
-              </div>
+        </div>
+        <div className="googleInfoBox">
+          <div className="infoContainer">
+            <div className="centerContet">
+              <h6>
+                Create an account to keep track of your portfolios and save your
+                favorite portfolios you see!
+              </h6>
             </div>
           </div>
         </div>

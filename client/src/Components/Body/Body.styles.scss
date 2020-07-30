@@ -90,6 +90,8 @@ span {
         border-radius: 2em;
         box-shadow: $boxshadow;
         min-width: 100vw;
+        min-height: 100vh;
+
         @media only screen and (min-width: 826px) {
             /* For mobile phones: */
             justify-self: center;
@@ -114,7 +116,7 @@ span {
             height: fit-content;
             position: sticky;
             top: 0;
-            z-index: 10001;
+            z-index: 900;
             background-color: $buttonColor;
             grid-area: 1/1 / span 1 / span 3;
             padding: 0.5em 2em 0.5em 2em;
@@ -460,5 +462,6 @@ span {
     }
     .toHome {
         color: white;
+        cursor: pointer;
     }
 }

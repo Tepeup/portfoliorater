@@ -4,12 +4,12 @@ import { ReactComponent as Logo } from "../../Assets/Logo.svg";
 import firebase from "../firebase/firebase.utils";
 import HomeIcon from "@material-ui/icons/Home";
 import DashboardIcon from "@material-ui/icons/Dashboard";
-import "./Dashboard.styles.scss";
+
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 import axios from "axios";
 import CarouselChart from "../Carousel/Charts.component";
 
-class Dashboard extends React.Component {
+class Recent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -20,6 +20,13 @@ class Dashboard extends React.Component {
   }
 
   async componentDidMount() {
+    await axios
+      .get("/stocks/sort/new")
+      .then((res) => res.data)
+      .then((res) => {
+        this.setState({ newList: res.slice(0, 9) });
+      });
+
     firebase
       .firestore()
       .collection("users")
@@ -48,35 +55,40 @@ class Dashboard extends React.Component {
   }
 
   render() {
+    const marketCapLabels = ["Large", "Mid", "Small"];
+
     return (
       <div className="dashboardInfo">
-        <div className="infoContainer">
-          <div className="favoriteContainer">
-            <div className="header">My Portfolios</div>
-            {this.state.myList.map((doc, index) => (
-              <div className="centerThis" key={doc.id}>
-                <Link to={`/chart/${doc.id}`}>
-                  <button>{`My Portfolio ${index + 1}`}</button>
-                </Link>
-              </div>
-            ))}
-            <Link className="Link" to="/">
-              <button className="createButton">Create</button>
-            </Link>
+        <div className="favoriteContainer">
+          <div className="header styledHeader">
+            <div className="title-card">
+              <strong>Recent Portfolios</strong>
+            </div>
           </div>
-          <div className="favoriteContainer">
-            <div className="header">Favorites</div>
-            {this.state.favoriteList.map((doc, index) => (
-              <div className="centerThis" key={doc.id}>
-                <Link to={`/chart/${doc.id}`}>
-                  <button>{`Favorite ${index + 1}`}</button>
-                </Link>
+
+          {this.state.newList.map((doc, index) => (
+            <div className="centerThis" key={doc._id}>
+              <CarouselChart
+                stockLabels={doc.stock}
+                stockData={doc.percent}
+                capLabels={marketCapLabels}
+                capData={doc.marketPercent}
+                sectorLabels={doc.sector}
+                sectorData={doc.sectorPercent}
+              />
+              <div className="link-card">
+                <div className="link-body">
+                  <Link to={`/chart/${doc._id}`}>
+                    {" "}
+                    <button>See More</button>
+                  </Link>
+                </div>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </div>
     );
   }
 }
-export default Dashboard;
+export default Recent;

@@ -1,5 +1,7 @@
 $boxshadow: 0 0 20px 5px rgba(194, 200, 228, 0.4);
-
+.logincontainer {
+    display: grid;
+}
 .googleInfoBox {
     display: grid;
     grid-area: 2/1 / span 1 / span 3;
@@ -9,7 +11,7 @@ $boxshadow: 0 0 20px 5px rgba(194, 200, 228, 0.4);
         background-color: white;
         border-radius: 0.5em;
         justify-content: center;
-        margin: 1em;
+        margin: 1em 1em 0 1em;
         box-shadow: $boxshadow;
         padding: 1em;
         display: grid;
@@ -29,11 +31,14 @@ h6 {
         border-radius: 0.5em;
         justify-content: center;
         min-height: 40vh;
-        margin: 0 1em 1em 1em;
+        margin: 1em;
         box-shadow: $boxshadow;
         padding: 1em;
         display: grid;
     }
+}
+.anonymous {
+    background-color: gray !important;
 }
 
 .registerInfoBox {

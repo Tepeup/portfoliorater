@@ -2,7 +2,7 @@ $boxshadow: 0 0 20px 5px rgba(194, 200, 228, 0.4);
 
 .dashboardInfo {
     display: grid;
-    grid-area: 2/1 / span 1 / span 3;
+
     width: 100vw;
 
     .favoriteContainer {
@@ -15,12 +15,30 @@ $boxshadow: 0 0 20px 5px rgba(194, 200, 228, 0.4);
         .header {
             width: 100%;
             color: black;
-            font-size: 1.5em;
 
             text-align: center;
         }
     }
-
+    .styledHeader {
+        padding: 1em 1em 0 1em;
+        strong {
+            font-size: 1.5em;
+        }
+    }
+    .title-card {
+        background-color: white;
+        border-radius: 0.5em;
+        box-shadow: $boxshadow;
+        padding: 1em 0em;
+    }
+    .link-card {
+        padding: 0em 1em 0 1em;
+        .link-body {
+            padding: 0em;
+            justify-content: center;
+            display: grid;
+        }
+    }
     .infoContainer {
         background-color: white;
         border-radius: 0.5em;

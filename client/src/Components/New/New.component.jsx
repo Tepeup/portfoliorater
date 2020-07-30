@@ -10,8 +10,8 @@ import SimpleModal from "../SimpleModal/SimpleModal.component";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import Fab from "@material-ui/core/Fab";
 import firebase from "../firebase/firebase.utils";
-import HomeIcon from "@material-ui/icons/Home";
-import DashboardIcon from "@material-ui/icons/Dashboard";
+
+import CarouselChart from "../Carousel/Charts.component";
 
 class New extends React.Component {
   constructor() {
@@ -22,7 +22,7 @@ class New extends React.Component {
       rating: null,
       noVotes: null,
       marketCapName: ["Large", "Mid", "Small"],
-      marketCapData: [100, 95, 91],
+      marketCapData: [100, 90, 80],
       sectorData: [100],
       sectorShow: [""],
       commentList: [],
@@ -140,321 +140,60 @@ class New extends React.Component {
   };
 
   render() {
-    const state = {
-      labels: this.state.nameData,
-      datasets: [
-        {
-          borderWidth: 2,
-          borderColor: "#FFF",
-          hoverBorderWidth: 3,
-          hoverBorderColor: "#FFF",
-          backgroundColor: [
-            "#1652f0",
-            "#e6194b",
-            "#3cb44b",
-            "#ffd8b1",
-            "#808080",
-            "#f58231",
-            "#911eb4",
-            "#ffe119",
-            "#e6beff",
-            "#9a6324",
-            "#fffac8",
-            "#800000",
-            "#aaffc3",
-            "#808000",
-            "#bcf60c",
-            "#fabebe",
-            "#008080",
-          ],
-          legend: {
-            display: true,
-          },
-          options: {
-            maintainAspectRatio: false,
-          },
-
-          data: this.state.sumData,
-        },
-      ],
-    };
-    const capState = {
-      labels: this.state.marketCapName,
-
-      datasets: [
-        {
-          data: this.state.marketCapData,
-          borderWidth: 2,
-          borderColor: "#FFF",
-          hoverBorderWidth: 3,
-          hoverBorderColor: "#FFF",
-          backgroundColor: [
-            "#1652f0",
-            "#e6194b",
-            "#3cb44b",
-            "#ffd8b1",
-            "#808080",
-            "#f58231",
-            "#911eb4",
-            "#ffe119",
-            "#e6beff",
-            "#9a6324",
-            "#fffac8",
-            "#800000",
-            "#aaffc3",
-            "#808000",
-            "#bcf60c",
-            "#fabebe",
-            "#008080",
-          ],
-          legend: {
-            display: true,
-          },
-          options: {
-            maintainAspectRatio: false,
-          },
-        },
-      ],
-    };
-    const sectorState = {
-      labels: this.state.sectorShow,
-
-      datasets: [
-        {
-          data: this.state.sectorData,
-          borderWidth: 2,
-          borderColor: "#FFF",
-          hoverBorderWidth: 3,
-          hoverBorderColor: "#FFF",
-          backgroundColor: [
-            "#1652f0",
-            "#e6194b",
-            "#3cb44b",
-            "#ffd8b1",
-            "#808080",
-            "#f58231",
-            "#911eb4",
-            "#ffe119",
-            "#e6beff",
-            "#9a6324",
-            "#fffac8",
-            "#800000",
-            "#aaffc3",
-            "#808000",
-            "#bcf60c",
-            "#fabebe",
-            "#008080",
-          ],
-          legend: {
-            display: true,
-          },
-          options: {
-            maintainAspectRatio: false,
-          },
-        },
-      ],
-    };
-
     return (
-      <div className="Body">
-        <div className="dashboard">
-          <div className="navbar">
-            <Link to="/dashboard">
-              <DashboardIcon className="toHome" />
-            </Link>
-            <Link className="Link" to="/">
-              <div className="Logo">
-                <Logo height={36} />
-              </div>
-            </Link>
-            {this.props.currentUser ? (
-              <div onClick={this.props.logOut} className="direct">
-                Sign Out
-              </div>
-            ) : (
-              <Link to="/login" className="direct">
-                <div>Sign In</div>
-              </Link>
-            )}
-          </div>
+      <div className="chart-page">
+        <CarouselChart
+          stockLabels={this.state.nameData}
+          stockData={this.state.sumData}
+          capLabels={this.state.marketCapName}
+          capData={this.state.marketCapData}
+          sectorLabels={this.state.sectorShow}
+          sectorData={this.state.sectorData}
+        />
 
-          <Carousel>
-            <Carousel.Item>
-              <div id="item" className="fixthis">
-                <Pie
-                  data={state}
-                  options={{
-                    title: {
-                      display: true,
-                      text: "My Portfolio",
-                      fontSize: 24,
-                      fontColor: "black",
-                    },
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    animateRotate: true,
-                    tooltips: {
-                      callbacks: {
-                        label: function (tooltipItem, data) {
-                          let label = data.labels[tooltipItem.index];
-                          let value = data.datasets[0].data[tooltipItem.index];
-                          return `${label}: ${value}%`;
-                        },
-                      },
-                    },
-
-                    legend: {
-                      display: true,
-                      position: "bottom",
-                      labels: {
-                        boxWidth: 20,
-                        padding: 5,
-                      },
-                    },
-                  }}
-                />
-              </div>{" "}
-            </Carousel.Item>
-            <Carousel.Item>
-              <div id="item" className="fixthis">
-                <Doughnut
-                  data={sectorState}
-                  options={{
-                    title: {
-                      display: true,
-                      text: "GICS Sector",
-                      fontSize: 24,
-                      fontColor: "black",
-                    },
-                    cutoutPercentage: 70,
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    animateRotate: true,
-                    tooltips: {
-                      callbacks: {
-                        label: function (tooltipItem, data) {
-                          let label = data.labels[tooltipItem.index];
-                          let value = data.datasets[0].data[tooltipItem.index];
-                          return `${label}: ${value}%`;
-                        },
-                      },
-                    },
-
-                    legend: {
-                      display: true,
-                      position: "bottom",
-                      labels: {
-                        boxWidth: 20,
-                        padding: 5,
-                        filter: function (legendItem, data) {
-                          return legendItem.index < 12;
-                        },
-                      },
-                    },
-                  }}
-                />
-              </div>
-            </Carousel.Item>
-            <Carousel.Item>
-              <div id="item" className="fixthis">
-                {" "}
-                <Bar
-                  data={capState}
-                  options={{
-                    title: {
-                      display: true,
-                      text: "Market Capitalization",
-                      fontSize: 24,
-                      fontColor: "black",
-                    },
-
-                    scales: {
-                      xAxes: [
-                        {
-                          display: true,
-                          gridLines: { display: false },
-                          categoryPercentage: 0.9,
-                          barPercentage: 0.9,
-                        },
-                      ],
-                      yAxes: [
-                        {
-                          display: false,
-                          gridLines: { display: false },
-                          categoryPercentage: 1.0,
-                          barPercentage: 0.8,
-                          ticks: {
-                            beginAtZero: true,
-                          },
-                        },
-                      ],
-                    },
-                    borderWidth: 0,
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    animateRotate: true,
-                    tooltips: {
-                      callbacks: {
-                        label: function (tooltipItem, data) {
-                          let value = data.datasets[0].data[tooltipItem.index];
-                          return `${value}%`;
-                        },
-                      },
-                    },
-
-                    legend: {
-                      display: false,
-                      position: "bottom",
-                    },
-                  }}
-                />
-              </div>
-            </Carousel.Item>
-          </Carousel>
-          <div className="infoBox" id="ratingBox">
-            <div className="infoContainer">
-              <div key={this.state.rating} className="stockSearch" id="item2">
-                <SimpleRating
-                  size="large"
-                  rating={this.state.rating}
-                  link={this.state.link}
-                />
-              </div>
-              <div className="textstyles" id="item3">
-                VOTES : {this.state.noVotes}
-              </div>
-              <div className="blockStyle chatBorder">
-                <SimpleModal link={this.state.link} />
-                {this.props.currentUser ? (
-                  this.state.liked ? (
-                    <Fab className="liked" onClick={this.unLikeChart}>
-                      <FavoriteIcon />
-                    </Fab>
-                  ) : (
-                    <Fab className="unliked" onClick={this.likeChart}>
-                      <FavoriteIcon />
-                    </Fab>
-                  )
+        <div className="infoBox" id="ratingBox">
+          <div className="infoContainer">
+            <div key={this.state.rating} className="stockSearch" id="item2">
+              <SimpleRating
+                size="large"
+                rating={this.state.rating}
+                link={this.state.link}
+              />
+            </div>
+            <div className="textstyles" id="item3">
+              VOTES : {this.state.noVotes}
+            </div>
+            <div className="blockStyle chatBorder">
+              <SimpleModal link={this.state.link} />
+              {this.props.currentUser ? (
+                this.state.liked ? (
+                  <Fab className="liked" onClick={this.unLikeChart}>
+                    <FavoriteIcon />
+                  </Fab>
                 ) : (
                   <Fab className="unliked" onClick={this.likeChart}>
                     <FavoriteIcon />
                   </Fab>
-                )}
-              </div>
+                )
+              ) : (
+                <Fab className="unliked" onClick={this.likeChart}>
+                  <FavoriteIcon />
+                </Fab>
+              )}
             </div>
           </div>
-          <div className="commentContainer">
-            <div className="infoContainer">
-              <div className="centerDiv">
-                <strong>{`Comments ( ${this.state.commentList.length} )`}</strong>
-              </div>
-              {this.state.commentList &&
-                this.state.commentList.map((list) => (
-                  <div className="commentBox" key={Math.random()}>
-                    {list.comment}
-                  </div>
-                ))}
+        </div>
+        <div className="commentContainer">
+          <div className="infoContainer">
+            <div className="centerDiv">
+              <strong>{`Comments ( ${this.state.commentList.length} )`}</strong>
             </div>
+            {this.state.commentList &&
+              this.state.commentList.map((list) => (
+                <div className="commentBox" key={Math.random()}>
+                  {list.comment}
+                </div>
+              ))}
           </div>
         </div>
       </div>
