@@ -1,11 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ReactComponent as Logo } from "../../Assets/Logo.svg";
-import firebase from "../firebase/firebase.utils";
-import HomeIcon from "@material-ui/icons/Home";
-import DashboardIcon from "@material-ui/icons/Dashboard";
 
-import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
+import firebase from "../firebase/firebase.utils";
+
 import axios from "axios";
 import CarouselChart from "../Carousel/Charts.component";
 

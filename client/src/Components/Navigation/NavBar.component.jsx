@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./NavBar.styles.scss";
-import DashboardIcon from "@material-ui/icons/Dashboard";
 import { ReactComponent as Logo } from "../../Assets/Logo.svg";
 import MenuIcon from "@material-ui/icons/Menu";
 
