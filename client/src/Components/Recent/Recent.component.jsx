@@ -77,7 +77,7 @@ class Recent extends React.Component {
                 <div className="link-body">
                   <Link to={`/chart/${doc._id}`}>
                     {" "}
-                    <button>See More</button>
+                    <button>See Comments</button>
                   </Link>
                 </div>
               </div>
