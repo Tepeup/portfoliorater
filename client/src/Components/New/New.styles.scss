@@ -59,7 +59,8 @@ $boxshadow: 0 0 20px 5px rgba(194, 200, 228, 0.4);
             padding: 0.5em;
             margin-bottom: 0.5em;
             border-radius: 0.5em;
-            min-width: 60vw;
+            width: 100%;
+            min-width: 250px;
         }
         .centeredDiv {
             margin: auto;

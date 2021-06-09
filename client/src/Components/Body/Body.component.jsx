@@ -49,6 +49,26 @@ class Body extends React.Component {
         "Utilities",
         "Real Estate",
       ],
+      stockColors: [
+        "#9b9b9b",
+        "#1652f0",
+        "#e6194b",
+        "#3cb44b",
+        "#ffd8b1",
+        "#808080",
+        "#f58231",
+        "#911eb4",
+        "#ffe119",
+        "#e6beff",
+        "#9a6324",
+        "#fffac8",
+        "#800000",
+        "#aaffc3",
+        "#808000",
+        "#bcf60c",
+        "#fabebe",
+        "#008080",
+      ],
       sectorData: [100],
       sectorShow: [
         "",
@@ -320,6 +340,28 @@ class Body extends React.Component {
           };
         });
 
+        this.setState({
+          stockColors: [
+            "#1652f0",
+            "#e6194b",
+            "#3cb44b",
+            "#ffd8b1",
+            "#808080",
+            "#f58231",
+            "#911eb4",
+            "#ffe119",
+            "#e6beff",
+            "#9a6324",
+            "#fffac8",
+            "#800000",
+            "#aaffc3",
+            "#808000",
+            "#bcf60c",
+            "#fabebe",
+            "#008080",
+          ],
+        });
+
         this.setState((state) => {
           const befData = state.myList.map(
             (res) => res.price !== undefined && res.price * res.shares
@@ -577,13 +619,18 @@ class Body extends React.Component {
             capData={this.state.marketCapData}
             sectorLabels={this.state.sectorShow}
             sectorData={this.state.sectorData}
+            stockColors={this.state.stockColors}
           />
 
           <div className="submit-content">
             <div className="submit-form">
               {/* <form id="stockForm" onKeyDown={this.newOneEnter}> */}
               <form id="stockForm">
-                <div className="selected">
+                <div
+                  className={`${
+                    this.state.selectedTicker ? null : "whiteout"
+                  } selected`}
+                >
                   Selected: {this.state.selectedTicker}
                 </div>
                 <SearchBox

@@ -32,6 +32,9 @@ $boxshadow: 0 0 20px 5px rgba(194, 200, 228, 0.4);
         padding: 1em;
         text-align: center;
     }
+    button {
+        width: 250px;
+    }
     .link-card {
         .link-body {
             justify-content: center;
@@ -61,6 +64,6 @@ $boxshadow: 0 0 20px 5px rgba(194, 200, 228, 0.4);
     }
 }
 .createButton {
-    width: fit-content !important;
+    width: 250px !important;
     background-color: rgb(15, 201, 108) !important;
 }

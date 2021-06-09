@@ -37,6 +37,15 @@ $boxshadow: 0 0 20px 5px rgba(194, 200, 228, 0.4);
 .carousel-control-prev-icon:after {
     content: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='gray' width='20' height='20' viewBox='0 0 8 8'%3e%3cpath d='M5.25 0l-4 4 4 4 1.5-1.5L4.25 4l2.5-2.5L5.25 0z'/%3e%3c/svg%3e");
 }
+
+.favoriteContainer {
+    min-height: 250px;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .Logo {
     width: fit-content;
     cursor: pointer;
@@ -70,14 +79,19 @@ span {
 }
 .selected {
     width: 250px;
-    font-size: 1.5em;
-    color: black;
-    padding: 1rem 0 0.5em 0;
+    font-size: 1.25em;
+    background-color: $buttonColor;
+    color: white;
+    padding: 0.5rem 0 0.5em 0;
     border-radius: 0.5em;
     text-align: center;
     font-weight: bold;
 }
 
+.whiteout {
+    background-color: white !important;
+    color: black;
+}
 .search-result {
     margin: 0.5em 0;
     background-color: $baseColor;
