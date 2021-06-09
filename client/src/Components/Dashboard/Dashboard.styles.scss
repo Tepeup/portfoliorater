@@ -1,6 +1,9 @@
 $boxshadow: 0 0 20px 5px rgba(194, 200, 228, 0.4);
 
 .dashboard-content {
+    a:hover {
+        text-decoration: none;
+    }
     .dashboard-main {
         max-width: 600px;
         margin: auto;
@@ -14,6 +17,7 @@ $boxshadow: 0 0 20px 5px rgba(194, 200, 228, 0.4);
         background-color: #1652f0;
         color: white;
         display: flex;
+
         margin: 0.25em 0;
         > * {
             padding: 0.5em 1em;

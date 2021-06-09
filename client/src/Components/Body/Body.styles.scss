@@ -24,6 +24,10 @@ $boxshadow: 0 0 20px 5px rgba(194, 200, 228, 0.4);
 .carousel-content {
     max-width: 600px;
     margin: auto;
+
+    > * {
+        margin-bottom: 1em;
+    }
 }
 .carousel {
     margin: 0 0 1em 0;
@@ -389,7 +393,7 @@ main {
             cursor: pointer;
             color: white;
             background-color: $buttonColor;
-            box-shadow: $boxshadow;
+
             min-width: 80px;
             padding: 0.5em;
             margin: 0.5em 0;

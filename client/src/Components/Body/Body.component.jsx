@@ -612,6 +612,12 @@ class Body extends React.Component {
     return (
       <div className="dashboard-content">
         <div className="carousel-content">
+          <div className="header styledHeader">
+            <div className="title-card">
+              <strong>New Portfolio</strong>
+            </div>
+          </div>
+
           <CarouselChart
             stockLabels={this.state.nameData}
             stockData={this.state.sumData}
