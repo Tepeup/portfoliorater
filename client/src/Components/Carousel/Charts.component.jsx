@@ -99,7 +99,7 @@ class CarouselChart extends React.Component {
               options={{
                 title: {
                   display: true,
-                  text: "My Portfolio",
+                  text: "Portfolio",
                   fontSize: 24,
                   fontColor: "black",
                 },
