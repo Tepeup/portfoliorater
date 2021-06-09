@@ -140,6 +140,26 @@ class New extends React.Component {
   };
 
   render() {
+    const stockColors = [
+      "#1652f0",
+      "#e6194b",
+      "#3cb44b",
+      "#ffd8b1",
+      "#808080",
+      "#f58231",
+      "#911eb4",
+      "#ffe119",
+      "#e6beff",
+      "#9a6324",
+      "#fffac8",
+      "#800000",
+      "#aaffc3",
+      "#808000",
+      "#bcf60c",
+      "#fabebe",
+      "#008080",
+    ];
+
     return (
       <div className="dashboard-content">
         <div className="carousel-content">
@@ -150,6 +170,7 @@ class New extends React.Component {
             capData={this.state.marketCapData}
             sectorLabels={this.state.sectorShow}
             sectorData={this.state.sectorData}
+            stockColors={stockColors}
           />
           <div className="infoBox" id="ratingBox">
             <div className="infoContainer">
