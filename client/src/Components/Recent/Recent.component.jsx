@@ -55,8 +55,8 @@ class Recent extends React.Component {
     const marketCapLabels = ["Large", "Mid", "Small"];
 
     return (
-      <div className="dashboardInfo">
-        <div className="favoriteContainer">
+      <div className="dashboard-content">
+        <div className="recent-content">
           <div className="header styledHeader">
             <div className="title-card">
               <strong>Recent Portfolios</strong>

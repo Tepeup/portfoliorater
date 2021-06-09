@@ -51,7 +51,7 @@ class Dashboard extends React.Component {
             <div className="favoriteContainer">
               <div className="header">My Portfolios</div>
               {this.state.myList.map((doc, index) => (
-                <div className="centerThis" key={doc.id}>
+                <div key={doc.id}>
                   <Link to={`/chart/${doc.id}`}>
                     <button>{`My Portfolio ${index + 1}`}</button>
                   </Link>

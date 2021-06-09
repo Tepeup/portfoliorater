@@ -141,59 +141,60 @@ class New extends React.Component {
 
   render() {
     return (
-      <div className="chart-page">
-        <CarouselChart
-          stockLabels={this.state.nameData}
-          stockData={this.state.sumData}
-          capLabels={this.state.marketCapName}
-          capData={this.state.marketCapData}
-          sectorLabels={this.state.sectorShow}
-          sectorData={this.state.sectorData}
-        />
-
-        <div className="infoBox" id="ratingBox">
-          <div className="infoContainer">
-            <div key={this.state.rating} className="stockSearch" id="item2">
-              <SimpleRating
-                size="large"
-                rating={this.state.rating}
-                link={this.state.link}
-              />
-            </div>
-            <div className="textstyles" id="item3">
-              VOTES : {this.state.noVotes}
-            </div>
-            <div className="blockStyle chatBorder">
-              <SimpleModal link={this.state.link} />
-              {this.props.currentUser ? (
-                this.state.liked ? (
-                  <Fab className="liked" onClick={this.unLikeChart}>
-                    <FavoriteIcon />
-                  </Fab>
+      <div className="dashboard-content">
+        <div className="carousel-content">
+          <CarouselChart
+            stockLabels={this.state.nameData}
+            stockData={this.state.sumData}
+            capLabels={this.state.marketCapName}
+            capData={this.state.marketCapData}
+            sectorLabels={this.state.sectorShow}
+            sectorData={this.state.sectorData}
+          />
+          <div className="infoBox" id="ratingBox">
+            <div className="infoContainer">
+              <div key={this.state.rating} className="stockSearch" id="item2">
+                <SimpleRating
+                  size="large"
+                  rating={this.state.rating}
+                  link={this.state.link}
+                />
+              </div>
+              <div className="textstyles" id="item3">
+                VOTES : {this.state.noVotes}
+              </div>
+              <div className="blockStyle chatBorder">
+                <SimpleModal link={this.state.link} />
+                {this.props.currentUser ? (
+                  this.state.liked ? (
+                    <Fab className="liked" onClick={this.unLikeChart}>
+                      <FavoriteIcon />
+                    </Fab>
+                  ) : (
+                    <Fab className="unliked" onClick={this.likeChart}>
+                      <FavoriteIcon />
+                    </Fab>
+                  )
                 ) : (
                   <Fab className="unliked" onClick={this.likeChart}>
                     <FavoriteIcon />
                   </Fab>
-                )
-              ) : (
-                <Fab className="unliked" onClick={this.likeChart}>
-                  <FavoriteIcon />
-                </Fab>
-              )}
+                )}
+              </div>
             </div>
           </div>
-        </div>
-        <div className="commentContainer">
-          <div className="infoContainer">
-            <div className="centerDiv">
-              <strong>{`Comments ( ${this.state.commentList.length} )`}</strong>
+          <div className="commentContainer">
+            <div className="infoContainer">
+              <div className="centerDiv">
+                <strong>{`Comments ( ${this.state.commentList.length} )`}</strong>
+              </div>
+              {this.state.commentList &&
+                this.state.commentList.map((list) => (
+                  <div className="commentBox" key={Math.random()}>
+                    {list.comment}
+                  </div>
+                ))}
             </div>
-            {this.state.commentList &&
-              this.state.commentList.map((list) => (
-                <div className="commentBox" key={Math.random()}>
-                  {list.comment}
-                </div>
-              ))}
           </div>
         </div>
       </div>

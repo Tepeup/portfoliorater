@@ -5,24 +5,22 @@ $boxshadow: 0 0 20px 5px rgba(194, 200, 228, 0.4);
         max-width: 600px;
         margin: auto;
     }
-    .favoriteContainer {
+
+    .recent-content {
+        max-width: 600px;
+        margin: auto;
         display: flex;
         flex-direction: column;
-        min-height: 200px;
-        height: fit-content;
-        width: 100%;
-        button {
-            width: 75vw;
-            max-width: 500px;
-        }
-        .header {
-            width: 100%;
-            color: black;
-            text-align: center;
-        }
+        grid-gap: 1em;
     }
+
+    .header {
+        width: 100%;
+        color: black;
+        text-align: center;
+    }
+
     .styledHeader {
-        padding: 1em 1em 0 1em;
         strong {
             font-size: 1.5em;
         }
@@ -31,14 +29,16 @@ $boxshadow: 0 0 20px 5px rgba(194, 200, 228, 0.4);
         background-color: white;
         border-radius: 0.5em;
         box-shadow: $boxshadow;
-        padding: 1em 0em;
+        padding: 1em;
+        text-align: center;
     }
     .link-card {
-        padding: 0em 1em 0 1em;
         .link-body {
-            padding: 0em;
             justify-content: center;
             display: grid;
+            button {
+                width: 100%;
+            }
         }
     }
     .infoContainer {
