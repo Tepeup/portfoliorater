@@ -9,9 +9,9 @@ class Dashboard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      favoriteList: [],
+      favoriteList: [1, 2],
       newList: [],
-      myList: [],
+      myList: [1, 2],
     };
   }
 
@@ -53,22 +53,27 @@ class Dashboard extends React.Component {
               {this.state.myList.map((doc, index) => (
                 <div key={doc.id}>
                   <Link to={`/chart/${doc.id}`}>
-                    <button>{`My Portfolio ${index + 1}`}</button>
+                    <div className="dashboard-list" key={doc.id}>
+                      <div className="number-list">{`${index + 1}`}</div>
+                      <div className="title-list">Portfolio</div>
+                    </div>
                   </Link>
                 </div>
               ))}
               <Link className="Link" to="/">
-                <button className="createButton">Create</button>
+                <button className="createButton">New Portfolio</button>
               </Link>
             </div>
             <div className="favoriteContainer">
               <div className="header">Favorites</div>
+
               {this.state.favoriteList.map((doc, index) => (
-                <div className="centerThis" key={doc.id}>
-                  <Link to={`/chart/${doc.id}`}>
-                    <button>{`Favorite ${index + 1}`}</button>
-                  </Link>
-                </div>
+                <Link to={`/chart/${doc.id}`}>
+                  <div className="dashboard-list" key={doc.id}>
+                    <div className="number-list">{`${index + 1}`}</div>
+                    <div className="title-list">Favorite</div>
+                  </div>
+                </Link>
               ))}
             </div>
           </div>

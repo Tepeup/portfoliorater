@@ -661,7 +661,8 @@ class Body extends React.Component {
                                 });
                               }}
                             >
-                              {`${res.Name} (${res.Symbol})`}
+                              <div className="stock-name">{res.Name}</div>
+                              {`(${res.Symbol})`}
                             </div>
                           );
                         })}

@@ -3,19 +3,21 @@ $boxshadow: 0 0 20px 5px rgba(194, 200, 228, 0.4);
 .login-content {
     display: flex;
     flex-direction: column;
-    grid-gap: 1em;
+
     grid-template-columns: 1fr;
     max-width: 600px;
     margin: auto;
 }
+
 .infoContainer {
     background-color: white;
-    border-radius: 0.5em;
+
     justify-content: center;
     box-shadow: $boxshadow;
     padding: 1em;
     display: grid;
     min-width: 100%;
+    margin-bottom: 1em !important;
 }
 
 h6 {
@@ -28,7 +30,7 @@ h6 {
 
     .infoContainer {
         background-color: white;
-        border-radius: 0.5em;
+
         justify-content: center;
         box-shadow: $boxshadow;
         padding: 1em;
@@ -45,9 +47,7 @@ h6 {
 
     .infoContainer {
         background-color: white;
-        border-radius: 0.5em;
         justify-content: center;
-
         box-shadow: $boxshadow;
         padding: 1em;
         display: grid;

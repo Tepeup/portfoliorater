@@ -6,6 +6,22 @@ $boxshadow: 0 0 20px 5px rgba(194, 200, 228, 0.4);
         margin: auto;
     }
 
+    .dashboard-list {
+        background-color: #1652f0;
+        color: white;
+        display: flex;
+        margin: 0.25em 0;
+        > * {
+            padding: 0.5em 1em;
+        }
+
+        .number-list {
+            background-color: #373a47;
+            width: 50px;
+            text-align: center;
+        }
+    }
+
     .recent-content {
         max-width: 600px;
         margin: auto;
@@ -30,7 +46,7 @@ $boxshadow: 0 0 20px 5px rgba(194, 200, 228, 0.4);
     }
     .title-card {
         background-color: white;
-        border-radius: 0.5em;
+
         box-shadow: $boxshadow;
         padding: 1em;
         text-align: center;
@@ -49,7 +65,7 @@ $boxshadow: 0 0 20px 5px rgba(194, 200, 228, 0.4);
     }
     .infoContainer {
         background-color: white;
-        border-radius: 0.5em;
+
         justify-content: center;
         box-shadow: $boxshadow;
         padding: 1em;
@@ -69,4 +85,6 @@ $boxshadow: 0 0 20px 5px rgba(194, 200, 228, 0.4);
 .createButton {
     width: 250px !important;
     background-color: rgb(15, 201, 108) !important;
+    margin: 0.5em 0;
+    padding: 0.5em !important;
 }
