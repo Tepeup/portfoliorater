@@ -11,12 +11,14 @@ import Carousel from "react-bootstrap/Carousel";
 
 import firebase from "../firebase/firebase.utils";
 import CarouselChart from "../Carousel/Charts.component";
+import tickerSymbols from "../../Assets/tickers.json";
 
 class Body extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      myTicker: "",
+      selectedTicker: null,
+      myTicker: null,
       reset: false,
       stockList: {},
       myList: [],
@@ -26,7 +28,7 @@ class Body extends React.Component {
       marketCapList: {},
       sumData: [100],
       nameData: [""],
-      myShares: "",
+      myShares: null,
       stockIndustry: null,
       techData: [],
       techName: [],
@@ -255,9 +257,9 @@ class Body extends React.Component {
   };
 
   newOnes = async (x) => {
-    if (this.state.myTicker && this.state.myShares) {
+    if (this.state.selectedTicker && this.state.myShares) {
       await fetch(
-        `https://finnhub.io/api/v1/quote?symbol=${this.state.myTicker}&token=bor57j7rh5rbk6e6j1qg`
+        `https://finnhub.io/api/v1/quote?symbol=${this.state.selectedTicker}&token=bor57j7rh5rbk6e6j1qg`
       )
         .then((e) => e.json())
         .then(
@@ -265,7 +267,7 @@ class Body extends React.Component {
             e.c &&
             this.setState({
               stockList: this.newStock(
-                this.state.myTicker,
+                this.state.selectedTicker,
                 e.c,
                 this.state.myShares
               ),
@@ -493,16 +495,16 @@ class Body extends React.Component {
 
       if (e.target.value === "" || e.target.value === null) {
       } else {
-        this.setState({ myTicker: e.target.value.trim() });
+        this.setState({ myTicker: e.target.value });
       }
     }
   };
 
-  newOneEnter = (e) => {
-    if (e.key === "Enter") {
-      this.newOnes();
-    }
-  };
+  // newOneEnter = (e) => {
+  //   if (e.key === "Enter") {
+  //     this.newOnes();
+  //   }
+  // };
 
   changeSides = () => {
     this.setState({ sideBar: !this.state.sideBar });
@@ -514,7 +516,8 @@ class Body extends React.Component {
   cancelCourse = () => {
     this.setState({
       myTicker: "",
-      myShares: "",
+      selectedTicker: "",
+      myShares: null,
       reset: true,
     });
   };
@@ -534,14 +537,15 @@ class Body extends React.Component {
       reset: false,
       stockList: {},
       myList: [],
+      selectedTicker: null,
       myIndustryList: [],
       myMarketList: [],
       sumData: [100],
       nameData: [""],
-      myShares: "",
+      myShares: null,
       showShare: true,
       sectorName: ["GICS Sector"],
-
+      stockIndustry: null,
       sectorData: [100],
       sectorShow: [
         "",
@@ -577,48 +581,94 @@ class Body extends React.Component {
 
           <div className="submit-content">
             <div className="submit-form">
-              <form id="stockForm" onKeyDown={this.newOneEnter}>
+              {/* <form id="stockForm" onKeyDown={this.newOneEnter}> */}
+              <form id="stockForm">
+                <div className="selected">
+                  Selected: {this.state.selectedTicker}
+                </div>
                 <SearchBox
-                  placeHolder={"Ticker Symbol"}
+                  placeHolder={"Search New Company"}
                   handleChange={this.handleTickerChange}
                   boxType={"text"}
                   value={this.state.myTicker}
                 />
 
-                <SearchBox
-                  placeHolder={"Shares"}
-                  value={this.state.myShares}
-                  boxType={"number"}
-                  handleChange={this.handleShareChange}
-                />
+                <div>
+                  {this.state.myTicker == ""
+                    ? null
+                    : tickerSymbols
+                        .filter(
+                          (data) =>
+                            data["Symbol"].includes(this.state.myTicker) ||
+                            data["Name"].includes(this.state.myTicker)
+                        )
+                        .slice(0, 10)
+                        .map((res) => {
+                          return (
+                            <div
+                              className="search-result"
+                              onClick={() => {
+                                this.setState({
+                                  selectedTicker: res.Symbol,
+                                  myTicker: "",
+                                });
+                              }}
+                            >
+                              {`${res.Name} (${res.Symbol})`}
+                            </div>
+                          );
+                        })}
+                </div>
+
+                {this.state.selectedTicker ? (
+                  <SearchBox
+                    placeHolder={`No. of ${this.state.selectedTicker} Shares`}
+                    value={this.state.myShares}
+                    boxType={"number"}
+                    handleChange={this.handleShareChange}
+                  />
+                ) : null}
               </form>
 
               <div className="buttonBox">
-                <div className="stockSearch">
-                  <button className="resetButton" onClick={this.resetForm}>
-                    Reset
-                  </button>
-                </div>
-                <Fab color="primary" aria-label="add">
-                  <AddIcon onClick={this.newOnes} />
-                </Fab>
-
-                {this.state.showShare ? (
+                {this.state.myShares ? (
                   <div className="stockSearch" id="item5">
-                    <button onClick={this.onSubmit}>Submit</button>
+                    <button onClick={this.newOnes} className="add-stock">
+                      {`Add ${this.state.myShares} shares of ${this.state.selectedTicker}`}
+                    </button>
                   </div>
                 ) : (
-                  <Link
-                    className="stockSearch"
-                    to={`/chart/${this.state.link}`}
-                    id="item5"
-                  >
-                    {" "}
-                    <div className="stockSearch">
-                      <button className="goto">Go To</button>
-                    </div>
-                  </Link>
+                  <button className="inactive">Add Stock</button>
                 )}
+                {/* <Fab color="primary" aria-label="add">
+                  <AddIcon onClick={this.newOnes} />
+                </Fab> */}
+
+                {this.state.stockIndustry ? (
+                  this.state.showShare ? (
+                    <div className="stockSearch" id="item5">
+                      <button onClick={this.onSubmit}>Submit Portfolio</button>
+                    </div>
+                  ) : (
+                    <Link
+                      className="stockSearch"
+                      to={`/chart/${this.state.link}`}
+                      id="item5"
+                    >
+                      {" "}
+                      <div className="stockSearch">
+                        <button className="goto">Go To Submission</button>
+                      </div>
+                    </Link>
+                  )
+                ) : null}
+                {this.state.stockIndustry ? (
+                  <div className="stockSearch">
+                    <button className="resetButton" onClick={this.resetForm}>
+                      Reset Portfolio
+                    </button>
+                  </div>
+                ) : null}
               </div>
             </div>
           </div>
