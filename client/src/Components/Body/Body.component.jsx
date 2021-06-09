@@ -640,7 +640,7 @@ class Body extends React.Component {
                   Selected: {this.state.selectedTicker}
                 </div>
                 <SearchBox
-                  placeHolder={"Search New Company"}
+                  placeHolder={"Search Company"}
                   handleChange={this.handleTickerChange}
                   boxType={"text"}
                   value={this.state.myTicker}
@@ -676,7 +676,7 @@ class Body extends React.Component {
 
                 {this.state.selectedTicker ? (
                   <SearchBox
-                    placeHolder={`No. of ${this.state.selectedTicker} Shares`}
+                    placeHolder={`Enter No. of ${this.state.selectedTicker} Shares`}
                     value={this.state.myShares}
                     boxType={"number"}
                     handleChange={this.handleShareChange}

@@ -43,6 +43,12 @@ $buttonColor: #1652f0;
   }
 }
 
+.bm-item {
+  :hover {
+    background-color: #515568;
+    color: white;
+  }
+}
 .bm-burger-button {
   position: fixed;
   width: 36px;
@@ -100,3 +106,6 @@ Note: Beware of modifying this element as it can break the animations - you shou
 }
 
 /* Styling of overlay */
+a:hover {
+  text-decoration: none;
+}
