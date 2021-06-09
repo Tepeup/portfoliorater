@@ -8,6 +8,7 @@ $boxshadow: 0 0 20px 5px rgba(194, 200, 228, 0.4);
     height: fit-content;
     justify-self: center;
     align-self: center;
+    margin: 1em;
 }
 
 .Linkto {
@@ -38,7 +39,7 @@ $boxshadow: 0 0 20px 5px rgba(194, 200, 228, 0.4);
     }
 
     .infoContainer {
-        min-height: 10vh;
+        min-height: 100px;
         background-color: white;
 
         box-shadow: $boxshadow;
