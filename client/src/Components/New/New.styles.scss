@@ -29,12 +29,11 @@ $boxshadow: 0 0 20px 5px rgba(194, 200, 228, 0.4);
 .commentContainer {
     display: grid;
     grid-area: 4/1 / span 1 / span 3;
-
     box-sizing: border-box;
 
     @media only screen and (max-width: 825px) {
         /* For mobile phones: */
-        padding: 0 1em;
+
         grid-area: 4/1 / span 1 / span 1;
     }
 

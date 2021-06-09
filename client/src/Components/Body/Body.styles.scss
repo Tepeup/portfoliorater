@@ -338,6 +338,7 @@ main {
         .blockStyle {
             display: flex;
             align-items: center;
+            justify-content: center;
         }
         button:not(.MuiFab-root) {
             justify-self: center;
@@ -379,6 +380,7 @@ main {
             justify-content: center;
             justify-self: center;
             align-self: center;
+            display: flex;
             width: 250px;
             button {
                 width: 100%;
