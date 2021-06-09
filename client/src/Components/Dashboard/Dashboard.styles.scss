@@ -12,6 +12,11 @@ $boxshadow: 0 0 20px 5px rgba(194, 200, 228, 0.4);
             margin-bottom: 1em;
         }
     }
+    .favoriteContainer {
+        :hover {
+            opacity: 0.8;
+        }
+    }
 
     .dashboard-list {
         background-color: #1652f0;
