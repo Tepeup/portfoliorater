@@ -274,7 +274,7 @@ class Body extends React.Component {
             })
         );
       await fetch(
-        `https://finnhub.io/api/v1/stock/profile2?symbol=${this.state.myTicker}&token=bor57j7rh5rbk6e6j1qg`
+        `https://finnhub.io/api/v1/stock/profile2?symbol=${this.state.selectedTicker}&token=bor57j7rh5rbk6e6j1qg`
       )
         .then((e) => e.json())
         .then((e) =>
