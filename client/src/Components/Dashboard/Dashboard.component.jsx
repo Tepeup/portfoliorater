@@ -47,9 +47,13 @@ class Dashboard extends React.Component {
     return (
       <div className="dashboard-content">
         <div className="dashboard-main">
+          <div className="header styledHeader">
+            <div className="title-card">
+              <strong>My Portfolios</strong>
+            </div>
+          </div>
           <div className="infoContainer">
             <div className="favoriteContainer">
-              <div className="header">My Portfolios</div>
               {this.state.myList.map((doc, index) => (
                 <div key={doc.id}>
                   <Link to={`/chart/${doc.id}`}>
@@ -64,9 +68,16 @@ class Dashboard extends React.Component {
                 <button className="createButton">New Portfolio</button>
               </Link>
             </div>
-            <div className="favoriteContainer">
-              <div className="header">Favorites</div>
+          </div>
 
+          <div className="header styledHeader">
+            <div className="title-card">
+              <strong>My Favorites</strong>
+            </div>
+          </div>
+
+          <div className="infoContainer">
+            <div className="favoriteContainer">
               {this.state.favoriteList.map((doc, index) => (
                 <Link to={`/chart/${doc.id}`}>
                   <div className="dashboard-list" key={doc.id}>
@@ -75,6 +86,9 @@ class Dashboard extends React.Component {
                   </div>
                 </Link>
               ))}
+              <Link className="Link" to="/new">
+                <button className="createButton">Browse Recent</button>
+              </Link>
             </div>
           </div>
         </div>

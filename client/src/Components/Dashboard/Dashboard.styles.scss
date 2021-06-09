@@ -4,6 +4,10 @@ $boxshadow: 0 0 20px 5px rgba(194, 200, 228, 0.4);
     .dashboard-main {
         max-width: 600px;
         margin: auto;
+
+        > * {
+            margin-bottom: 1em;
+        }
     }
 
     .dashboard-list {
