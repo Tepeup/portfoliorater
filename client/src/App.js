@@ -65,7 +65,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="Body">
+      <main>
         <Menu
           onOpen={this.trueState}
           onClose={this.falseState}
@@ -136,7 +136,7 @@ class App extends React.Component {
             )}
           </Switch>
         </div>
-      </div>
+      </main>
     );
   }
 }

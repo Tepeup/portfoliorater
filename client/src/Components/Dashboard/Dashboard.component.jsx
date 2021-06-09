@@ -5,7 +5,6 @@ import firebase from "../firebase/firebase.utils";
 
 import "./Dashboard.styles.scss";
 
-
 class Dashboard extends React.Component {
   constructor(props) {
     super(props);
@@ -46,30 +45,32 @@ class Dashboard extends React.Component {
 
   render() {
     return (
-      <div className="dashboardInfo">
-        <div className="infoContainer">
-          <div className="favoriteContainer">
-            <div className="header">My Portfolios</div>
-            {this.state.myList.map((doc, index) => (
-              <div className="centerThis" key={doc.id}>
-                <Link to={`/chart/${doc.id}`}>
-                  <button>{`My Portfolio ${index + 1}`}</button>
-                </Link>
-              </div>
-            ))}
-            <Link className="Link" to="/">
-              <button className="createButton">Create</button>
-            </Link>
-          </div>
-          <div className="favoriteContainer">
-            <div className="header">Favorites</div>
-            {this.state.favoriteList.map((doc, index) => (
-              <div className="centerThis" key={doc.id}>
-                <Link to={`/chart/${doc.id}`}>
-                  <button>{`Favorite ${index + 1}`}</button>
-                </Link>
-              </div>
-            ))}
+      <div className="dashboard-content">
+        <div className="dashboard-main">
+          <div className="infoContainer">
+            <div className="favoriteContainer">
+              <div className="header">My Portfolios</div>
+              {this.state.myList.map((doc, index) => (
+                <div className="centerThis" key={doc.id}>
+                  <Link to={`/chart/${doc.id}`}>
+                    <button>{`My Portfolio ${index + 1}`}</button>
+                  </Link>
+                </div>
+              ))}
+              <Link className="Link" to="/">
+                <button className="createButton">Create</button>
+              </Link>
+            </div>
+            <div className="favoriteContainer">
+              <div className="header">Favorites</div>
+              {this.state.favoriteList.map((doc, index) => (
+                <div className="centerThis" key={doc.id}>
+                  <Link to={`/chart/${doc.id}`}>
+                    <button>{`Favorite ${index + 1}`}</button>
+                  </Link>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

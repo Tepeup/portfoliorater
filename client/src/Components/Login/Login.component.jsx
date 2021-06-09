@@ -68,8 +68,17 @@ class Login extends React.Component {
 
   render() {
     return (
-      <div className="logincontainer">
-        <div className="loginInfoBox">
+      <div className="dashboard-content">
+        <div className="login-content">
+          <div className="infoContainer">
+            <div className="centerContet">
+              <h6>
+                Create an account to keep track of your portfolios and save your
+                favorite portfolios you see!
+              </h6>
+            </div>
+          </div>
+
           <div className="infoContainer">
             <div className="centerContent">
               <div className="title">Login</div>
@@ -89,7 +98,6 @@ class Login extends React.Component {
                   handleChange={this.handleChange}
                 />
               </form>
-
               <button onClick={this.submitRegister} className="loginButtons">
                 Submit
               </button>
@@ -105,8 +113,7 @@ class Login extends React.Component {
               </button>
             </div>
           </div>
-        </div>
-        <div className="registerInfoBox">
+
           <div className="infoContainer">
             <div className="centerContent">
               <div className="title">Register</div>
@@ -143,16 +150,6 @@ class Login extends React.Component {
               <button onClick={this.handleRegister} className="loginButtons">
                 Submit
               </button>
-            </div>
-          </div>
-        </div>
-        <div className="googleInfoBox">
-          <div className="infoContainer">
-            <div className="centerContet">
-              <h6>
-                Create an account to keep track of your portfolios and save your
-                favorite portfolios you see!
-              </h6>
             </div>
           </div>
         </div>

@@ -564,60 +564,62 @@ class Body extends React.Component {
 
   render() {
     return (
-      <div className="home-page">
-        <CarouselChart
-          stockLabels={this.state.nameData}
-          stockData={this.state.sumData}
-          capLabels={this.state.marketCapName}
-          capData={this.state.marketCapData}
-          sectorLabels={this.state.sectorShow}
-          sectorData={this.state.sectorData}
-        />
+      <div className="dashboard-content">
+        <div className="carousel-content">
+          <CarouselChart
+            stockLabels={this.state.nameData}
+            stockData={this.state.sumData}
+            capLabels={this.state.marketCapName}
+            capData={this.state.marketCapData}
+            sectorLabels={this.state.sectorShow}
+            sectorData={this.state.sectorData}
+          />
 
-        <div className="infoBox">
-          <div className="infoContainer">
-            <form id="stockForm" onKeyDown={this.newOneEnter}>
-              <SearchBox
-                placeHolder={"Ticker Symbol"}
-                handleChange={this.handleTickerChange}
-                boxType={"text"}
-                value={this.state.myTicker}
-              />
+          <div className="submit-content">
+            <div className="submit-form">
+              <form id="stockForm" onKeyDown={this.newOneEnter}>
+                <SearchBox
+                  placeHolder={"Ticker Symbol"}
+                  handleChange={this.handleTickerChange}
+                  boxType={"text"}
+                  value={this.state.myTicker}
+                />
 
-              <SearchBox
-                placeHolder={"Shares"}
-                value={this.state.myShares}
-                boxType={"number"}
-                handleChange={this.handleShareChange}
-              />
-            </form>
+                <SearchBox
+                  placeHolder={"Shares"}
+                  value={this.state.myShares}
+                  boxType={"number"}
+                  handleChange={this.handleShareChange}
+                />
+              </form>
 
-            <div className="buttonBox">
-              <div className="stockSearch">
-                <button className="resetButton" onClick={this.resetForm}>
-                  Reset
-                </button>
-              </div>
-              <Fab color="primary" aria-label="add">
-                <AddIcon onClick={this.newOnes} />
-              </Fab>
-
-              {this.state.showShare ? (
-                <div className="stockSearch" id="item5">
-                  <button onClick={this.onSubmit}>Submit</button>
+              <div className="buttonBox">
+                <div className="stockSearch">
+                  <button className="resetButton" onClick={this.resetForm}>
+                    Reset
+                  </button>
                 </div>
-              ) : (
-                <Link
-                  className="stockSearch"
-                  to={`/chart/${this.state.link}`}
-                  id="item5"
-                >
-                  {" "}
-                  <div className="stockSearch">
-                    <button className="goto">Go To</button>
+                <Fab color="primary" aria-label="add">
+                  <AddIcon onClick={this.newOnes} />
+                </Fab>
+
+                {this.state.showShare ? (
+                  <div className="stockSearch" id="item5">
+                    <button onClick={this.onSubmit}>Submit</button>
                   </div>
-                </Link>
-              )}
+                ) : (
+                  <Link
+                    className="stockSearch"
+                    to={`/chart/${this.state.link}`}
+                    id="item5"
+                  >
+                    {" "}
+                    <div className="stockSearch">
+                      <button className="goto">Go To</button>
+                    </div>
+                  </Link>
+                )}
+              </div>
             </div>
           </div>
         </div>
