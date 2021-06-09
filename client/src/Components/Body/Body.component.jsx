@@ -50,7 +50,7 @@ class Body extends React.Component {
         "Real Estate",
       ],
       stockColors: [
-        "#9b9b9b",
+        "#e5e5e5",
         "#1652f0",
         "#e6194b",
         "#3cb44b",

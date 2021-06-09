@@ -72,7 +72,8 @@ span {
     background-color: #34dd75 !important;
 }
 .inactive {
-    background-color: #9b9b9b !important;
+    background-color: #e5e5e5 !important;
+    color: rgb(139, 139, 139) !important;
     width: 100%;
     margin: 1.5em 0 0.5em 0;
     padding: 0.5em;
@@ -353,6 +354,9 @@ main {
             display: flex;
             align-items: center;
             justify-content: center;
+            button {
+                width: 56px !important;
+            }
         }
         button:not(.MuiFab-root) {
             justify-self: center;
