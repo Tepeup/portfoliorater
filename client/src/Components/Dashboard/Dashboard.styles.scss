@@ -11,7 +11,10 @@ $boxshadow: 0 0 20px 5px rgba(194, 200, 228, 0.4);
         margin: auto;
         display: flex;
         flex-direction: column;
-        grid-gap: 1em;
+
+        > * {
+            margin-bottom: 1em;
+        }
     }
 
     .header {
@@ -40,7 +43,7 @@ $boxshadow: 0 0 20px 5px rgba(194, 200, 228, 0.4);
             justify-content: center;
             display: grid;
             button {
-                width: 100%;
+                width: 250px;
             }
         }
     }
