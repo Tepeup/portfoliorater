@@ -40,10 +40,11 @@ $boxshadow: 0 0 20px 5px rgba(194, 200, 228, 0.4);
     .infoContainer {
         min-height: 10vh;
         background-color: white;
-        border-radius: 0.5em;
+
         box-shadow: $boxshadow;
         padding: 0.5em;
-        display: grid;
+        display: flex;
+        flex-direction: column;
 
         .commentBox:nth-of-type(even) {
             margin-right: 1em;
@@ -58,8 +59,7 @@ $boxshadow: 0 0 20px 5px rgba(194, 200, 228, 0.4);
             margin: 0.2em;
             padding: 0.5em;
             margin-bottom: 0.5em;
-            border-radius: 0.5em;
-            width: 100%;
+
             min-width: 250px;
         }
         .centeredDiv {
