@@ -66,18 +66,16 @@ export default function CustomizedAccordions(props) {
               );
               if (obj) {
                 return (
-                  <div className="dashboard-list">
+                  <div className="dashboard-list" key={x}>
                     <div className="number-list">{`${props.percent[index]}%`}</div>
                     <div className="title-list">{obj.Name}</div>
                   </div>
                 );
               }
               return (
-                <div className="dashboard-list">
+                <div className="dashboard-list" key={x}>
                   <div className="number-list">{`${props.percent[index]}%`}</div>
-                  <div className="title-list">
-                    <i>name not found</i>
-                  </div>
+                  <div className="title-list">{x.replace(/ /g, "")}</div>
                 </div>
               );
             })}

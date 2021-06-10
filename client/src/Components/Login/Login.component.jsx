@@ -1,7 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { ReactComponent as Logo } from "../../Assets/Logo.svg";
-import axios from "axios";
 import SearchBox from "../Searchbox/Searchbox.component";
 import "./Login.styles.scss";
 import {

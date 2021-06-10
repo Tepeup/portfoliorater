@@ -1,11 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import "./New.styles.scss";
-import Carousel from "react-bootstrap/Carousel";
-import { ReactComponent as Logo } from "../../Assets/Logo.svg";
 import axios from "axios";
 import SimpleRating from "../Rating/SimpleRating.component";
-import { Pie, Doughnut, Bar } from "react-chartjs-2";
 import SimpleModal from "../SimpleModal/SimpleModal.component";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import Fab from "@material-ui/core/Fab";

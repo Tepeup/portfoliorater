@@ -1,14 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Body.styles.scss";
-import { Pie, Doughnut, Bar } from "react-chartjs-2";
 import SearchBox from "../Searchbox/Searchbox.component";
-
 import axios from "axios";
-import Fab from "@material-ui/core/Fab";
-import AddIcon from "@material-ui/icons/Add";
-import Carousel from "react-bootstrap/Carousel";
-
 import firebase from "../firebase/firebase.utils";
 import CarouselChart from "../Carousel/Charts.component";
 import tickerSymbols from "../../Assets/tickers.json";

@@ -1,8 +1,6 @@
 import React from "react";
 import Rating from "@material-ui/lab/Rating";
-
 import Box from "@material-ui/core/Box";
-
 import axios from "axios";
 import { withStyles } from "@material-ui/core/styles";
 
