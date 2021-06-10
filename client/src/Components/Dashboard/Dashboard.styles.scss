@@ -19,19 +19,50 @@ $boxshadow: 0 0 20px 5px rgba(194, 200, 228, 0.4);
     }
 
     .dashboard-list {
-        background-color: #1652f0;
-        color: white;
+        background-color: #eff1fa;
+        color: black;
         display: flex;
-
+        font-weight: bold;
         margin: 0.5em 0;
+        max-width: 500px;
+        align-items: center;
+        height: 40px;
+
         > * {
             padding: 0.5em 1em;
         }
 
         .number-list {
-            background-color: #373a47;
+            background-color: #1652f0;
             width: 50px;
             text-align: center;
+            color: white;
+        }
+
+        .title-list {
+            align-items: center;
+            max-width: 250px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+
+    .company-list {
+        font-size: 0.7em;
+
+        .number-list {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .title-list {
+            align-items: center;
+            width: 200px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
     }
 

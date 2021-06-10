@@ -4,11 +4,19 @@ $boxshadow: 0 0 20px 5px rgba(194, 200, 228, 0.4);
     padding: none;
     text-align: center;
     font-size: 0.5rem;
-    font-weight: 600;
+    font-weight: bold;
     height: fit-content;
     justify-self: center;
     align-self: center;
     margin: 1em;
+}
+
+.company-list {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-items: center;
+    align-items: center;
 }
 
 .Linkto {

@@ -5,7 +5,9 @@ $boxshadow: 0 0 20px 5px rgba(194, 200, 228, 0.4);
 * {
     box-sizing: border-box;
 }
-
+button {
+    font-weight: bold;
+}
 button:hover {
     opacity: 0.8;
 }

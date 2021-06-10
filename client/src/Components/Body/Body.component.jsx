@@ -18,7 +18,7 @@ class Body extends React.Component {
     super(props);
     this.state = {
       selectedTicker: null,
-      myTicker: null,
+      myTicker: "",
       reset: false,
       stockList: {},
       myList: [],
@@ -28,7 +28,7 @@ class Body extends React.Component {
       marketCapList: {},
       sumData: [100],
       nameData: [""],
-      myShares: null,
+      myShares: "",
       stockIndustry: null,
       techData: [],
       techName: [],
@@ -50,6 +50,8 @@ class Body extends React.Component {
         "Real Estate",
       ],
       stockColors: [
+        "#e5e5e5",
+        "#e5e5e5",
         "#e5e5e5",
         "#1652f0",
         "#e6194b",
@@ -342,6 +344,23 @@ class Body extends React.Component {
 
         this.setState({
           stockColors: [
+            "#1652f0",
+            "#e6194b",
+            "#3cb44b",
+            "#ffd8b1",
+            "#808080",
+            "#f58231",
+            "#911eb4",
+            "#ffe119",
+            "#e6beff",
+            "#9a6324",
+            "#fffac8",
+            "#800000",
+            "#aaffc3",
+            "#808000",
+            "#bcf60c",
+            "#fabebe",
+            "#008080",
             "#1652f0",
             "#e6194b",
             "#3cb44b",
@@ -659,6 +678,7 @@ class Body extends React.Component {
                         .map((res) => {
                           return (
                             <div
+                              key={res.Symbol}
                               className="search-result"
                               onClick={() => {
                                 this.setState({
