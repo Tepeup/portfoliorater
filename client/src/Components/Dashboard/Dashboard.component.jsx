@@ -9,9 +9,9 @@ class Dashboard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      favoriteList: [1, 2],
+      favoriteList: [],
       newList: [],
-      myList: [1, 2],
+      myList: [],
     };
   }
 
