@@ -68,11 +68,9 @@ class Login extends React.Component {
       <div className="dashboard-content">
         <div className="login-content">
           <div className="infoContainer">
-            <div className="centerContet">
-              <h6>
-                Create an account to keep track of your portfolios and save your
-                favorite portfolios you see!
-              </h6>
+            <div className="loginDesc">
+              Create an account to keep track of your portfolios and save your
+              favorites! Sign in anonymously to preview.
             </div>
           </div>
 

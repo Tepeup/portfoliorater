@@ -237,6 +237,13 @@ class New extends React.Component {
                 ))}
             </div>
           </div>
+          <div class="link-card">
+            <div class="link-body">
+              <a href="/">
+                <button className="createButton">Create My Own</button>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     );

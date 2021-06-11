@@ -49,11 +49,11 @@ $boxshadow: 0 0 20px 5px rgba(194, 200, 228, 0.4);
     .infoContainer {
         min-height: 100px;
         background-color: white;
-
         box-shadow: $boxshadow;
         padding: 0.5em;
         display: flex;
         flex-direction: column;
+        margin-bottom: 0 !important;
 
         .commentBox:nth-of-type(even) {
             margin-right: 1em;
