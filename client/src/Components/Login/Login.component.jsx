@@ -70,7 +70,10 @@ class Login extends React.Component {
           <div className="infoContainer">
             <div className="loginDesc">
               Create an account to keep track of your portfolios and save your
-              favorites! Sign in anonymously to preview.
+              favorites!{" "}
+              <span style={{ color: "#1652f0" }}>
+                Sign in anonymously to preview.
+              </span>
             </div>
           </div>
 
