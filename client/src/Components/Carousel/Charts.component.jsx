@@ -1,7 +1,8 @@
 import React from "react";
-
 import Carousel from "react-bootstrap/Carousel";
-import { Pie, Doughnut, Bar } from "react-chartjs-2";
+import { Pie, Doughnut, Bar, defaults } from "react-chartjs-2";
+
+defaults.global.defaultFontFamily = "Comfortaa";
 
 class CarouselChart extends React.Component {
   constructor(visible) {
