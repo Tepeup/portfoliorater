@@ -10,9 +10,13 @@ function getModalStyle() {
   const top = 50;
   const left = 50;
   return {
+    width: "100%",
+    maxWidth: "500px",
     top: `${top}%`,
     left: `${left}%`,
     transform: `translate(-${top}%, -${left}%)`,
+    borderRadius: "0",
+    padding: "2em",
   };
 }
 
@@ -72,7 +76,7 @@ export default function SimpleModal({ link }) {
             <textarea
               className="textInput"
               type="text"
-              placeholder="Comment"
+              placeholder="Write a comment"
               value={commentValue}
               onChange={(e) => setName(e.target.value)}
             />

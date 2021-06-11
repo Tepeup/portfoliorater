@@ -56,18 +56,16 @@ $boxshadow: 0 0 20px 5px rgba(194, 200, 228, 0.4);
         margin-bottom: 0 !important;
 
         .commentBox:nth-of-type(even) {
-            margin-right: 1em;
-            margin-left: 0.5em;
+            margin-right: 2em;
         }
         .commentBox:nth-of-type(odd) {
-            margin-left: 1em;
-            margin-right: 0.5em;
+            margin-left: 2em;
         }
         .commentBox {
             background-color: #eff1fa;
-            margin: 0.2em;
+
             padding: 0.5em;
-            margin-bottom: 0.5em;
+            margin-bottom: 1em;
 
             min-width: 250px;
         }
@@ -102,12 +100,11 @@ div[class*="makeStyles-paper-"] {
     width: 250px;
 }
 .textInput {
-    border-radius: 0.5em;
     border: none;
     background-color: #eff1fa;
     height: 10em;
     font-weight: bold;
-    padding: 0.5em;
+    padding: 0.5em 1em;
 }
 strong {
     margin: auto;
@@ -122,6 +119,12 @@ strong {
 .centerDiv {
     margin: auto;
 }
+
+.commentTitle {
+    text-align: center;
+    margin: 1em;
+}
+
 .unliked {
     background-color: lightgray !important;
 }

@@ -226,7 +226,7 @@ class New extends React.Component {
           </div>
           <div className="commentContainer">
             <div className="infoContainer">
-              <div className="centerDiv">
+              <div className="commentTitle">
                 <strong>{`Comments ( ${this.state.commentList.length} )`}</strong>
               </div>
               {this.state.commentList &&
