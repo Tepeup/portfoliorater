@@ -14,8 +14,8 @@ import NavBar from "./Components/Navigation/NavBar.component";
 import { slide as Menu } from "react-burger-menu";
 import HomeIcon from "@material-ui/icons/Home";
 import DashboardIcon from "@material-ui/icons/Dashboard";
-import NewReleasesIcon from "@material-ui/icons/NewReleases";
 import Recent from "./Components/Recent/Recent.component";
+import CreateIcon from "@material-ui/icons/Create";
 
 class App extends React.Component {
   constructor() {
@@ -88,11 +88,11 @@ class App extends React.Component {
               </div>
             </div>
           </Link>
-          <Link className="Link" to="/new">
+          <Link className="Link" to="/create">
             <div className="menu-item">
               <div className="menu-list">
-                <NewReleasesIcon className="toHome" />
-                Recent
+                <CreateIcon className="toHome" />
+                New Portfolio
               </div>
             </div>
           </Link>
@@ -104,13 +104,13 @@ class App extends React.Component {
             currentUser={this.state.currentUser}
           />
           <Switch>
-            <Route logOut={this.signOut} path="/" exact>
+            <Route logOut={this.signOut} path="/create" exact>
               <Body
                 currentUser={this.state.currentUser}
                 logOut={this.signOut}
               />
             </Route>
-            <Route path="/new" exact>
+            <Route path="/" exact>
               <Recent
                 currentUser={this.state.currentUser}
                 logOut={this.signOut}

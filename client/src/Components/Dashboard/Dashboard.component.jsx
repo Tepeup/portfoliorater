@@ -62,7 +62,7 @@ class Dashboard extends React.Component {
                   </Link>
                 </div>
               ))}
-              <Link className="Link" to="/">
+              <Link className="Link" to="/create">
                 <button className="createButton">New Portfolio</button>
               </Link>
             </div>
@@ -84,7 +84,7 @@ class Dashboard extends React.Component {
                   </div>
                 </Link>
               ))}
-              <Link className="Link" to="/new">
+              <Link className="Link" to="/">
                 <button className="createButton">Browse Recent</button>
               </Link>
             </div>
