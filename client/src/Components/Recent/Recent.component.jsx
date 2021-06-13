@@ -21,7 +21,7 @@ class Recent extends React.Component {
       .get("/stocks/sort/new")
       .then((res) => res.data)
       .then((res) => {
-        this.setState({ newList: res.slice(0, 9) });
+        this.setState({ newList: res.slice(0, 20) });
       });
 
     firebase
