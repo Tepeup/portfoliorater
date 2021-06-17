@@ -188,8 +188,11 @@ class New extends React.Component {
             stockColors={stockColors}
           />
           <CustomizedAccordions
+            title="See Breakdown"
             stocks={this.state.nameData}
             percent={this.state.sumData}
+            sector={this.state.sectorShow}
+            sectorPercent={this.state.sectorData}
           />
 
           <div className="infoBox" id="ratingBox">

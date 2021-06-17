@@ -56,29 +56,43 @@ export default function CustomizedAccordions(props) {
         onChange={handleChange("panel1")}
       >
         <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
-          Show Company List
+          {props.title}
         </AccordionSummary>
         <AccordionDetails>
-          <div className="company-list">
-            {props.stocks.map((x, index) => {
-              let obj = tickerSymbols.find(
-                (o) => o.Symbol === x.replace(/ /g, "")
-              );
-              if (obj) {
+          <div className="breakdown">
+            <div className="company-list">
+              Company Breakdown:
+              {props.stocks.map((x, index) => {
+                let obj = tickerSymbols.find(
+                  (o) => o.Symbol === x.replace(/ /g, "")
+                );
+                if (obj) {
+                  return (
+                    <div className="dashboard-list" key={x}>
+                      <div className="number-list">{`${props.percent[index]}%`}</div>
+                      <div className="title-list">{obj.Name}</div>
+                    </div>
+                  );
+                }
                 return (
                   <div className="dashboard-list" key={x}>
                     <div className="number-list">{`${props.percent[index]}%`}</div>
-                    <div className="title-list">{obj.Name}</div>
+                    <div className="title-list">{x.replace(/ /g, "")}</div>
                   </div>
                 );
-              }
-              return (
-                <div className="dashboard-list" key={x}>
-                  <div className="number-list">{`${props.percent[index]}%`}</div>
-                  <div className="title-list">{x.replace(/ /g, "")}</div>
-                </div>
-              );
-            })}
+              })}
+            </div>
+            <div className="company-list">
+              Sector Breakdown:
+              {props.sector.map((x, index) => {
+                return (
+                  <div className="dashboard-list" key={x}>
+                    <div className="number-list">{`${props.sectorPercent[index]}%`}</div>
+                    <div className="title-list">{x}</div>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </AccordionDetails>
       </Accordion>
