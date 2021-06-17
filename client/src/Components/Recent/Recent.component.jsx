@@ -4,6 +4,7 @@ import firebase from "../firebase/firebase.utils";
 import axios from "axios";
 import CarouselChart from "../Carousel/Charts.component";
 import ScrollAnimation from "react-animate-on-scroll";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 class Recent extends React.Component {
   constructor(props) {
@@ -97,32 +98,39 @@ class Recent extends React.Component {
               <strong>Recent Portfolios</strong>
             </div>
           </div>
-
-          {this.state.newList.map((doc, index) => (
-            <ScrollAnimation
-              animateIn="fadeInUp"
-              animateOnce={true}
-              key={doc._id}
-            >
-              <CarouselChart
-                stockLabels={doc.stock}
-                stockData={doc.percent}
-                capLabels={marketCapLabels}
-                capData={doc.marketPercent}
-                sectorLabels={doc.sector}
-                sectorData={doc.sectorPercent}
-                stockColors={stockColors}
-              />
-              <div className="link-card">
-                <div className="link-body">
-                  <Link to={`/chart/${doc._id}`}>
-                    {" "}
-                    <button>See Comments</button>
-                  </Link>
-                </div>
-              </div>
-            </ScrollAnimation>
-          ))}
+          {this.state.newList.length < 2 ? (
+            <div className="spinner">
+              <CircularProgress />
+            </div>
+          ) : (
+            <div>
+              {this.state.newList.map((doc, index) => (
+                <ScrollAnimation
+                  animateIn="fadeInUp"
+                  animateOnce={true}
+                  key={doc._id}
+                >
+                  <CarouselChart
+                    stockLabels={doc.stock}
+                    stockData={doc.percent}
+                    capLabels={marketCapLabels}
+                    capData={doc.marketPercent}
+                    sectorLabels={doc.sector}
+                    sectorData={doc.sectorPercent}
+                    stockColors={stockColors}
+                  />
+                  <div className="link-card">
+                    <div className="link-body">
+                      <Link to={`/chart/${doc._id}`}>
+                        {" "}
+                        <button>See Comments</button>
+                      </Link>
+                    </div>
+                  </div>
+                </ScrollAnimation>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     );

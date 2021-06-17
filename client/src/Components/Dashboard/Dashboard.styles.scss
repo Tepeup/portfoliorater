@@ -82,6 +82,16 @@ $boxshadow: 0 0 20px 5px rgba(194, 200, 228, 0.4);
         color: black;
         text-align: center;
     }
+    .spinner {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 60vh;
+    }
+    .MuiCircularProgress-svg {
+        color: #1652f0;
+    }
 
     .styledHeader {
         strong {
