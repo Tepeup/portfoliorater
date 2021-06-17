@@ -44,9 +44,9 @@ class Body extends React.Component {
         "Real Estate",
       ],
       stockColors: [
-        "#1652f0",
-        "#e6194b",
-        "#3cb44b",
+        "#e5e5e5",
+        "#e5e5e5",
+        "#e5e5e5",
         "#ffd8b1",
         "#808080",
         "#f58231",
@@ -664,7 +664,7 @@ class Body extends React.Component {
                     this.state.selectedTicker ? null : "whiteout"
                   } selected`}
                 >
-                  Selected: {this.state.selectedTicker}
+                  Add Stock: {this.state.selectedTicker}
                 </div>
                 <SearchBox
                   placeHolder={"Search Company"}
