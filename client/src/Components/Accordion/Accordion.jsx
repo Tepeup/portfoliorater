@@ -49,6 +49,26 @@ export default function CustomizedAccordions(props) {
     setExpanded(isExpanded ? panel : false);
   };
 
+  const sectorArray = props.sector.map((x, idx) => {
+    return { sector: x, percent: props.sectorPercent[idx] };
+  });
+  const sortedSectorArray = sectorArray
+    .sort(function (a, b) {
+      return a.percent - b.percent;
+    })
+    .reverse();
+
+  const companyArray = props.stocks.map((x, idx) => {
+    return { ticker: x, percent: props.percent[idx] };
+  });
+  const sortedCompanyArray = companyArray
+    .sort(function (a, b) {
+      return a.percent - b.percent;
+    })
+    .reverse();
+
+  console.log(sortedCompanyArray);
+
   return (
     <div>
       <Accordion
@@ -62,33 +82,35 @@ export default function CustomizedAccordions(props) {
           <div className="breakdown">
             <div className="company-list">
               Company Breakdown:
-              {props.stocks.map((x, index) => {
+              {sortedCompanyArray.map((x, index) => {
                 let obj = tickerSymbols.find(
-                  (o) => o.Symbol === x.replace(/ /g, "")
+                  (o) => o.Symbol === x.ticker.replace(/ /g, "")
                 );
                 if (obj) {
                   return (
-                    <div className="dashboard-list" key={x}>
-                      <div className="number-list">{`${props.percent[index]}%`}</div>
+                    <div className="dashboard-list" key={x.ticker}>
+                      <div className="number-list">{`${x.percent}%`}</div>
                       <div className="title-list">{obj.Name}</div>
                     </div>
                   );
                 }
                 return (
-                  <div className="dashboard-list" key={x}>
-                    <div className="number-list">{`${props.percent[index]}%`}</div>
-                    <div className="title-list">{x.replace(/ /g, "")}</div>
+                  <div className="dashboard-list" key={x.ticker}>
+                    <div className="number-list">{`${x.percent}%`}</div>
+                    <div className="title-list">
+                      {x.ticker.replace(/ /g, "")}
+                    </div>
                   </div>
                 );
               })}
             </div>
             <div className="company-list">
               Sector Breakdown:
-              {props.sector.map((x, index) => {
+              {sortedSectorArray.map((x, index) => {
                 return (
-                  <div className="dashboard-list" key={x}>
-                    <div className="number-list">{`${props.sectorPercent[index]}%`}</div>
-                    <div className="title-list">{x}</div>
+                  <div className="dashboard-list" key={x.sector}>
+                    <div className="number-list">{`${x.percent}%`}</div>
+                    <div className="title-list">{x.sector}</div>
                   </div>
                 );
               })}
