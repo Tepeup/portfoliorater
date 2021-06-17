@@ -71,6 +71,23 @@ class Recent extends React.Component {
       "#bcf60c",
       "#fabebe",
       "#008080",
+      "#1652f0",
+      "#e6194b",
+      "#3cb44b",
+      "#ffd8b1",
+      "#808080",
+      "#f58231",
+      "#911eb4",
+      "#ffe119",
+      "#e6beff",
+      "#9a6324",
+      "#fffac8",
+      "#800000",
+      "#aaffc3",
+      "#808000",
+      "#bcf60c",
+      "#fabebe",
+      "#008080",
     ];
 
     return (
