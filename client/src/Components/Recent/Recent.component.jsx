@@ -1,10 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
 import firebase from "../firebase/firebase.utils";
-
 import axios from "axios";
 import CarouselChart from "../Carousel/Charts.component";
+import ScrollAnimation from "react-animate-on-scroll";
 
 class Recent extends React.Component {
   constructor(props) {
@@ -100,7 +99,11 @@ class Recent extends React.Component {
           </div>
 
           {this.state.newList.map((doc, index) => (
-            <div className="centerThis" key={doc._id}>
+            <ScrollAnimation
+              animateIn="fadeInUp"
+              animateOnce={true}
+              key={doc._id}
+            >
               <CarouselChart
                 stockLabels={doc.stock}
                 stockData={doc.percent}
@@ -118,7 +121,7 @@ class Recent extends React.Component {
                   </Link>
                 </div>
               </div>
-            </div>
+            </ScrollAnimation>
           ))}
         </div>
       </div>
