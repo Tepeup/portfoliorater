@@ -81,7 +81,7 @@ export default function CustomizedAccordions(props) {
         <AccordionDetails>
           <div className="breakdown">
             <div className="company-list">
-              Company Breakdown:
+              <div className="section-title">Company Breakdown:</div>
               {sortedCompanyArray.map((x, index) => {
                 let obj = tickerSymbols.find(
                   (o) => o.Symbol === x.ticker.replace(/ /g, "")
@@ -105,7 +105,7 @@ export default function CustomizedAccordions(props) {
               })}
             </div>
             <div className="company-list">
-              Sector Breakdown:
+              <div className="section-title">Sector Breakdown:</div>
               {sortedSectorArray.map((x, index) => {
                 return (
                   <div className="dashboard-list" key={x.sector}>
